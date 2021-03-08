@@ -10,5 +10,6 @@
 ## Day 0 - Planning 
 
 - Upadted Notion page with releases 
-- Thinking about making first release on monday 15th
-- Thinking about using Typescript 
+- Set deadline for first release on monday 15th (?)
+- Created hosted heroku SQL (Postgres) database
+- Created [backend repo](https://github.com/LidiaKovac/learning-management-system-BE)
