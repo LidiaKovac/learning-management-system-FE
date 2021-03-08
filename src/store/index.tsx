@@ -19,7 +19,7 @@ import { State } from "../interfaces";
 //2: Combining the reducers and associates reducers to state values.
 
 const rootReducer = combineReducers({
-  to_do: taskReducer,
+  
 });
 
 //3: Exporting and configuring the store

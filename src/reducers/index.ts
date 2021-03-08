@@ -6,14 +6,7 @@
 import {Action, State, Task} from "../interfaces" 
 
 const basic_state = {
-	tasks: {
-		data: [
-			
-		]
-	},
-	fullfilled: {
-		data: []
-	}
+	
 }
 
 export function taskReducer (state = basic_state, action: Action):State { 
@@ -22,17 +15,6 @@ export function taskReducer (state = basic_state, action: Action):State {
 			return {
 				...state,
 				tasks: {data: [...state.tasks.data, action.payload] }
-			}
-		case "REMOVE_TASK_FROM_LIST": //2b
-			return {
-				...state,
-				tasks: {data: [...state.tasks.data.filter((task:Task) => task.id !== action.payload.id)]},
-			}
-		case "CHECK_AS_DONE": //2c
-			return {
-				...state,
-				tasks: {data: [...state.tasks.data.filter((task:Task)=>task.id !== action.payload.id)]},
-				fullfilled: {data: [...state.fullfilled.data, action.payload]}
 			}
 		default:
 			return state

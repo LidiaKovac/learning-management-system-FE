@@ -5,7 +5,7 @@ import {BrowserRouter, Route} from "react-router-dom"
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-    <Route exact path='/' component={Landing} />
+    
      
     </BrowserRouter>
   );
