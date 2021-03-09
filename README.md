@@ -9,7 +9,12 @@
 
 ## Day 0 - Planning 
 
-- Upadted Notion page with releases 
+- Updated Notion page with releases 
 - Set deadline for first release on monday 15th (?)
 - Created hosted heroku SQL (Postgres) database
 - Created [backend repo](https://github.com/LidiaKovac/learning-management-system-BE)
+
+## Day 1 - First day of coding, has a fist fight with Sequelize and Typescript
+
+- Spent from 9 AM to 2 PM trying to create associations between tables without upsetting TS
+- Wrote notes about Sequelize and TS on BE README.MD for posterity
