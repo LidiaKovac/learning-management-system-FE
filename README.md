@@ -33,3 +33,5 @@
 - Started with authorization
 
 ### Day 2 - 
+- Jest setup
+- 
