@@ -32,7 +32,7 @@
 - Created User CRUD 
 - Started with authorization
 
-### Day 2 - 
+### Day 2 - First steps 
 - ~Jest setup~ -> need help on that
 - Login routes
 - Authorization and roles middlewares
