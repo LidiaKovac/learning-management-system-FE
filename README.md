@@ -33,5 +33,6 @@
 - Started with authorization
 
 ### Day 2 - 
-- Jest setup
-- 
+- ~Jest setup~ -> need help on that
+- Login routes
+- Authorization and roles middlewares
