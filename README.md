@@ -55,5 +55,8 @@
     - [x] GET login/ - logs in
 
     - [x] GET login/me - gets logged user 
- - created Logout 
- - 
+ - Created Logout 
+ - Started on files endpoint 
+ - Discarded cloudinary as a video/audio cloud -> need another option
+    - Could also use google storage api, but it would require google oAuth, maybe next release? 
+
