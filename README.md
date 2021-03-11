@@ -36,3 +36,23 @@
 - ~Jest setup~ -> need help on that
 - Login routes
 - Authorization and roles middlewares
+### Day 3 - 
+- Tested all user and login routes on postman 
+    - [x] GET user/admin - gets all users 
+
+    - [x] GET user/admin/:query/:identifier - search (query = column, identifier = value)
+
+    - [x] PUT user/admin/:id - edits a profile (admin only)
+
+    - [x] DELETE user/admin/:id - deletes a profile (admin only) 
+
+    - [x] PUT user/me - edits own profile 
+
+    - [x] DELETE user/me - deletes own profile 
+
+    - [x] POST login/ - creates a user 
+
+    - [x] GET login/ - logs in
+
+    - [x] GET login/me - gets logged user 
+ 
