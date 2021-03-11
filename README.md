@@ -55,4 +55,5 @@
     - [x] GET login/ - logs in
 
     - [x] GET login/me - gets logged user 
- 
+ - created Logout 
+ - 
