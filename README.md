@@ -36,7 +36,7 @@
 - ~Jest setup~ -> need help on that
 - Login routes
 - Authorization and roles middlewares
-### Day 3 - 
+### Day 3 - Testing and frontend
 - Tested all user and login routes on postman 
     - [x] GET user/admin - gets all users 
 
@@ -59,4 +59,6 @@
  - Started on files endpoint 
  - Discarded cloudinary as a video/audio cloud -> need another option
     - Could also use google storage api, but it would require google oAuth, maybe next release? 
+ - Started on frontend
+### Day 4 - 
 
