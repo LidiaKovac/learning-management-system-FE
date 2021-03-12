@@ -55,10 +55,12 @@
     - [x] GET login/ - logs in
 
     - [x] GET login/me - gets logged user 
- - Created Logout 
- - Started on files endpoint 
- - Discarded cloudinary as a video/audio cloud -> need another option
-    - Could also use google storage api, but it would require google oAuth, maybe next release? 
- - Started on frontend
-### Day 4 - 
+- Created Logout 
+- Started on files endpoint 
+- Discarded cloudinary as a video/audio cloud -> need another option
+   - Could also use google storage api, but it would require google oAuth, maybe next release? 
+- Started on frontend
+### Day 4 - Login and registration
+- Finished login frontend with cookies
+- Started registration page 
 
