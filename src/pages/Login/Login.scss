@@ -1,0 +1,116 @@
+@import "../../styling/_Colors.scss";
+@import "../../styling/_Fonts.scss";
+
+.login-wrap {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $bg;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-main;
+    color: $text-main;
+    overflow: hidden;
+
+    .login-form__wrap {
+        background-color: white;
+        width: 450px;
+        height: 80%;
+
+        border-radius: 50px;
+        font-weight: bold;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .login-form__header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 40px;
+            font-size: 22pt;
+
+            img {
+                width: 40px;
+                height: 40px;
+                margin-right: 20px;
+
+            }
+        }
+
+        .login-form__content {
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            input {
+                margin: 15px;
+                padding-left: 20px;
+                border: none;
+                border-radius: 20px;
+
+                background-color: $input;
+
+                width: 75%;
+                height: 40px;
+            }
+        }
+
+        .login-form__submit {
+            width: 80%;
+            height: 40px;
+
+            border: none;
+            border-radius: 20px;
+
+            margin-top: 40px;
+
+            background-color: $submit;
+            font-weight: bold;
+        }
+
+        .login-form__footer {
+            margin-top: 20px;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            .login-form__link {
+                color: $text-main;
+                text-decoration: none;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            div:first-of-type {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+
+                span {
+                    padding: 10px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+
+                .login-form__hl {
+                    height: 4px;
+                    width: 90px;
+                    background-color: $submit;
+                }
+            }
+
+        }
+    }
+}

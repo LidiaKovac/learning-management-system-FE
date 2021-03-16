@@ -1,32 +1,11 @@
-//the redux (wuth thunk) store is made of 3 parts: 
-//1 - Calling the browser extension
-//2 - Combining the reducers
-//3 - Exporting with Thunk 
-
-import {createStore, combineReducers, Store} from "redux"
+import {createStore, applyMiddleware} from "redux"
+import reducer from "../reducers"
 import {composeWithDevTools} from "redux-devtools-extension"
-
-import {taskReducer} from "../reducers"
-import { State } from "../interfaces";
-
-//1: Calling and setting the browser extension. Since this is a TS project, we need to declare the interface. 
-//The npm package redux-devtools-extension contains the typings for composing the enhancer, so we can change the line: 
-
-// const composedEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-//with composeDevTool(...) in the export. 
+import thunk from "redux-thunk";
 
 
-//2: Combining the reducers and associates reducers to state values.
-
-const rootReducer = combineReducers({
-  
-});
-
-//3: Exporting and configuring the store
-
-export default function configureStore():Store<State, any> {
-    return createStore(
-      rootReducer, undefined,
-      composeWithDevTools()
+const store = createStore(
+      reducer, undefined,
+      composeWithDevTools(applyMiddleware(thunk))
     );
-  }
+export default store

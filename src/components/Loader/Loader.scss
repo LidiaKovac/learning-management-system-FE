@@ -1,0 +1,11 @@
+@import "../../styling/Colors";
+$primary-color: $blue-deep;
+@import 'loaders.css/src/animations/line-scale.scss';
+
+.loader-hidden {
+  display: none;
+}
+.loader-active {
+  display: block;
+  transform: scale(.7, .7);
+}

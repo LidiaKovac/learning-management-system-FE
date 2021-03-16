@@ -1,0 +1,210 @@
+@import "../../styling/_Colors.scss";
+@import "../../styling/_Fonts.scss";
+
+.signup-wrap {
+    width: 100vw;
+    height: 100vh;
+
+    background-color: $bg;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: $font-main;
+    color: $text-main;
+
+    .signup-form__wrap {
+        background-color: white;
+        width: 450px;
+        height: 95%;
+
+        border-radius: 50px;
+
+        font-weight: bold;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        .signup-form__header {
+            text-align: center;
+            width: 100%;
+            height: 40px;
+            font-size: 22pt;
+
+            margin-bottom: 25px;
+
+            img {
+                width: 40px;
+                height: 40px;
+                margin-right: 20px;
+
+            }
+        }
+        .signup-form__input--error {
+            font-size: 10pt;
+        }
+
+        .signup-form__input--select {
+            margin: 15px;
+            width: 80%;
+            height: 40px;
+            font-size: 10pt;
+
+            .signup-form__input--select__control {
+                height: 40px;
+                background-color: $input;
+                border: none;
+                border-radius: 20px;
+                color: $text-main;
+
+                .signup-form__input--select__value-container {
+                    height: 40px;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+
+                }
+
+                .signup-form__input--select__indicators {
+                    span {
+                        background-color: $text-main;
+                    }
+
+                    div {
+                        color: $text-main !important
+                    }
+
+
+                }
+            }
+
+            .signup-form__input--select__menu {
+                background-color: $bg;
+
+                div {
+                    div {
+                        &:hover {
+                            background-color: $blue-deep;
+                        }
+                    }
+                }
+            }
+
+
+
+
+        }
+
+        .signup-form__input--row {
+            width: 80%;
+            align-self: center;
+            //margin-left: 50px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+
+            input {
+                width: 40% !important;
+                margin-left: 0px;
+                margin-right: 0px;
+
+                color: $text-main
+            }
+        }
+        .signup-form__submit {
+            width: 80%;
+            height: 40px;
+
+            border: none;
+            border-radius: 20px;
+
+            margin-top: 25px;
+
+            background-color: $submit;
+            font-weight: bold;
+        }
+        
+        .login-form__footer {
+            display: flex;
+            flex-direction: column;
+            div:first-of-type {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                span {
+                    padding: 10px;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                    font-size: 11pt;
+                }
+                .login-form__hl {
+                    height: 4px;
+                    width: 90px;
+                    background-color: $submit;
+                }
+            }
+            .signup-form__link {
+                align-self: center;
+                color: $text-main;
+                text-decoration: none;
+                font-size: 11pt;
+                margin-top: 5px;
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+            
+        }
+    }
+}
+
+input {
+    margin: 15px;
+
+    padding-left: 20px;
+    border: none;
+    border-radius: 20px;
+
+    background-color: $input;
+
+    width: 75%;
+    height: 40px;
+    font-family: Quasimoda;
+    font-size: 10.5pt;
+    color: $text-main;
+    &[type="date"] {
+        width: 72%;
+        padding-right: 20px;
+        
+    }
+    &input[type="date"]::-webkit-calendar-picker-indicator {
+        color: $text-main!important
+    }
+    &#password_conf {
+        
+        width: 75%;
+        margin-right: 25px;
+    }
+    &[type="checkbox"] {
+        width: 15px;
+        height: 15px;
+    }
+}
+
+.signup-form__input--select__placeholder {
+    padding-left: 10px;
+    position: absolute;
+    //transform: translateY(-50%);
+}
+
+.check_icon {
+    width: 20px;
+    height: 20px;
+    justify-self: center;
+    align-self: center;
+}
+

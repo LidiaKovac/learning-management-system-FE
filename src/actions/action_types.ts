@@ -1,0 +1,13 @@
+export const LOADING_TRUE = "LOADING_TRUE"
+export const LOADING_FALSE = "LOADING_FALSE"
+
+export const LOGIN_SUCCESSFUL = "LOGIN_SUCCESSFUL"
+export const LOGIN_FAILED = "LOGIN_FAILED"
+export const LOGOUT = "LOGOUT"
+export const WRONG_CRED  ="WRONG_CRED"
+
+export const EMAIL_NOT_EXIST = "EMAIL_NOT_EXIST"
+export const EMAIL_IN_USE = "EMAIL_IN_USE"
+
+export const JOIN_SUCCESSFUL = "JOIN_SUCCESSFUL"
+export const JOIN_FAILED = "JOIN_FAILED"
