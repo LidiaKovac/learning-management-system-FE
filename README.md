@@ -75,3 +75,7 @@
 - Started on Student Dashboard 
 - Worked with react-calendar and recharts
 
+### Day 6 - Jest (finally) and responsiveness 
+- Set up Jest in the backend 
+- Made dashboard responsive
+- 
