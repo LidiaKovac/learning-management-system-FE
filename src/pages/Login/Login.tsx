@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
 
 import { useDispatch, useSelector } from "react-redux"
-import { login_action } from "../../actions"
+import { login_action, retrieve_logged_action } from "../../actions"
 
 //ASSETS
 import "./Login.scss"
@@ -13,7 +13,8 @@ import Spinner from "../../components/Loader/Loader"
 
 //INTERFACES & TYPES
 import { LoginData } from "../../interfaces/LoginTypes"
-import { rootInitialState } from "../../interfaces/interfaces"
+import { LoggedState, rootInitialState } from "../../interfaces/interfaces"
+import { LOADING_FALSE } from "../../actions/action_types"
 
 const Login: React.FC<any> = () => {
 	//HOOKS
@@ -26,13 +27,26 @@ const Login: React.FC<any> = () => {
 		password: "",
 	})
 	const props = useSelector((state: rootInitialState) => state.user)
+	const loading = useSelector((state:LoggedState)=> state.user.loading)
 
 	//USE EFFECTS:
 	useEffect(() => {
-		if (props.is_authorized === true) {
-			history.push("/dashboard")
+		if (props.is_authorized) {
+			console.log("Cred retrieved")
+			history.push("/redirect")
 		}
-	}, [props])
+	}, [props.is_authorized])
+	useEffect(() => {
+		if (document.cookie.length > 0) {
+			console.log("Token is here")
+			dispatch(retrieve_logged_action())
+			if (props.is_authorized) {
+				console.log("Cred retrieved")
+				history.push("/redirect")
+			}
+		}
+		if (loading) dispatch({type: LOADING_FALSE})
+	}, [])
 
 	//FUNCTIONS
 	const submit_login = async (data: LoginData) => {

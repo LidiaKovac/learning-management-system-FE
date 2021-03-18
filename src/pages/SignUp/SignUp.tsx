@@ -76,6 +76,7 @@ const SignUp = () => {
 			&& user_data.pronouns !== "" 
 			&& user_data.email !== ""
 			&& user_data.role !== ""
+			&& user_data.birthday !== ""
 			)
 			if (pass_match)
 				dispatch(join_action(user_data))
@@ -85,7 +86,7 @@ const SignUp = () => {
 	//USE EFFECTS 
 	useEffect(()=> {
 		if(props.is_authorized) {
-			history.push("/landing")
+			history.push("/redirect")
 		}
 	}, [props])
 
@@ -114,7 +115,7 @@ const SignUp = () => {
 			   	? <ImCheckmark className="check_icon" style={{color: "green"}}/> 
 				: <ImCross className="check_icon" style={{color: "red"}}/>}</div>
 				<span className="signup-form__input--error">
-					{(!pass_match && props.error === "Passwords don't match!") ? "Passwords don't match!" : "" }
+					{(!pass_match && error === "Passwords don't match!") ? "Passwords don't match!" : "" }
 				</span>
 				<div style={{
 				   width: "75%",
