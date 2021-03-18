@@ -64,3 +64,14 @@
 - Finished login frontend with cookies
 - Started registration page 
 
+
+-- skipped a few days --
+
+
+### Day 5 - Finish registration and start dashboard
+- Noticed an unhandled error in login 
+- Finished registration page 
+- Arranged redirect
+- Started on Student Dashboard 
+- Worked with react-calendar and recharts
+
