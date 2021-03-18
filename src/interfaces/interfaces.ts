@@ -1,3 +1,4 @@
+import { JoinData } from "./LoginTypes";
 
 
 export interface Task {
@@ -19,6 +20,16 @@ export interface SelectOption {
 export interface rootInitialState {
 	user:initialState
 }
+export interface User {
+	user_id: number
+	name: String
+	last_name: String
+	email: String
+	role: String
+	pronouns: String
+	birthday: String
+	profile_picture: String
+}
 export interface initialState {
 	logged_user: Object,
 	selected_user: Object,
@@ -26,6 +37,17 @@ export interface initialState {
 	loading: Boolean,
 	new_user: Object,
 	error: String
+}
+
+export interface LoggedState {
+	user: {
+		logged_user: User,
+		selected_user: User,
+		is_authorized: Boolean,
+		loading: Boolean,
+		new_user: JoinData,
+		error: String
+	}
 }
 
 export interface IProps {
