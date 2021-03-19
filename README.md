@@ -79,7 +79,8 @@
 - Set up Jest in the backend 
 - Made dashboard responsive
 
-### Day 7 - Jest is broken again
+### Day 7 - ~Jest is broken again~ FIXED! 🙏
 - Jest broken again
 - Moved file hosting from cloudinary to firebase 
 - Created file upload on frontend
+- Fixed responses for logged user retrieval on backend to match frontend and to have json format
