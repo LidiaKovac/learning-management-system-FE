@@ -8,12 +8,16 @@ import { rootInitialState, SelectOption } from "../../interfaces/interfaces"
 import { useDispatch, useSelector } from "react-redux"
 import { join_action } from "../../actions"
 import Spinner from "../../components/Loader/Loader"
+import { JoinData_w_conf } from "../../interfaces/LoginTypes"
 
 const SignUp = () => {
+	//HOOKS
 	const dispatch = useDispatch()
 	const history = useHistory()
 	const props = useSelector((state: rootInitialState) => state.user)
-	const [user_data, set_user_data] = useState({
+
+	//STATE
+	const [user_data, set_user_data] = useState<JoinData_w_conf>({
 		name: "",
 		last_name: "",
 		pronouns: "",
@@ -23,19 +27,16 @@ const SignUp = () => {
 		password: "",
 		password_conf: ""
 	})
-	const [pass_match, set_pass_match] = useState(false)
-	const [error, set_error] = useState("")
-	/* 
-	different kinds of server response: 
-		email is not unique
-		passwords don't match
-		missing fields 
-	*/
+	const [pass_match, set_pass_match] = useState<Boolean>(false)
+	const [error, set_error] = useState<String>("")
+
+	//SELECT OPTIONS
     const options:Array<SelectOption> = [
         {value: "she/her", label: "She/Her"},
         {value: "he/him", label: "He/Him"},
         {value: "they/them", label: "They/Them"}
     ]
+
 	//EVENT HANDLERS
 	const onKeyUpHandler = async(e:React.KeyboardEvent<HTMLInputElement>) => {
 		await set_user_data({
