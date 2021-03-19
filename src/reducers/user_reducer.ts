@@ -1,5 +1,16 @@
 import {Action, initialState, Task} from "../interfaces/interfaces" 
-import {LOADING_FALSE, LOADING_TRUE, LOGIN_SUCCESSFUL, LOGIN_FAILED, LOGOUT, EMAIL_NOT_EXIST, WRONG_CRED, JOIN_SUCCESSFUL, JOIN_FAILED} from "../actions/action_types"
+import {
+	LOADING_FALSE, 
+	LOADING_TRUE, 
+	LOGIN_SUCCESSFUL, 
+	LOGIN_FAILED, 
+	LOGOUT, 
+	EMAIL_NOT_EXIST, 
+	WRONG_CRED, 
+	JOIN_SUCCESSFUL, 
+	JOIN_FAILED,
+	TOKEN_EXP
+} from "../actions/action_types"
 
 const initial_state:initialState = {
 	logged_user: {},
@@ -75,6 +86,14 @@ export const user_reducer = (state = initial_state, action:Action) => {
 				loading: false,
 				logged_user: {},
 				error: action.payload
+			}
+		case TOKEN_EXP: 
+			return {
+				...state,
+				is_authorized: false,
+				loading: false,
+				logged_user: undefined,
+				error: "Session has expired, please login again."
 			}
 		default: return state
 	}

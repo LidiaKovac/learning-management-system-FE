@@ -11,3 +11,5 @@ export const EMAIL_IN_USE = "EMAIL_IN_USE"
 
 export const JOIN_SUCCESSFUL = "JOIN_SUCCESSFUL"
 export const JOIN_FAILED = "JOIN_FAILED"
+
+export const TOKEN_EXP = "TOKEN_EXP"

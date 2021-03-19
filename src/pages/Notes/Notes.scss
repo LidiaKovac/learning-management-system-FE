@@ -1,0 +1,54 @@
+@import "../../styling/Colors";
+
+@media screen and (max-width: 600px) {
+    .notes__inner {
+        flex-direction: column!important;
+        .notes__upload + .notes__pdf{
+            width: 100%!important;
+            &.notes__pdf {
+                margin-top: 40px;
+                height: 100%;
+            }
+        }
+
+    }
+}
+
+.notes__wrap-page {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+    .notes__inner {
+        width: 100%;
+        padding: 20px;
+        margin: 40px;
+        border-radius: 20px;
+        background-color: $bg;
+        display: flex;
+        flex-direction: row;
+        .notes__upload {
+            width: 40%;
+            align-self: center;
+            display: flex;
+            justify-content: center;
+            input[type="file"] {
+                display: none;
+            }
+            label {
+                cursor: pointer;
+            }
+            svg {
+                width: 120px;
+                height: 120px;
+                color: $blue-deep
+            }
+        }
+        .notes__pdf {
+            width: 60%;
+            border: none;
+
+        }
+    }
+}

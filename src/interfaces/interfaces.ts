@@ -30,6 +30,14 @@ export interface User {
 	birthday: String
 	profile_picture: String
 }
+
+export interface LoggedUser {
+	name: String | null
+	last_name: String | null
+	email: String | null
+	role: String | null
+	status: String | null
+}
 export interface initialState {
 	logged_user: Object,
 	selected_user: Object,
@@ -55,4 +63,8 @@ export interface IProps {
     remove_from_list: (task: Task)=>void,
     check_as_done: (task: Task)=>void,
     
+}
+
+export interface TokenError {
+	message: string
 }

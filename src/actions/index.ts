@@ -9,7 +9,8 @@ import {
 	JOIN_FAILED,
 	EMAIL_IN_USE,
 	JOIN_SUCCESSFUL,
-	LOADING_FALSE
+	LOADING_FALSE,
+	TOKEN_EXP
 } from "./action_types"
 import { get_current_user, login } from "../api calls/login_api"
 import { JoinData, LoginData } from "../interfaces/LoginTypes"
@@ -61,6 +62,8 @@ export const retrieve_logged_action = () => async(dispatch:Dispatch<any>):Promis
 	dispatch({type: LOADING_TRUE})
 	const user = await get_current_user()
 	if (user) {
-		dispatch({type: LOGIN_SUCCESSFUL, payload: user})
+		if (user.name === null) {
+			dispatch({type: TOKEN_EXP})
+		} else dispatch({type: LOGIN_SUCCESSFUL, payload: user})
 	}else dispatch({type: LOGIN_FAILED})
 }

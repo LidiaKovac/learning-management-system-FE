@@ -6,10 +6,11 @@ import { useHistory } from "react-router"
 import { useDispatch, useSelector } from "react-redux"
 import { login_action, retrieve_logged_action } from "../../actions"
 
-//ASSETS
+//ASSETS and STYLING
 import "./Login.scss"
 import Waving from "../../assets/waving.png"
 import Spinner from "../../components/Loader/Loader"
+import {AiOutlineCloudUpload} from "react-icons/ai"
 
 //INTERFACES & TYPES
 import { LoginData } from "../../interfaces/LoginTypes"
@@ -22,7 +23,7 @@ const Login: React.FC<any> = () => {
 	const history = useHistory()
 
 	//STATE
-	const [login_data, setLogin] = useState({
+	const [login_data, setLogin] = useState<LoginData>({
 		email: "",
 		password: "",
 	})
@@ -32,18 +33,18 @@ const Login: React.FC<any> = () => {
 	//USE EFFECTS:
 	useEffect(() => {
 		if (props.is_authorized) {
-			console.log("Cred retrieved")
 			history.push("/redirect")
 		}
 	}, [props.is_authorized])
+
 	useEffect(() => {
 		if (document.cookie.length > 0) {
-			console.log("Token is here")
 			dispatch(retrieve_logged_action())
 			if (props.is_authorized) {
-				console.log("Cred retrieved")
-				history.push("/redirect")
-			}
+				//history.goBack()
+			} else {
+				dispatch({type: LOADING_FALSE})
+		}
 		}
 		if (loading) dispatch({type: LOADING_FALSE})
 	}, [])
