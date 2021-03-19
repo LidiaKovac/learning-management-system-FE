@@ -1,6 +1,6 @@
 import "./Todo.scss"
 
-const Todo = () => {
+const Todo:React.FC = () => {
     //this will be hardcoded until I implement the backend
     return (
         <div className="todo__wrap">

@@ -1,0 +1,13 @@
+@import "../../styling/Colors";
+@import "../../styling/Fonts";
+
+.recent__wrap {
+    width: 100%;
+    height: 40%;
+    min-height: 170px;
+    margin: 10px;
+
+    background-color:$bg;
+    border-radius: 20px;
+    align-self: flex-start;
+}

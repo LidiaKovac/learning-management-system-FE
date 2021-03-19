@@ -3,17 +3,15 @@ import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import "./Cal.scss"
 
-const Cal = () => {
-
+const Cal:React.FC = () => {
+  //STATE
   const [value, onChange] = useState<Date|Date[]|null>(null);
 
   return (
-    <div>
       <Calendar
         onChange={onChange}
         value={value}
       />
-    </div>
   );
 }
 

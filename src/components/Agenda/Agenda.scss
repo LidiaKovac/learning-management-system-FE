@@ -1,0 +1,25 @@
+.bg {
+    //background: rgb(224, 246, 255);
+    //background-size: cover;
+    background-image: linear-gradient(180deg, rgba(224, 246, 255, 1) 0%, rgba(148, 225, 255, 1) 100%);
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.agenda__wrap {
+    margin-top: 20px;
+    width: 100%;
+    height: 45%;
+    display: flex;
+    flex-direction: column;
+    //justify-content: flex-end;
+    justify-content: center;
+    align-items: center;
+    .agenda__single {
+        width: 90%;
+        height: 27%;
+        min-height: 90px;
+        margin: 10px;
+        align-self: flex-end;
+    }
+}
