@@ -1,11 +1,160 @@
 @import "../../styling/Colors";
 @import "../../styling/Fonts";
 
-.dashboard__wrap {
-    width: 100vw;
-    height: 100vh;
 
-    overflow: hidden;
+@media screen and (max-width: 1192px) {
+    .dashboard__menu {
+        display: none !important;
+    }
+
+    //add a menu dropdown
+    .dashboard__main {
+        width: 100% !important;
+        //margin-left: 40px;
+    }
+}
+
+@media screen and (max-width: 1032px) {
+    .dashboard__main {
+        margin-right: 0!important;
+    }
+    .dashboard__content {
+        width: 100% !important;
+
+        .dashboard__graph {
+            width: 70% !important;
+        }
+
+        .dashboard__recent {
+            width: 100% !important;
+        }
+    }
+
+    .dashboard__agenda {
+        flex-direction: row !important;
+        width: 90% !important;
+        padding-bottom: 40px;
+
+        .react-calendar {
+            width: 80% !important;
+        }
+
+        .agenda__wrap {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+
+}
+
+@media screen and (max-width: 800px) {
+    .dashboard__wrap {
+        justify-content: center!important;
+    }
+    .dashboard__content {
+        align-items: center!important;
+        justify-content: center!important;
+    }
+    .dashboard__main {
+        width: 85% !important;
+        //padding-left: 40px;
+
+        overflow-x: hidden;
+        justify-content: center!important;
+        align-items: center!important;
+
+        margin-right: 0px!important;
+        //margin-left: 30px;
+        align-self: center!important;
+    }
+    .agenda-single {
+        align-self: center!important;
+    }
+
+    .dashboard__agenda {
+        flex-direction: column !important;
+        width: 100% !important;
+        padding-bottom: 40px;
+        margin-right: 0!important;
+        align-items: center;
+        justify-content: center;
+
+        .react-calendar {
+            width: 60% !important;
+            align-self: center;
+        }
+
+        .agenda__wrap {
+            width: 100% !important;
+            height: 100% !important;
+        }
+    }
+
+    .dashboard__quick-tab {
+        flex-direction: column !important;
+        height: auto !important;
+        justify-content: center;
+
+        .dashboard__graph {
+            width: 90% !important;
+            border: none !important;
+
+            .recharts-wrapper {
+                width: 700px !important;
+
+                svg {
+                    width: inherit !important;
+                }
+            }
+        }
+
+        .dashboard__todos {
+            width: 100% !important;
+        }
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .dashboard__quote {
+        width: 250px;
+        margin-left:10px ;
+    }
+    .dashboard__graph {
+        margin-left: -10px;
+    }
+    .dashboard__content {
+        padding-right: 0px!important;
+    }
+    .recent__content {
+        width: 95%!important;
+        flex-direction: column!important;
+    }
+
+    .dashboard__agenda {
+        margin-right: 0!important;
+        width: 100%!important;
+    }
+    .dashboard__main {
+        width: 90%!important;
+        margin: 0px!important;
+        padding: 0px;
+        align-items: center!important;
+        justify-content: flex-end!important;
+    }
+    .react-calendar {
+        min-width: 250px
+    }
+}
+
+.dashboard__wrap {
+    //width: 100vw;
+    min-height: 100vh;
+    height: auto;
+
+    //max-height: 200vh;
+
+    //overflow-x: hidden;
 
     background-color: $bg;
     font-family: $font-main;
@@ -15,49 +164,28 @@
     justify-content: space-between;
     align-items: center;
 
-    .dashboard__menu {
-        width: 15%;
-        min-width: 200px;
-        height: 80%;
-        display: flex;
-        flex-direction: column;
-
-        justify-content: space-between;
-        align-items: center;
-        .dashboard__menu-item {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-
-            img {
-                height: 70px;
-                width: 70px;
-                object-fit: contain;
-                margin-bottom: 10px;
-            }
-        }
-
-
-    }
     .dashboard__main {
         width: 85%;
         height: 90%;
+
+        margin-top: 30px;
+        margin-bottom: 30px;
 
         background-color: white;
         margin-right: 50px;
         border-radius: 30px;
         display: flex;
         flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+
         .dashboard__content {
-            width: 70%;
-            height: 100%;
-
+            width: 66%;
+            height: auto;
             padding-top: 40px;
-            padding-right: 40px;
-            padding-left: 40px;
-            padding-bottom: 0;
-
+            padding-right: 30px;
+            padding-left: 20px;
+            padding-bottom: 16px;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
@@ -68,16 +196,18 @@
                 font-weight: bold;
 
                 display: flex;
-                flex-direction:row;
+                flex-direction: row;
 
                 justify-content: center;
                 align-items: center;
                 margin-bottom: 10px;
             }
+
             .dashboard__quote {
                 font-size: 12.5pt;
                 margin-bottom: 30px;
             }
+
             .dashboard__quick-tab {
                 width: 100%;
                 height: 35vh;
@@ -85,59 +215,64 @@
                 flex-direction: row;
 
                 .dashboard__graph {
-                    width: 70%;
-                    min-width: 400px;
+                    width: 50%;
+                    //min-width: 400px;
                     height: 100%;
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-
+                    justify-content: center;
+                    align-items: center;
+                    padding-right: 60px;
                     border-right: solid 1px $blue-deep;
+
                     .graph__header {
                         font-size: 20pt;
                         font-weight: bold;
-                        width: 100%;
+                        //width: 100%;
                         margin-left: 65px;
                         margin-bottom: 10px;
                     }
                 }
+
                 .dashboard__todos {
-                    width: 30%;
-                    min-width: 300px;
+                    width: 50%;
+                    // min-width: 300px;
                     height: 35vh;
                     display: flex;
                     flex-direction: column;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    margin-left: 65px;
+                    justify-content: center;
+                    align-items: center;
+                    //margin-left: 65px;
 
                     .todo__header {
                         font-size: 20pt;
                         font-weight: bold;
-                        width: 100%;
-                        margin-left: 15px;
-                        
+                        //width: 100%;
+                        //margin-left: 15px;
                         margin-bottom: 10px;
                     }
                 }
-                
+
             }
+
             .dashboard__recent {
-                width: 100%;
+                width: 90%;
+                //min-width: 750px;
                 height: 100%;
                 display: flex;
                 flex-direction: column;
                 margin-top: 20px;
+
                 .recent__header {
                     display: flex;
                     flex-direction: row;
 
                     justify-content: center;
-                    
+
                     font-size: 20pt;
                     font-weight: bold;
                 }
+
                 .recent__content {
                     width: 100%;
                     height: 65%;
@@ -149,15 +284,16 @@
                 }
             }
         }
+
         .dashboard__agenda {
-            width: 30%;
+            width: 25%;
             height: 100%;
             display: flex;
             flex-direction: column;
-            justify-content: flex-start;
+            justify-content: center;
             align-items: center;
 
-            margin-right: 50px;
+            margin-right: 25px;
             margin-top: 30px;
 
         }

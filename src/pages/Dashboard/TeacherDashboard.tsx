@@ -1,9 +1,10 @@
 import "./Dashboard.scss"
 
+import Graph from "../../assets/graph.png"
+
 import Waving from "../../assets/waving.png"
 import Tick from "../../assets/tick.png"
 import Notebook from "../../assets/notebook.png"
-import Graph from "../../assets/graph.png"
 
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
@@ -17,18 +18,17 @@ import Agenda from "../../components/Agenda/Agenda"
 import Cal from "../../components/Calendar/Calendar"
 import Todo from "../../components/Todo/Todo"
 import RecentNotes from "../../components/RecentNotes/RecentNotes"
-import {Menu} from "../../components/Menu/Menu"
+import { TeacherMenu } from "../../components/Menu/Menu"
 
-const StudentDashboard:React.FC = () => {
+const TeacherDashboard:React.FC = () => {
     //HOOKS
     const dispatch = useDispatch()
     const history = useHistory()
     const logged_user = useSelector((state:LoggedState) => state.user.logged_user)
     const is_auth = useSelector((state:LoggedState)=> state.user.is_authorized)
 
-    //USE EFFECT
+    //USEFFECTS
     useEffect(()=> {
-        console.log(history)
         if(!is_auth) {
             history.push("/")
         }
@@ -39,7 +39,7 @@ const StudentDashboard:React.FC = () => {
     return (
     <div className="dashboard__wrap">
         <div className="dashboard__menu">
-            <Menu/>
+            <TeacherMenu/>
         </div>
         <div className="dashboard__main">
             <div className="dashboard__content">
@@ -47,7 +47,7 @@ const StudentDashboard:React.FC = () => {
                     <img src={Waving} className="waving"/><span>Hello {logged_user.name}!</span> 
                 </div>
                 <div className="dashboard__quote">
-                    "Be addicted to your passions, not your distractions."
+                    "Education is the most powerful weapon you can use to change the world."
                 </div>
                 <div className="dashboard__quick-tab">
                     <div className="dashboard__graph">
@@ -81,4 +81,4 @@ const StudentDashboard:React.FC = () => {
     )
 }
 
-export default StudentDashboard
+export default TeacherDashboard

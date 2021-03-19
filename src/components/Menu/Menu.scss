@@ -1,0 +1,26 @@
+.dashboard__menu {
+    width: 12%;
+    min-width: 200px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-between;
+    align-items: center;
+
+    .dashboard__menu-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            height: 70px;
+            width: 70px;
+            object-fit: contain;
+            margin-bottom: 10px;
+        }
+    }
+
+
+}
