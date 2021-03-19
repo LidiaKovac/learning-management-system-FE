@@ -78,4 +78,7 @@
 ### Day 6 - Jest (finally) and responsiveness 
 - Set up Jest in the backend 
 - Made dashboard responsive
-- 
+
+### Day 7 - Jest is broken again
+- Jest broken again
+- Moved file hosting from cloudinary to firebase 
