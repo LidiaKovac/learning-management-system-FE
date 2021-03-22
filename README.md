@@ -88,3 +88,4 @@
 ### Day 8 - Running late
 - Finished notes upload page
 - Started on editor
+- Made backend for note-taking
