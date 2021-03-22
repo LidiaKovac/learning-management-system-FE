@@ -45,10 +45,10 @@ const SignUp = () => {
 		})
 		
 	}
-	const onChangeHandler__pronouns = async(val:SelectOption) => {
+	const onChangeHandler__pronouns = async(val:SelectOption | null) => {
 		await set_user_data({
 			...user_data,
-			pronouns: val.value.toString()
+			pronouns: val!.value.toString()
 		})
 	}
 	const onChangeHandler = async(e:React.FormEvent<HTMLInputElement>) => {
@@ -101,7 +101,7 @@ const SignUp = () => {
 					<input type="text" id="name" placeholder="Name" onKeyUp={onKeyUpHandler}/>
 					<input type="text" id="last_name" placeholder="Last name" onKeyUp={onKeyUpHandler} />
 				</div>
-                <AsyncSelect options={options} id="pronouns" className="signup-form__input--select" classNamePrefix="signup-form__input--select" isSearchable={false} defaultOptions onChange={(val:any)=>onChangeHandler__pronouns(val)}/>
+                <AsyncSelect options={options} id="pronouns" className="signup-form__input--select" classNamePrefix="signup-form__input--select" isSearchable={false} defaultOptions onChange={(val:SelectOption | null)=>onChangeHandler__pronouns(val)}/>
                 <input type="date" id="birthday" onChange={onChangeHandler}/>
                 <input type="text" id="email" placeholder="Email" onKeyUp={onKeyUpHandler} />
 				<span className="signup-form__input--error">{props.error === "email already in use!" ? "Email already in use!" : ""}</span>
