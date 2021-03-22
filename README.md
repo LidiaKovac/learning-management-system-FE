@@ -84,3 +84,7 @@
 - Moved file hosting from cloudinary to firebase 
 - Created file upload on frontend
 - Fixed responses for logged user retrieval on backend to match frontend and to have json format
+
+### Day 8 - Running late
+- Finished notes upload page
+- Started on editor
