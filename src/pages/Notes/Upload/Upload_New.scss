@@ -1,0 +1,143 @@
+@import "../../../styling/Colors";
+
+@media screen and (max-width: 1000px) {
+    .notes__upload {
+        width: 90%!important;
+    }
+    .notes__wrap-page {
+        min-height: 100vh !important;
+        height: 100% !important;
+        overflow-x: hidden;
+        .notes__inner {
+            flex-direction: column !important;
+            height: 100% !important;
+            min-height: 100vh !important;
+
+            .notes__upload+.notes__thumbnail {
+                width: 100% !important;
+                margin-top: 40px !important;
+                height: 100% !important;
+
+                &.notes__thumbnail--image {
+                    width: 80% !important;
+                    height: auto !important;
+                    align-self: center !important;
+                }
+            }
+
+            .notes__thumbnail--default {
+                margin-top: 100px !important;
+            }
+
+        }
+    }
+}
+
+.notes__wrap-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    place-content: center;
+
+    .notes__inner {
+        width: 100%;
+        padding: 20px;
+        margin: 40px;
+        border-radius: 20px;
+        background-color: $bg;
+        display: flex;
+        flex-direction: row;
+
+        .notes__upload {
+            width: 40%;
+            align-self: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            input[type="file"] {
+                display: none;
+            }
+
+            label {
+                cursor: pointer;
+            }
+
+            svg:not(.css-tj5bde-Svg) {
+                width: 120px;
+                height: 120px;
+                color: $blue-deep
+            }
+
+            .notes__input--select {
+                margin: 15px;
+                width: 80%;
+                height: 40px;
+                font-size: 10pt;
+
+                .notes__input--select__control {
+                    height: 40px;
+                    background-color: $input;
+                    border: none;
+                    border-radius: 20px;
+                    color: $text-main;
+
+                    .notes__input--select__value-container {
+                        height: 40px;
+                        display: flex;
+                        flex-direction: row;
+                        align-items: center;
+
+                    }
+
+                    .notes__input--select__indicators {
+                        span {
+                            background-color: $text-main;
+                        }
+
+                        div {
+                            color: $text-main !important
+                        }
+
+
+                    }
+                }
+            }
+        }
+
+        .notes__thumbnail {
+            width: 60%;
+            border: none;
+
+        }
+
+        .notes__thumbnail--image {
+            object-fit: contain;
+        }
+
+        .notes__thumbnail--audio {
+            align-self: center;
+            justify-self: center;
+        }
+
+        .notes__thumbnail--default {
+            width: 100%;
+            //height: 100%;
+            text-align: center;
+            align-self: center;
+            justify-self: center;
+
+            font-size: 22pt;
+            font-family: Quasimoda;
+            color: $text-main;
+            font-weight: bold;
+        }
+    }
+}
+
+.signup-form__input--select__placeholder {
+    padding-left: 10px;
+    position: absolute;
+    //transform: translateY(-50%);
+}

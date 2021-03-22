@@ -13,3 +13,8 @@ export const JOIN_SUCCESSFUL = "JOIN_SUCCESSFUL"
 export const JOIN_FAILED = "JOIN_FAILED"
 
 export const TOKEN_EXP = "TOKEN_EXP"
+
+export const CHANGE_TYPE = "CHANGE_TYPE"
+export const UPLOAD_SUCCESSFUL = "UPLOAD_SUCCESSFUL"
+export const UPLOAD_FAILED = "UPLOAD_FAILED"
+export const ERROR = "ERROR"

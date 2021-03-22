@@ -1,4 +1,4 @@
-import {Action, initialState, Task} from "../interfaces/interfaces" 
+import {Action, initialState} from "../interfaces/interfaces" 
 import {
 	LOADING_FALSE, 
 	LOADING_TRUE, 

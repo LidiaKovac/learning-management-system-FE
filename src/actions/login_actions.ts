@@ -15,10 +15,11 @@ import {
 import { get_current_user, login } from "../api calls/login_api"
 import { JoinData, LoginData } from "../interfaces/LoginTypes"
 import { join } from "../api calls/join_api"
+import { Action } from "../interfaces/interfaces"
 
 export const login_action = (credentials: LoginData) => async (
-	dispatch: Dispatch<any>
-): Promise<any> => {
+	dispatch: Dispatch<Action>
+): Promise<void> => {
 	dispatch({
 		type: LOADING_TRUE,
 	})
@@ -47,7 +48,7 @@ export const login_action = (credentials: LoginData) => async (
 		})
 }
 
-export const join_action = (credentials:JoinData) => async(dispatch:Dispatch<any>):Promise<any> => {
+export const join_action = (credentials:JoinData) => async(dispatch:Dispatch<Action>):Promise<void> => {
 	dispatch({
 		type: LOADING_TRUE
 	})
@@ -55,10 +56,10 @@ export const join_action = (credentials:JoinData) => async(dispatch:Dispatch<any
 		const register = await join(credentials)
 		if (register.status !== 201) dispatch({type: JOIN_FAILED, payload: register.message})
 		else if (register.status === 201) dispatch({type: JOIN_SUCCESSFUL})
-	} else dispatch({JOIN_FAILED})
+	} else dispatch({type: JOIN_FAILED})
 }
 
-export const retrieve_logged_action = () => async(dispatch:Dispatch<any>):Promise<any> => {
+export const retrieve_logged_action = () => async(dispatch:Dispatch<Action>):Promise<void> => {
 	dispatch({type: LOADING_TRUE})
 	const user = await get_current_user()
 	if (user) {
