@@ -13,7 +13,8 @@ const Redirect = () => {
             history.push("/studentdash")
         } else if (role === "teacher") {
             history.push("/teacherdash")
-        } else if(role === "admin") history.push("/settings")
+        } else if(role === "admin") {history.push("/settings")} 
+        else role ?? history.push("/")
     }, [])
     return (
         <div style={{width: "100vw", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>

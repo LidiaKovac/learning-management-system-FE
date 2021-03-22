@@ -4,13 +4,12 @@ import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
 
 import { useDispatch, useSelector } from "react-redux"
-import { login_action, retrieve_logged_action } from "../../actions"
+import { login_action, retrieve_logged_action } from "../../actions/login_actions"
 
 //ASSETS and STYLING
 import "./Login.scss"
 import Waving from "../../assets/waving.png"
 import Spinner from "../../components/Loader/Loader"
-import {AiOutlineCloudUpload} from "react-icons/ai"
 
 //INTERFACES & TYPES
 import { LoginData } from "../../interfaces/LoginTypes"

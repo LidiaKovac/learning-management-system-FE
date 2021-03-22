@@ -6,7 +6,7 @@ import "./SignUp.scss"
 import {ImCross, ImCheckmark} from "react-icons/im"
 import { rootInitialState, SelectOption } from "../../interfaces/interfaces"
 import { useDispatch, useSelector } from "react-redux"
-import { join_action } from "../../actions"
+import { join_action } from "../../actions/login_actions"
 import Spinner from "../../components/Loader/Loader"
 import { JoinData_w_conf } from "../../interfaces/LoginTypes"
 

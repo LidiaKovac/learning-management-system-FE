@@ -11,7 +11,7 @@ import { useEffect } from "react"
 import { useHistory } from "react-router"
 
 import { LoggedState } from "../../interfaces/interfaces"
-import { retrieve_logged_action } from "../../actions"
+import { retrieve_logged_action } from "../../actions/login_actions"
 
 import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda"
