@@ -89,3 +89,10 @@
 - Finished notes upload page
 - Started on editor
 - Made backend for note-taking
+- Started frontned for note-taking
+
+### Day 9 - Auto-save
+- Tried implementing auto-save on notes (failed)
+- Finished frontend page for note taking
+- 
+
