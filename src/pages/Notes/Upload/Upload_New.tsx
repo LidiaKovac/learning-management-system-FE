@@ -12,13 +12,11 @@ import { LOADING_FALSE, LOADING_TRUE } from "../../../actions/action_types"
 import { retrieve_logged_action } from "../../../actions/login_actions"
 import {change_type_action} from "../../../actions/file_actions"
 import { upload_file } from "../../../api calls/file_api"
-
-import { FileObject } from "../../../interfaces/FileTypes"
 import { LoggedState, rootInitialState, SelectOption } from "../../../interfaces/interfaces"
 
 import Spinner from "../../../components/Loader/Loader"
 
-const Upload_Notes: React.FC = () => {
+const UploadNotes: React.FC = () => {
 	const options: Array<SelectOption> = [
 		{
 			value: "pdf",
@@ -127,9 +125,10 @@ const Upload_Notes: React.FC = () => {
 					<iframe
 						className="notes__thumbnail"
 						src={!uploaded ? process.env.REACT_APP_PDF_SAMPLE_URL : uploaded}
+						title="pdf"
 					></iframe>
-					: file_type === "image" ? <img src={!uploaded ? SampleImage : uploaded} className="notes__thumbnail notes__thumbnail--image"/> 
-					: file_type === "video" ? <iframe src={!uploaded ? process.env.REACT_APP_VIDEO_SAMPLE_URL : uploaded} className="notes__thumbnail"></iframe>
+					: file_type === "image" ? <img src={!uploaded ? SampleImage : uploaded} className="notes__thumbnail notes__thumbnail--image" alt="thumbnail"/> 
+					: file_type === "video" ? <iframe src={!uploaded ? process.env.REACT_APP_VIDEO_SAMPLE_URL : uploaded} className="notes__thumbnail" title="video"></iframe>
 					: file_type === "audio" ? <audio src={!uploaded? process.env.REACT_APP_AUDIO_SAMPLE_URL : uploaded} controls className="notes__thumbnail notes__thumbnail--audio"/>
 					: <div className="notes__thumbnail--default">Choose a file type!</div>}
 				</div>
@@ -138,4 +137,4 @@ const Upload_Notes: React.FC = () => {
 	)
 }
 
-export default Upload_Notes
+export default UploadNotes

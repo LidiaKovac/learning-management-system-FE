@@ -64,7 +64,7 @@ const Login: React.FC<any> = () => {
 		<div className="login-wrap">
 			<div className="login-form__wrap">
 				<div className="login-form__header">
-					<img src={Waving} />
+					<img src={Waving} alt="waving"/>
 					Welcome back
 				</div>
 				<div className="login-form__content">

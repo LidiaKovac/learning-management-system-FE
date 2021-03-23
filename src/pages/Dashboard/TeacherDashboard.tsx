@@ -44,7 +44,7 @@ const TeacherDashboard:React.FC = () => {
         <div className="dashboard__main">
             <div className="dashboard__content">
                 <div className="dashboard__header">
-                    <img src={Waving} className="waving"/><span>Hello {logged_user.name}!</span> 
+                    <img src={Waving} className="waving" alt="waving"/><span>Hello {logged_user.name}!</span> 
                 </div>
                 <div className="dashboard__quote">
                     "Education is the most powerful weapon you can use to change the world."

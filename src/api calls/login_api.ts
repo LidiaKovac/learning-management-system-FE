@@ -1,6 +1,6 @@
 
 import {LoginData} from "../interfaces/LoginTypes"
-import {LoggedUser, TokenError} from "../interfaces/interfaces"
+import {LoggedUser} from "../interfaces/interfaces"
 import {get_token_from_cookies} from "../utils"
 const {REACT_APP_BACKEND_URL} = process.env
 
@@ -24,10 +24,8 @@ export const get_current_user = async():Promise<LoggedUser> => {
     })
     
     const json = await user.json()
-    console.log(json)
     if (json.message.name) {
-        console.log("case 1")
         return {name: json.message.name, last_name: json.message.last_name, email: json.message.email, role: json.message.role, status: null}
-    } else {console.log("case 2")
+    } else {
      return {name:null, last_name: null, email: null, role:null, status: json.message} }
 }

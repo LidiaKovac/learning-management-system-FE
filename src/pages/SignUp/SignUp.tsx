@@ -95,7 +95,7 @@ const SignUp = () => {
 		<div className="signup-wrap">
 			<div className="signup-form__wrap">
 				<div className="signup-form__header">
-					<img src={Waving} /> Welcome!
+					<img src={Waving} alt="waving"/> Welcome!
 				</div>
 				<div className="signup-form__input--row">
 					<input type="text" id="name" placeholder="Name" onKeyUp={onKeyUpHandler}/>

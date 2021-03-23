@@ -40,3 +40,16 @@
 
     }
 }
+
+button {
+    width: 20%;
+            height: 40px;
+
+            border: none;
+            border-radius: 20px;
+
+            margin-top: 40px;
+
+            background-color: $submit;
+            font-weight: bold;
+}

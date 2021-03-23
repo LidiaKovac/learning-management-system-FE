@@ -12,7 +12,8 @@ const file_initial_state:FileInitialState = {
     type: "",
     material: new File([], "sample"),
     status: "",
-    error: ""
+    error: {message: ""},
+    file_id: null
 }
 
 export const file_reducer = (state = file_initial_state, action:Action) => {
@@ -25,7 +26,8 @@ export const file_reducer = (state = file_initial_state, action:Action) => {
 		case UPLOAD_SUCCESSFUL:
 			return {
 				...state,
-				status: "Success"
+				status: "Success",
+                file_id: action.payload
 			}
         case UPLOAD_FAILED: 
             return {

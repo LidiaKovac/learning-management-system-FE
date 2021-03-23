@@ -7,9 +7,7 @@ import {
     WRONG_CRED,
 
 	JOIN_FAILED,
-	EMAIL_IN_USE,
 	JOIN_SUCCESSFUL,
-	LOADING_FALSE,
 	TOKEN_EXP
 } from "./action_types"
 import { get_current_user, login } from "../api calls/login_api"
