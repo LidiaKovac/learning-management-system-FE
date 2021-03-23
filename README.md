@@ -94,5 +94,10 @@
 ### Day 9 - Auto-save
 - Tried implementing auto-save on notes (failed)
 - Finished frontend page for note taking
-- 
+- Added classes and events endpoints 
+
+### Day 10 TO DO LIST: 
+- [ ] Create model for Student_Class table (an empty model should do because it will create the columns itself: only declare in the init) 
+- [ ] Make sure the table is populating
+- [ ] Add events on the frontend
 
