@@ -97,7 +97,7 @@
 - Added classes and events endpoints 
 
 ### Day 10 TO DO LIST: 
-- [ ] Create model for Student_Class table (an empty model should do because it will create the columns itself: only declare in the init) 
-- [ ] Make sure the table is populating
+- Created model for Student_Class table (an empty model should do because it will create the columns itself: only declare in the init) 
+ - Found a way to create many to many relationships.
 - [ ] Add events on the frontend
 
