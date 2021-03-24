@@ -35,12 +35,6 @@ export const file_reducer = (state = file_initial_state, action:Action) => {
                 status: "Failed",
                 error: action.payload
             }
-        case ERROR: 
-            return {
-                ...state,
-                status: "Failed",
-                error: action.payload
-            }
 		
 		default: return state
 	}
