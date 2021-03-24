@@ -3,6 +3,18 @@ export interface ResponseFile {
     path: string
 }
 
+
+
+export interface ResponseMultipleFile {
+    status: number
+    content: Array<{
+        type: string
+        description: string
+        name: string
+    }>
+    message?: String
+}
+
 export interface FileObject {
     name?: string | undefined
     type?: "pdf" | "video" | "image" | "audio" | "" | undefined 
@@ -15,7 +27,8 @@ export interface FileInitialState extends FileObject {
     error: {
         message: String
     },
-    file_id: number | null
+    file_id?: number | null
+    your_files: ResponseMultipleFile["content"]
 }
 
 export interface NoteObject {
@@ -26,7 +39,7 @@ export interface NoteObject {
 
 export interface ResponseNote {
     status: number
-    content: string
-    file_id: number
+    content: string 
+    file_id?: number
     message?: string
 }

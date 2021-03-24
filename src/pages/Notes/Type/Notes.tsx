@@ -3,12 +3,22 @@ import React, { useEffect, useState } from "react"
 import { Link, useHistory } from "react-router-dom"
 import MDEditor from "@uiw/react-md-editor"
 import moment from "moment"
+
+import { AiOutlineCloudUpload, AiOutlineFileDone } from "react-icons/ai"
+import Spinner from "../../../components/Loader/Loader"
+
 import { rootInitialState } from "../../../interfaces/interfaces"
 import { useDispatch, useSelector } from "react-redux"
 import {
 	auto_save_note,
+	get_your_files_action,
 	upload_markdown_action,
 } from "../../../actions/file_actions"
+import Guide from "../Guide/Guide"
+import { LOADING_FALSE, LOADING_TRUE } from "../../../actions/action_types"
+import { upload_file } from "../../../api calls/file_api"
+import { retrieve_logged_action } from "../../../actions/login_actions"
+import { get_tinyurl } from "../../../api calls/url_api"
 
 const Notes: React.FC = () => {
 	//STATE
@@ -19,58 +29,117 @@ const Notes: React.FC = () => {
 	const [name, setName] = useState<string>("")
 	const [created, setCreated] = useState<boolean>(false)
 	const [fileId, setId] = useState<number>()
+	const [yourFiles, setYourFiles] = useState<Array<{
+		type: string,
+		description: string,
+		name: string 
+	}> | undefined>()
 
 	//HOOKS
 	const dispatch = useDispatch()
 	const history = useHistory()
 	const state = useSelector((state: rootInitialState) => state)
+	const logged = useSelector((state: rootInitialState) => state.user.logged_user)
+	const loading = useSelector((state:rootInitialState) => state.user.loading)
+	const files = useSelector((state:rootInitialState) => state.file.your_files)
 	const error = useSelector((state: rootInitialState) => state.user.error)
+
 	//USE EFFECT
-//useEffect(() => {
-//		setInterval(() => {
-//			console.log("10 secs")
-//			console.log(state.file.file_id)
-//			localStorage.setItem("draft", value!)
-//			localStorage.setItem("title", name)
-//			if (error === "jwt expired") {
-//				history.push("/")
-//			}
-//		}, 10000)
-//	}, [])
+	//useEffect(() => {
+	//		setInterval(() => {
+	//			console.log("10 secs")
+	//			console.log(state.file.file_id)
+	//			localStorage.setItem("draft", value!)
+	//			localStorage.setItem("title", name)
+	//			if (error === "jwt expired") {
+	//				history.push("/")
+	//			}
+	//		}, 10000)
+	//	}, [])
+	useEffect(()=> {
+		retrieve_login()
+		
+		dispatch(get_your_files_action())
+		
+	
+	}, [])
+	useEffect(()=> {
+		if (error === "jwt expired") {
+			history.push("/")
+		}
+	}, [error])
+
 	//FUNCTIONS
+	const get_images_only = async() => {
+		let file_arr = state.file.your_files?.filter((file)=> file.type === "image")!
+		setYourFiles(file_arr)
+	}
+	const retrieve_login = async() => {
+		if (!logged) {
+			const login = await dispatch(retrieve_logged_action())
+			if (!login) {
+				history.push("/")
+			}
+		}
+	}
+
+	const upload_file_handler = async (files: FileList): Promise<void> => {
+		let fd = new FormData()
+		fd.append("material", files[0])
+		fd.append("type", "image")
+		fd.append("name", name)
+		dispatch({ type: LOADING_TRUE })
+		const new_file = await upload_file("image", fd)
+		if (new_file) {
+			dispatch({ type: LOADING_FALSE })
+		}
+	}
 	const initialize_note = async () => {
 		if (!created) {
 			if (name?.length! > 3) {
-			dispatch(
-				upload_markdown_action({
-					type: "markdown",
-					material: value,
-					name: name,
-				})
-			)
-			setSaved(new Date())
-			setCreated(true)
-		}}
+				dispatch(
+					upload_markdown_action({
+						type: "markdown",
+						material: value,
+						name: name,
+					})
+				)
+				setSaved(new Date())
+				setCreated(true)
+			}
+		}
 	}
 
 	return (
 		<div className="type__wrap-page">
 			<div className="type__inner">
 				<span>
-				<input
-					type="text"
-					style={{ alignSelf: "center" }}
-					placeholder="Title of your notes"
-					onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
-						setName(e.currentTarget.value)
-					}
-					onBlur={() => initialize_note()}
-				/>
-				<button onClick={()=> dispatch(auto_save_note({material: value, name: name, type: "markdown"}, state.file.file_id!))}>SAVE</button>
+					<input
+						type="text"
+						style={{ alignSelf: "center" }}
+						placeholder="Title of your notes"
+						onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) =>
+							setName(e.currentTarget.value)
+						}
+						onBlur={() => initialize_note()}
+					/>
+					<button
+						onClick={() =>
+							dispatch(
+								auto_save_note(
+									{ material: value, name: name, type: "markdown" },
+									state.file.file_id!
+								)
+							)
+						}
+					>
+						SAVE
+					</button>
 				</span>
 				<MDEditor
 					value={value ?? "Type here"}
 					onChange={(content: string | undefined) => setValue(content)}
+					onFocus={() => setValue("")}
 					className="type__editor"
 				/>
 				<small>
@@ -80,53 +149,21 @@ const Notes: React.FC = () => {
 						? moment(saved).format("ddd, DD/MM/YY, HH:mm")
 						: "Not saved yet."}
 				</small>
-				<div className="type__instructions">
-					<h2>
-						<Link to="/notes/new">Looking to upload a file?</Link>
-					</h2>
-					<h2>How to use this editor:</h2>
-					<p>
-						<strong>Bold: </strong> **text**
-					</p>
-					<p>
-						<strong>Cursive: </strong> *text*
-					</p>
-					<p>
-						<strong>Underline: </strong> {`<u>text</u>`}
-					</p>
-					<p>
-						<strong>Image from link: </strong> ![alternative text](your link)
-						<br />
-						<strong style={{ color: "red" }}>
-							Copy pasting an image won't work.
-						</strong>
-					</p>
-					<p>
-						<strong>Unordered ist</strong> - List item
-					</p>
-					<p>
-						<strong>Numbered list</strong> 1. List item
-					</p>
-					<p>
-						<strong>To do list</strong> - [] Task
-					</p>
-					<p>
-						<strong>Titles: </strong> Add as many # as the importance lowers:
-						<br />
-						<span>
-							<strong>Example:</strong>{" "}
-							<strong style={{ color: "red" }}>
-								The max number of # is 6.
-							</strong>
-						</span>
-						<MDEditor.Markdown
-							source="
-                            # #Title
-                            ## ##Title
-                            ### ###Title 
-                            "
-						/>
-					</p>
+				<div className="type__guide">
+					<div className="type__instructions">
+						<Guide/>
+					</div>
+					<div className="type__uploader">
+						<h2>Your images: </h2>
+						<input type="file" id="img-notes" onChange={(e:React.ChangeEvent<HTMLInputElement>)=> upload_file_handler(e.currentTarget.files!)}/> <label htmlFor="img-notes"><p>+ ADD AN IMAGE</p></label>
+						<div className="type__divider"></div>
+						{files?.map((file)=> 
+						console.log(file)
+							/* <>
+							<img src={file} alt="thumb"/> <span>{file}</span>
+							</> */
+						)}
+					</div>
 				</div>
 			</div>
 		</div>

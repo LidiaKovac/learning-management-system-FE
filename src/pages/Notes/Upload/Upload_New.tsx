@@ -7,6 +7,7 @@ import { useHistory } from "react-router"
 import AsyncSelect from "react-select"
 
 import { AiOutlineCloudUpload, AiOutlineFileDone } from "react-icons/ai"
+import Spinner from "../../../components/Loader/Loader"
 
 import { LOADING_FALSE, LOADING_TRUE } from "../../../actions/action_types"
 import { retrieve_logged_action } from "../../../actions/login_actions"
@@ -14,7 +15,6 @@ import {change_type_action} from "../../../actions/file_actions"
 import { upload_file } from "../../../api calls/file_api"
 import { LoggedState, rootInitialState, SelectOption } from "../../../interfaces/interfaces"
 
-import Spinner from "../../../components/Loader/Loader"
 
 const UploadNotes: React.FC = () => {
 	const options: Array<SelectOption> = [
@@ -78,7 +78,7 @@ const UploadNotes: React.FC = () => {
 			setUploaded(new_file.path)
 		}
 		setTimeout(()=> {
-			if(role === "teacher")
+			if(role === "teacher") //this has to change to different paths
 				history.push("/teacherdash")
 			else if (role === "student") 
 				history.push("/studentdash")

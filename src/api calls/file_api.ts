@@ -1,5 +1,5 @@
 import {get_token_from_cookies} from "../utils/index"
-import {ResponseFile, NoteObject, ResponseNote} from "../interfaces/FileTypes"
+import {ResponseFile, NoteObject, ResponseNote, ResponseMultipleFile} from "../interfaces/FileTypes"
 const {REACT_APP_BACKEND_URL} = process.env
 
 export const upload_file = async(type:String, body:FormData):Promise<ResponseFile> => {
@@ -37,6 +37,18 @@ export const edit_note = async(id:number, new_note:NoteObject):Promise<ResponseN
             "Content-Type": "application/json"
         },
         body: JSON.stringify(new_note)
+    })
+    return await response.json()
+}
+
+export const get_your_files = async():Promise<ResponseMultipleFile> => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}files/me`, {
+        method: "GET",
+        credentials: "include",
+        headers: {
+            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+            "Content-Type": "application/json"
+        }
     })
     return await response.json()
 }

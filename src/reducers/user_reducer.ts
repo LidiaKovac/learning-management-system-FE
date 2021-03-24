@@ -9,7 +9,8 @@ import {
 	WRONG_CRED, 
 	JOIN_SUCCESSFUL, 
 	JOIN_FAILED,
-	TOKEN_EXP
+	TOKEN_EXP,
+	ERROR
 } from "../actions/action_types"
 
 const initial_state:initialState = {
@@ -94,6 +95,11 @@ export const user_reducer = (state = initial_state, action:Action) => {
 				loading: false,
 				logged_user: undefined,
 				error: "Session has expired, please login again."
+			}
+		case ERROR: 
+			return {
+				...state,
+				error: action.payload
 			}
 		default: return state
 	}

@@ -28,7 +28,7 @@
                 height: inherit;
             }
         }
-        h2 {
+        h2, p {
             color: $text-main;
             
         }
@@ -36,6 +36,20 @@
             color: grey;
             text-align: right;
             margin-top: 20px;
+        }
+        .type__guide {
+            display: flex;
+            flex-direction: row;
+            .type__instructions {
+                width: 50%;
+            }
+            input[type="file"] {
+                display: none;
+            }
+            label {
+                font-weight: bold;
+                cursor: pointer;
+            }
         }
 
     }
