@@ -96,8 +96,11 @@
 - Finished frontend page for note taking
 - Added classes and events endpoints 
 
-### Day 10 TO DO LIST: 
+### Day 10 - Sequelize strikes again: 
 - Created model for Student_Class table
  - Found a way to create many to many relationships.
 - [ ] Add events on the frontend
 
+### Day 11 - Events: 
+- Finished image uploader on note taking section
+- Started implementing event on frontend
