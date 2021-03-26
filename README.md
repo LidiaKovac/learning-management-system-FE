@@ -104,3 +104,13 @@
 ### Day 11 - Events: 
 - Finished image uploader on note taking section
 - Started implementing event on frontend
+
+### Day 12 - Events and feedback 
+- Finished events on frontend 
+
+BY MONDAY: 
+ feedback for homework, which includes: 
+  - change event model to include homework
+  - homeoworks have different structure 
+  - homework can have comments 
+  - homework can be of graded type or not 
