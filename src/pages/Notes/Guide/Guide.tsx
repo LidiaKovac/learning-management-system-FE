@@ -17,9 +17,13 @@ const Guide = () => {
 						</p>
 						<p>
 							<strong>Image from link: </strong> ![alternative text](your link)
+							<br/>
+							<strong>Image from link WITH DIMENSIONS: </strong> {`<img src=link width="number" height="number"/>`}
 							<br />
 							<strong style={{ color: "red" }}>
 								Copy pasting an image won't work, use the uploader in this page.
+								<br/>
+								If you use the second method, you can specify only one dimension.
 							</strong>
 						</p>
 						<p>

@@ -50,7 +50,26 @@
                 font-weight: bold;
                 cursor: pointer;
             }
+            .type__uploader {
+                display: flex;
+                flex-direction: column;
+                .type__files {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+
+                    color: $text-main
+                }
+            }
+            .type__thumb {
+                width: 120px;
+                height: 120px;
+                object-fit: cover;
+                margin: 10px;
+            }
         }
+        
 
     }
 }

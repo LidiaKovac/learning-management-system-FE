@@ -1,3 +1,6 @@
+@import "../../styling/_Colors.scss";
+@import "../../styling/_Fonts.scss";
+
 .bg {
     //background: rgb(224, 246, 255);
     //background-size: cover;
@@ -15,11 +18,119 @@
     //justify-content: flex-end;
     justify-content: center;
     align-items: center;
+
     .agenda__single {
         width: 90%;
         height: 27%;
         min-height: 90px;
         margin: 10px;
         align-self: flex-end;
+    }
+
+}
+
+textarea {
+    font-family: $font-main;
+    padding: 20px;
+    border: none;
+    border-radius: 20px;
+
+    background-color: $input;
+    resize: none;
+    width: 93%!important;
+
+}
+
+.agenda__select__placeholder {
+    padding-left: 10px;
+    position: absolute;
+    //transform: translateY(-50%);
+}
+
+.agenda__select {
+    margin-top: 0;
+    margin-bottom: 5px;
+
+    height: 40px;
+    font-size: 10pt;
+
+    .agenda__select__control {
+        height: 40px;
+        background-color: $input;
+        border: none;
+        border-radius: 20px;
+        color: $text-main;
+
+        .agenda__select__value-container {
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+        }
+
+        .agenda__select__indicators {
+            span {
+                background-color: $text-main;
+            }
+
+            div {
+                color: $text-main !important
+            }
+
+
+        }
+    }
+
+    .agenda__select__menu {
+        background-color: $bg;
+
+        div {
+            div {
+                &:hover {
+                    background-color: $blue-deep;
+                }
+            }
+        }
+    }
+
+
+
+
+}
+
+.submit {
+    width: 100%;
+    margin-bottom: 20px;
+    margin-top: 20px!important;
+    color: $text-main
+}
+
+.agenda__add {
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    input, textarea {
+        margin: 0 !important;
+        margin-top: 5px !important;
+        margin-bottom: 10px !important;
+        width: 90% !important;
+    }
+}
+
+.agenda__dates {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+    input[type="datetime-local"] {
+        margin-top: 0;
+        margin-bottom: 5px;
+        padding-right: 10px;
+        &::-webkit-calendar-picker-indicator {
+            color: $text-main!important
+        }
     }
 }

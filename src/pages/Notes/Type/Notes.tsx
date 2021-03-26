@@ -18,7 +18,6 @@ import Guide from "../Guide/Guide"
 import { LOADING_FALSE, LOADING_TRUE } from "../../../actions/action_types"
 import { upload_file } from "../../../api calls/file_api"
 import { retrieve_logged_action } from "../../../actions/login_actions"
-import { get_tinyurl } from "../../../api calls/url_api"
 
 const Notes: React.FC = () => {
 	//STATE
@@ -58,10 +57,10 @@ const Notes: React.FC = () => {
 	//	}, [])
 	useEffect(()=> {
 		retrieve_login()
-		
 		dispatch(get_your_files_action())
-		
-	
+		if (loading) {
+			dispatch({type: LOADING_FALSE})
+		}
 	}, [])
 	useEffect(()=> {
 		if (error === "jwt expired") {
@@ -70,10 +69,6 @@ const Notes: React.FC = () => {
 	}, [error])
 
 	//FUNCTIONS
-	const get_images_only = async() => {
-		let file_arr = state.file.your_files?.filter((file)=> file.type === "image")!
-		setYourFiles(file_arr)
-	}
 	const retrieve_login = async() => {
 		if (!logged) {
 			const login = await dispatch(retrieve_logged_action())
@@ -93,6 +88,7 @@ const Notes: React.FC = () => {
 		if (new_file) {
 			dispatch({ type: LOADING_FALSE })
 		}
+		dispatch(get_your_files_action())
 	}
 	const initialize_note = async () => {
 		if (!created) {
@@ -155,13 +151,20 @@ const Notes: React.FC = () => {
 					</div>
 					<div className="type__uploader">
 						<h2>Your images: </h2>
-						<input type="file" id="img-notes" onChange={(e:React.ChangeEvent<HTMLInputElement>)=> upload_file_handler(e.currentTarget.files!)}/> <label htmlFor="img-notes"><p>+ ADD AN IMAGE</p></label>
+						{!loading 
+						? <><input type="file" accept=".jpg, .png, .gif, .jpeg" id="img-notes" 
+									onChange={(e:React.ChangeEvent<HTMLInputElement>)=> upload_file_handler(e.currentTarget.files!)}/> 
+							<label htmlFor="img-notes"><p>+ ADD AN IMAGE</p></label>
+						</>
+						: <Spinner/>
+						}
 						<div className="type__divider"></div>
-						{files?.map((file)=> 
-						console.log(file)
-							/* <>
-							<img src={file} alt="thumb"/> <span>{file}</span>
-							</> */
+						{files?.filter((file)=>file.type === "image").slice(0,4).map((file)=> 
+							<>
+							<span className="type__files">
+							<img className="type__thumb" src={`https://${file.description}`} alt="thumb"/> <span>https://{file.description}</span>
+							</span>
+							</>
 						)}
 					</div>
 				</div>

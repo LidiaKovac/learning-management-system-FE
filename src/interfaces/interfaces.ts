@@ -40,7 +40,8 @@ export interface initialState {
 	is_authorized: Boolean,
 	loading: Boolean,
 	new_user: Object,
-	error: String
+	error: String,
+	logged_out: Boolean
 }
 
 export interface LoggedState {
@@ -55,4 +56,13 @@ export interface LoggedState {
 }
 export interface TokenError {
 	message: string
+}
+
+
+export interface IEvent {
+	name: string
+	type: string
+    description: string
+	startDate: Date
+    endDate: Date
 }

@@ -19,7 +19,8 @@ const initial_state:initialState = {
 	is_authorized: false,
 	loading: false,
 	new_user: {},
-	error: ""
+	error: "",
+	logged_out: false
 }
 
 export const user_reducer = (state = initial_state, action:Action) => {
@@ -40,7 +41,8 @@ export const user_reducer = (state = initial_state, action:Action) => {
 				loading: false,
 				is_authorized: true,
 				logged_user: action.payload,
-				error: ""
+				error: "",
+				logged_out: false
 			}
 		case LOGIN_FAILED:
 			return {
@@ -54,7 +56,8 @@ export const user_reducer = (state = initial_state, action:Action) => {
 				...state,
 				is_authorized: false,
 				logged_user: {},
-				error: ""
+				error: "",
+				logged_out: true
 			}
 		case EMAIL_NOT_EXIST: 
 			return {

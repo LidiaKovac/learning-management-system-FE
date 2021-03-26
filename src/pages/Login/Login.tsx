@@ -37,7 +37,8 @@ const Login: React.FC<any> = () => {
 	}, [props.is_authorized])
 
 	useEffect(() => {
-		if (document.cookie.length > 0) {
+		
+		if (document.cookie.length > 0 && !props.logged_out) {
 			dispatch(retrieve_logged_action())
 			if (props.is_authorized) {
 				//history.goBack()

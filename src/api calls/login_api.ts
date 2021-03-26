@@ -29,3 +29,12 @@ export const get_current_user = async():Promise<LoggedUser> => {
     } else {
      return {name:null, last_name: null, email: null, role:null, status: json.message} }
 }
+
+export const logout = async() => {
+    await fetch(`${REACT_APP_BACKEND_URL}login/logout`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+        }
+    })
+}
