@@ -108,9 +108,17 @@
 ### Day 12 - Events and feedback 
 - Finished events on frontend 
 
-BY MONDAY: 
+### Day 13 - Homework
+- Event can now be seen by date
+- Todo list changed with homework tab
+- Added homework delivery model 
+- Added homework delivery on frontend (with ugly ui)
+- Made a general code clean up, deleted unused stuff
+
+
+BY TUESDAY: 
  feedback for homework, which includes: 
-  - change event model to include homework
+  - ~change event model to include homework~
   - homeoworks have different structure 
   - homework can have comments 
   - homework can be of graded type or not 
