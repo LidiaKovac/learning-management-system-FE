@@ -96,8 +96,21 @@
 - Finished frontend page for note taking
 - Added classes and events endpoints 
 
-### Day 10 TO DO LIST: 
+### Day 10 - Sequelize strikes again: 
 - Created model for Student_Class table
  - Found a way to create many to many relationships.
 - [ ] Add events on the frontend
 
+### Day 11 - Events: 
+- Finished image uploader on note taking section
+- Started implementing event on frontend
+
+### Day 12 - Events and feedback 
+- Finished events on frontend 
+
+BY MONDAY: 
+ feedback for homework, which includes: 
+  - change event model to include homework
+  - homeoworks have different structure 
+  - homework can have comments 
+  - homework can be of graded type or not 
