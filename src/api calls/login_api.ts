@@ -5,7 +5,7 @@ import {get_token_from_cookies} from "../utils"
 const {REACT_APP_BACKEND_URL} = process.env
 
 export const login = async(data:LoginData):Promise<any> => {
-    const response = await fetch(`https://learning-management-system-be.herokuapp.com/login/`, {
+    const response = await fetch(`${process.env.REACT_APP_BE_URL}/login/`, {
         "method": "POST",
         headers: {
             "Content-Type": "application/json",
