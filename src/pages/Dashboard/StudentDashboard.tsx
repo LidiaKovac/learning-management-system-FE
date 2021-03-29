@@ -15,9 +15,11 @@ import { retrieve_logged_action } from "../../actions/login_actions"
 import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda"
 import Cal from "../../components/Calendar/Calendar"
-import Todo from "../../components/Todo/Todo"
+import Todo from "../../components/Homework/Homework"
 import RecentNotes from "../../components/RecentNotes/RecentNotes"
 import {Menu} from "../../components/Menu/Menu"
+import { get_scheduled_action } from "../../actions/events_actions"
+import Homework from "../../components/Homework/Homework"
 
 const StudentDashboard:React.FC = () => {
     //HOOKS
@@ -33,6 +35,7 @@ const StudentDashboard:React.FC = () => {
         }
         if (logged_user.name === undefined)
             dispatch(retrieve_logged_action())
+        dispatch(get_scheduled_action())
     }, [])
 
     return (
@@ -59,7 +62,7 @@ const StudentDashboard:React.FC = () => {
                         <span className="todo__header">
                             <img src={Tick} alt="tick" className="icon"/> To do list
                         </span>
-                        <Todo/>
+                        <Homework/>
                     </div>
                 </div>
                 <div className="dashboard__recent">

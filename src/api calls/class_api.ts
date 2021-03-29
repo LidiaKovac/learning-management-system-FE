@@ -1,6 +1,3 @@
-
-import {LoginData} from "../interfaces/LoginTypes"
-import {LoggedUser} from "../interfaces/interfaces"
 import {get_token_from_cookies} from "../utils"
 const {REACT_APP_BACKEND_URL} = process.env
 
@@ -42,4 +39,33 @@ export const create_new_course = async(class_n:Object | undefined):Promise<any> 
         body: JSON.stringify(class_n)
     })
         return await response.json()
+}
+
+export const get_created_classes = async() => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}class/me`, {
+        "method": "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+        },
+        credentials: "include",
+    })
+        const json = await response.json()
+        if (typeof json !== "number" && json.length > 0) return json 
+        else return []
+}
+
+
+export const get_enrolled = async() => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}class/me/enrolled`, {
+        "method": "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+        },
+        credentials: "include",
+    })
+        const json = await response.json()
+        if (typeof json !== "number" && json.length > 0) return json 
+        else return []
 }

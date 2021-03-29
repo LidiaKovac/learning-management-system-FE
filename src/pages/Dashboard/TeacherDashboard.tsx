@@ -16,7 +16,7 @@ import { retrieve_logged_action } from "../../actions/login_actions"
 import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda"
 import Cal from "../../components/Calendar/Calendar"
-import Todo from "../../components/Todo/Todo"
+import Todo from "../../components/Homework/Homework"
 import RecentNotes from "../../components/RecentNotes/RecentNotes"
 import { TeacherMenu } from "../../components/Menu/Menu"
 import EventBuilder from "../../components/EventBuilder/EventBuilder"
@@ -76,6 +76,7 @@ const TeacherDashboard:React.FC = () => {
                 </div>
             </div>
             <div className="dashboard__agenda">
+            <div className="" onClick={()=> setCreateMode(!createMode)}>Add an event / See events</div>
                {!createMode ? <> 
                 <Cal/>
                 <Agenda/>
