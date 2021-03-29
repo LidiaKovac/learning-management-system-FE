@@ -1,0 +1,13 @@
+.homework__wrap {
+    //width: 100%;
+    height: 30vh;
+    //margin-left: 50px;
+
+    text-align: center;
+   .homework__single {
+       cursor: pointer;
+   }
+}
+input[type="checkbox"]:checked + label {
+            text-decoration: line-through;
+        }
