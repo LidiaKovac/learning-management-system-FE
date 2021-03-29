@@ -19,3 +19,7 @@ export const UPLOAD_SUCCESSFUL = "UPLOAD_SUCCESSFUL"
 export const UPLOAD_FAILED = "UPLOAD_FAILED"
 export const ERROR = "ERROR"
 export const GET_YOUR_FILES = "GET_YOUR_FILES"
+
+export const ADD_EVENT = "ADD_EVENT"
+export const REMOVE_EVENT = "REMOVE_EVENT"
+export const SELECT_DATE = "SELECT_DATE"

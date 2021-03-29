@@ -7,7 +7,7 @@ import Tick from "../../assets/tick.png"
 import Notebook from "../../assets/notebook.png"
 
 import { useDispatch, useSelector } from "react-redux"
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 import { useHistory } from "react-router"
 
 import { LoggedState } from "../../interfaces/interfaces"
@@ -19,8 +19,11 @@ import Cal from "../../components/Calendar/Calendar"
 import Todo from "../../components/Todo/Todo"
 import RecentNotes from "../../components/RecentNotes/RecentNotes"
 import { TeacherMenu } from "../../components/Menu/Menu"
+import EventBuilder from "../../components/EventBuilder/EventBuilder"
 
 const TeacherDashboard:React.FC = () => {
+    //STATE
+    const [createMode, setCreateMode] = useState<Boolean>(true)
     //HOOKS
     const dispatch = useDispatch()
     const history = useHistory()
@@ -73,8 +76,10 @@ const TeacherDashboard:React.FC = () => {
                 </div>
             </div>
             <div className="dashboard__agenda">
+               {!createMode ? <> 
                 <Cal/>
                 <Agenda/>
+                </> : <EventBuilder/>}
             </div>
         </div>
     </div>

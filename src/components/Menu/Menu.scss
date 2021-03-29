@@ -1,3 +1,5 @@
+@import "../../styling/Colors";
+
 .dashboard__menu {
     width: 12%;
     min-width: 200px;
@@ -23,4 +25,9 @@
     }
 
 
+}
+
+a {
+    color: $text-main; 
+    text-decoration: none;
 }

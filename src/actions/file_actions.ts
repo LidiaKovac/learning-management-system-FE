@@ -3,7 +3,7 @@ import { create_note, edit_note, get_your_files } from "../api calls/file_api"
 import { get_tinyurl } from "../api calls/url_api"
 import { NoteObject } from "../interfaces/FileTypes"
 import { Action } from "../interfaces/interfaces"
-import { CHANGE_TYPE, LOADING_TRUE, ERROR, UPLOAD_SUCCESSFUL, LOGIN_FAILED, TOKEN_EXP, GET_YOUR_FILES } from "./action_types"
+import { CHANGE_TYPE, LOADING_TRUE, ERROR, UPLOAD_SUCCESSFUL, LOGIN_FAILED, TOKEN_EXP, GET_YOUR_FILES, LOADING_FALSE } from "./action_types"
 
 export const change_type_action = (type:String) => async(dispatch: Dispatch<Action>):Promise<void> => {
     if (typeof type === "string") {
@@ -59,6 +59,7 @@ export const get_your_files_action = () => async(dispatch:Dispatch<Action>):Prom
             })
             dispatch({type: GET_YOUR_FILES, payload: response.content})
         })
+        dispatch({type: LOADING_FALSE})
         
     } else dispatch({type: ERROR, payload: response.message})
 }

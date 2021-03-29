@@ -5,10 +5,15 @@ import Settings from "../../assets/settings.png"
 import Logout from "../../assets/door.png"
 import Homework from "../../assets/homework.png"
 
-import {Link} from "react-router-dom"
+import {Link, useHistory} from "react-router-dom"
 import "./Menu.scss"
+import { logout } from "../../api calls/login_api"
+import { useDispatch } from "react-redux"
+import { LOGOUT } from "../../actions/action_types"
 
 export const Menu:React.FC = () => {
+	const history = useHistory()
+	const dispatch = useDispatch()
 	return (
 		<>
 			<Link to="/notes">
@@ -31,7 +36,11 @@ export const Menu:React.FC = () => {
 				<img src={Settings} alt="settings" />
 				Settings
 			</div>
-			<div className="dashboard__menu-item">
+			<div className="dashboard__menu-item" onClick={()=> {
+				logout()
+				dispatch({type: LOGOUT})
+				history.push("/")
+				}}>
 				<img src={Logout} alt="door" />
 				Logout
 			</div>
@@ -40,6 +49,8 @@ export const Menu:React.FC = () => {
 }
 
 export const TeacherMenu:React.FC = () => {
+	const history = useHistory()
+	const dispatch = useDispatch()
 	return (
 		<>
 			<div className="dashboard__menu-item">
@@ -58,8 +69,12 @@ export const TeacherMenu:React.FC = () => {
 				<img src={Settings} alt="settings" />
 				Settings
 			</div>
-			<div className="dashboard__menu-item">
-				<img src={Logout} alt="door" />
+			<div className="dashboard__menu-item" onClick={()=> {
+				logout()
+				dispatch({type: LOGOUT})
+				history.push("/")
+				}}>
+				<img src={Logout} alt="door"  />
 				Logout
 			</div>
 		</>
