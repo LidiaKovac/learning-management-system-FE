@@ -19,6 +19,7 @@
     "@types/uniqid": "^5.2.0",
     "@uiw/react-md-editor": "^3.0.0-beta.1",
     "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
     "loaders.css": "^0.1.2",
     "moment": "^2.29.1",
     "react": "^17.0.1",
