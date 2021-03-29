@@ -23,3 +23,8 @@ export const GET_YOUR_FILES = "GET_YOUR_FILES"
 export const ADD_EVENT = "ADD_EVENT"
 export const REMOVE_EVENT = "REMOVE_EVENT"
 export const SELECT_DATE = "SELECT_DATE"
+export const GET_BY_DATE = "GET_BY_DATE"
+export const GET_HW = "GET_HW"
+
+
+export const GET_ENROLLED = "GET_ENROLLED"

@@ -1,10 +1,8 @@
 import "./Notes.scss"
 import React, { useEffect, useState } from "react"
-import { Link, useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import MDEditor from "@uiw/react-md-editor"
 import moment from "moment"
-
-import { AiOutlineCloudUpload, AiOutlineFileDone } from "react-icons/ai"
 import Spinner from "../../../components/Loader/Loader"
 
 import { rootInitialState } from "../../../interfaces/interfaces"
@@ -27,12 +25,6 @@ const Notes: React.FC = () => {
 	const [saved, setSaved] = useState<Date | null>(null)
 	const [name, setName] = useState<string>("")
 	const [created, setCreated] = useState<boolean>(false)
-	const [fileId, setId] = useState<number>()
-	const [yourFiles, setYourFiles] = useState<Array<{
-		type: string,
-		description: string,
-		name: string 
-	}> | undefined>()
 
 	//HOOKS
 	const dispatch = useDispatch()

@@ -3,7 +3,6 @@ import {
 	CHANGE_TYPE,
     UPLOAD_FAILED,
     UPLOAD_SUCCESSFUL,
-    ERROR,
     GET_YOUR_FILES
 } from "../actions/action_types"
 import { FileInitialState} from "../interfaces/FileTypes"

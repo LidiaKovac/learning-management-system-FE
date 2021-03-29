@@ -3,7 +3,7 @@ import { create_note, edit_note, get_your_files } from "../api calls/file_api"
 import { get_tinyurl } from "../api calls/url_api"
 import { NoteObject } from "../interfaces/FileTypes"
 import { Action } from "../interfaces/interfaces"
-import { CHANGE_TYPE, LOADING_TRUE, ERROR, UPLOAD_SUCCESSFUL, LOGIN_FAILED, TOKEN_EXP, GET_YOUR_FILES, LOADING_FALSE } from "./action_types"
+import { CHANGE_TYPE, LOADING_TRUE, ERROR, UPLOAD_SUCCESSFUL, TOKEN_EXP, GET_YOUR_FILES, LOADING_FALSE } from "./action_types"
 
 export const change_type_action = (type:String) => async(dispatch: Dispatch<Action>):Promise<void> => {
     if (typeof type === "string") {
@@ -41,7 +41,7 @@ export const get_your_files_action = () => async(dispatch:Dispatch<Action>):Prom
     const response = await get_your_files()
     
     if (response.status === 200) {
-        let tiny_url:Array<string> = new Array()
+        let tiny_url:Array<string> = []
         const prom = response.content.map((file)=> 
            get_tinyurl(file.description).then((url) => {
            tiny_url.push(url)
