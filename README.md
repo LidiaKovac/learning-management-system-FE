@@ -114,6 +114,7 @@
 - Added homework delivery model 
 - Added homework delivery on frontend (with ugly ui)
 - Made a general code clean up, deleted unused stuff
+- Deployed frontend on heroku
 
 
 BY TUESDAY: 
