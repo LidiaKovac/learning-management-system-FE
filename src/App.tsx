@@ -9,6 +9,7 @@ import TeacherDashboard from './pages/Dashboard/TeacherDashboard';
 import UploadNotes from './pages/Notes/Upload/Upload_New';
 import LNotes from "./pages/Notes/Landing"
 import Notes from './pages/Notes/Type/Notes';
+import Classes from './pages/Classes/Classes';
 const App: React.FC = () => {
   return (
     <BrowserRouter>
@@ -23,6 +24,8 @@ const App: React.FC = () => {
      <Route exact path="/notes/new"><UploadNotes/></Route>
      <Route exact path="/notes/type"><Notes/></Route>
      <Route exact path="/notes"><LNotes/></Route>
+
+     <Route exact path="/classes/search"><Classes/></Route>
     </BrowserRouter>
   );
 }

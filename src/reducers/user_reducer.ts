@@ -14,7 +14,12 @@ import {
 } from "../actions/action_types"
 
 const initial_state:initialState = {
-	logged_user: {},
+	logged_user: {
+		name: '', 
+		last_name: '', 
+		email: '', 
+		role: '', 
+		status: ''},
 	selected_user: {},
 	is_authorized: false,
 	loading: false,

@@ -35,7 +35,7 @@ export interface LoggedUser {
 	status: String | null
 }
 export interface initialState {
-	logged_user: Object,
+	logged_user: LoggedUser | null,
 	selected_user: Object,
 	is_authorized: Boolean,
 	loading: Boolean,
