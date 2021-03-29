@@ -15,9 +15,10 @@ export interface SelectOption {
 export interface rootInitialState {
 	user:initialState
 	file: FileInitialState
+	events: eventInitialState
 }
 export interface User {
-	user_id: number
+	user_id: number 
 	name: String
 	last_name: String
 	email: String
@@ -35,7 +36,7 @@ export interface LoggedUser {
 	status: String | null
 }
 export interface initialState {
-	logged_user: Object,
+	logged_user: User | {},
 	selected_user: Object,
 	is_authorized: Boolean,
 	loading: Boolean,
@@ -43,7 +44,10 @@ export interface initialState {
 	error: String,
 	logged_out: Boolean
 }
-
+export interface eventInitialState {
+	selected_date: Date
+    your_events: Array<IEvent>
+}
 export interface LoggedState {
 	user: {
 		logged_user: User,
@@ -60,9 +64,9 @@ export interface TokenError {
 
 
 export interface IEvent {
-	name: string
-	type: string
-    description: string
-	startDate: Date
-    endDate: Date
+	name: string | null
+	type: string | null
+    description: string | null
+	startDate: Date | null
+    endDate: Date | null
 }

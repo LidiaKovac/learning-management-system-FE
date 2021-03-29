@@ -10,9 +10,13 @@
 }
 
 .agenda__wrap {
-    margin-top: 20px;
+    span {
+        color: $text-main;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
     width: 100%;
-    height: 45%;
+    height: 50%;
     display: flex;
     flex-direction: column;
     //justify-content: flex-end;
@@ -21,8 +25,8 @@
 
     .agenda__single {
         width: 90%;
-        height: 27%;
-        min-height: 90px;
+        height: 23%;
+        min-height: 88px;
         margin: 10px;
         align-self: flex-end;
     }
@@ -134,3 +138,4 @@ textarea {
         }
     }
 }
+
