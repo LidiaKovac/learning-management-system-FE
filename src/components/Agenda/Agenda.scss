@@ -29,6 +29,21 @@
         min-height: 88px;
         margin: 10px;
         align-self: flex-end;
+        padding: 10px;
+        color: $text-main;
+        .agenda__time {
+            font-size: 10pt;
+        }
+        .agenda__title {
+            font-weight: bold;
+            font-size: 12pt;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        .agenda__description {
+            font-size: 12pt;
+            margin-bottom: 10px;
+        }
     }
 
 }

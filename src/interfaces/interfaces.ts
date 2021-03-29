@@ -1,3 +1,4 @@
+import { IClass } from "./ClassInterfaces";
 import { FileInitialState } from "./FileTypes";
 import { JoinData } from "./LoginTypes";
 
@@ -16,6 +17,7 @@ export interface rootInitialState {
 	user:initialState
 	file: FileInitialState
 	events: eventInitialState
+	classes: classInitialState
 }
 export interface User {
 	user_id: number 
@@ -47,6 +49,11 @@ export interface initialState {
 export interface eventInitialState {
 	selected_date: Date
     your_events: Array<IEvent>
+	event_by_date: Array<IEvent> | null
+	homework: Array<IEvent>
+}
+export interface classInitialState {
+	your_classes: Array<IClass>
 }
 export interface LoggedState {
 	user: {
@@ -67,6 +74,6 @@ export interface IEvent {
 	name: string | null
 	type: string | null
     description: string | null
-	startDate: Date | null
-    endDate: Date | null
+	startDate: string | null
+    endDate: string | null
 }

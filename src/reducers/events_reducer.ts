@@ -1,14 +1,17 @@
 import {Action} from "../interfaces/interfaces" 
-import {IEvent} from "../interfaces/EventTypes"
 import {
 	ADD_EVENT,
+	GET_BY_DATE,
+	GET_HW,
     REMOVE_EVENT,
     SELECT_DATE,
 } from "../actions/action_types"
 
 const event_initial_state = {
 	selected_date: new Date(),
-    your_events: []
+    your_events: [],
+	event_by_date: [],
+	homework: []
 }
 
 export const event_reducer = (state = event_initial_state, action:Action) => {
@@ -16,7 +19,7 @@ export const event_reducer = (state = event_initial_state, action:Action) => {
 		case ADD_EVENT: 
 			return {
 				...state,
-				your_events: [...state.your_events, action.payload]
+				your_events: action.payload
 			}
 		case REMOVE_EVENT:
 			return {
@@ -28,6 +31,16 @@ export const event_reducer = (state = event_initial_state, action:Action) => {
                 ...state,
                 selected_date: action.payload
             }
+		case GET_BY_DATE: 
+			return {
+				...state,
+				event_by_date: action.payload
+			}
+		case GET_HW: 
+			return {
+				...state, 
+				homework: action.payload
+			}
 		default: return state
 	}
 	
