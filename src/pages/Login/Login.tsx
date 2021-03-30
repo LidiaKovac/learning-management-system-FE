@@ -1,4 +1,5 @@
 //REACT and REDUX
+
 import React, { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
@@ -37,7 +38,7 @@ const Login: React.FC<any> = () => {
 	}, [props.is_authorized])
 
 	useEffect(() => {
-		
+		console.log(process.env)
 		if (document.cookie.length > 0 && !props.logged_out) {
 			dispatch(retrieve_logged_action())
 			if (props.is_authorized) {

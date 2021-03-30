@@ -2,11 +2,10 @@
 import {LoginData} from "../interfaces/LoginTypes"
 import {LoggedUser} from "../interfaces/interfaces"
 import {get_token_from_cookies} from "../utils"
-require("dotenv").config()
 const {REACT_APP_BACKEND_URL} = process.env
 
 export const login = async(data:LoginData):Promise<any> => {
-    const response = await fetch(`${process.env.REACT_APP_BE_URL}/login/`, {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}/login/`, {
         "method": "POST",
         headers: {
             "Content-Type": "application/json",
