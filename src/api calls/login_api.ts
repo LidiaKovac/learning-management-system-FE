@@ -20,7 +20,8 @@ export const get_current_user = async():Promise<LoggedUser> => {
         method: "GET",
         headers: {
             Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
-        }
+        },
+        credentials: "include"
     })
     
     const json = await user.json()
