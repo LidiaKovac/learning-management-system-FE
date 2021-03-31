@@ -141,7 +141,7 @@ const Notes: React.FC = () => {
 					<div className="type__instructions">
 						<Guide/>
 					</div>
-					<div className="type__uploader">
+					{/* <div className="type__uploader">
 						<h2>Your images: </h2>
 						{!loading 
 						? <><input type="file" accept=".jpg, .png, .gif, .jpeg" id="img-notes" 
@@ -158,7 +158,7 @@ const Notes: React.FC = () => {
 							</span>
 							</>
 						)}
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>

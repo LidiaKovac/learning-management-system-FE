@@ -1,5 +1,5 @@
 import {get_token_from_cookies} from "../utils/index"
-import {ResponseFile, NoteObject, ResponseNote, ResponseMultipleFile} from "../interfaces/FileTypes"
+import {ResponseFile, FileObject, ResponseNote, ResponseMultipleFile } from "../interfaces/FileTypes"
 const {REACT_APP_BACKEND_URL} = process.env
 
 export const upload_file = async(type:String, body:FormData):Promise<ResponseFile> => {
@@ -14,7 +14,7 @@ export const upload_file = async(type:String, body:FormData):Promise<ResponseFil
         return await response.json()
 }
 
-export const create_note = async(note:NoteObject):Promise<ResponseNote> => {
+export const create_note = async(note:FileObject):Promise<ResponseNote> => {
     const response = await fetch(`${REACT_APP_BACKEND_URL}files/upload/markdown`, {
         method: "POST",
         credentials: "include",
@@ -28,7 +28,8 @@ export const create_note = async(note:NoteObject):Promise<ResponseNote> => {
     return await response.json()
 }
 
-export const edit_note = async(id:number, new_note:NoteObject):Promise<ResponseNote> => {
+export const edit_note = async(id:number, new_note:FileObject):Promise<ResponseNote> => {
+    console.log(id)
     const response = await fetch(`${REACT_APP_BACKEND_URL}files/${id}`, {
         method: "PUT",
         credentials: "include",

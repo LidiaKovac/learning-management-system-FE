@@ -1,0 +1,136 @@
+@import "../../styling/Colors";
+
+@import "../../styling/Fonts";
+
+.landing__wrap {
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+
+  //max-height: 200vh;
+
+  //overflow-x: hidden;
+
+  background-color: $bg;
+  font-family: $font-main;
+  color: $text-main;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  // .landing__menu {
+  //     width: 12%;
+  //     min-width: 200px;
+  //     height: 85vh;
+  //     display: flex;
+  //     flex-direction: column;
+
+  //     justify-content: space-between;
+  //     align-items: center;
+  // }
+
+  .landing__main {
+    width: 85%;
+    min-height: 90vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+
+    background-color: white;
+    margin-right: 50px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .landing__notes {
+      width: 40%;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      padding: 40px;
+    }
+    .landing__edit {
+      width: 45%;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      textarea#edit-note.landing__edit-note {
+        width: 85% !important;
+        height: 90%;
+      }
+      .landing__thumb {
+        width: 90%;
+        object-fit: cover;
+      }
+      .landing__input {
+        margin-bottom: 30px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        button {
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+.header {
+  height: 20px;
+  font-size: 20pt;
+  font-weight: bold;
+
+  margin-left: 20px;
+}
+
+.header-icon {
+  width: 25px;
+  height: auto;
+  object-fit: cover;
+}
+
+.header-icon--small {
+  width: 20px;
+  height: auto;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.header-wrap {
+  height: 25px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  span {
+      margin-right: 10px;
+  }
+  svg {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    color: $blue-deep;
+    cursor: pointer;
+  }
+}
+
+.landing__list {
+  display: flex;
+  flex-direction: column;
+
+  margin: 20px;
+  margin-left: 12px;
+  div {
+    margin-top: 20px;
+  }
+}

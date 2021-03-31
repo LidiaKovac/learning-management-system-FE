@@ -3,38 +3,27 @@ export interface ResponseFile {
     path: string
 }
 
-
-
 export interface ResponseMultipleFile {
     status: number
-    content: Array<{
-        type: string
-        description: string
-        name: string
-    }>
-    message?: String
+    content: Array<FileObject>
+    message?: string
 }
 
 export interface FileObject {
     name?: string | undefined
-    type?: "pdf" | "video" | "image" | "audio" | "" | undefined 
-    material?: File | undefined
+    type?: "pdf" | "video" | "image" | "audio" | "markdown" | "" | undefined 
+    material?: File | string
+    description?: string
+    file_id?: number | null
 }
 
 
 export interface FileInitialState extends FileObject {
     status: "Success" | "Pending" | "Failed" | ""
     error: {
-        message: String
+        message: string
     },
-    file_id?: number | null
     your_files: ResponseMultipleFile["content"]
-}
-
-export interface NoteObject {
-    name: String
-    type: "markdown"
-    material: String | undefined
 }
 
 export interface ResponseNote {
