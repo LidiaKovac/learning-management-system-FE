@@ -122,7 +122,8 @@
 - Updates dashboards with dynamic components 
 - Created a Coming Soon component to fill empty spaces 
 - Added home button to menu for easier navigation 
-
+- Added class page with searchbar 
+- Fixed firebase problem
 
 BY NEXT WEEK: 
  feedback for homework, which includes: 
