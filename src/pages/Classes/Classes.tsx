@@ -9,11 +9,16 @@ import { get_enrolled_action } from "../../actions/class_actions";
 import { useHistory } from "react-router";
 
 const Classes = () => {
-    
+
+//HOOKS 
 const dispatch = useDispatch()
 const history = useHistory()
+
+//USE SELECTOR
 const logged = useSelector((state:rootInitialState)=> state.user.logged_user)
 const enrolled = useSelector((state:rootInitialState)=> state.classes.your_classes)
+
+//USE STATE
   const [query, setQuery] = useState<String>("");
   const [show, setShow] = useState(false)
   const [selected, setSelected] = useState<IClass>()
@@ -22,17 +27,23 @@ const enrolled = useSelector((state:rootInitialState)=> state.classes.your_class
   })
   const [new_class, buildNew] = useState<IClass>()
   const [result, setResult] = useState<Array<any>>()
+
+  //USE EFFECT 
+
+  useEffect(()=> {
+    dispatch(retrieve_logged_action())
+    if (!logged) history.push("/")
+    dispatch(get_enrolled_action())
+  }, [])
+
+  //FUNCTIONS 
   const submit_query = async(e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       const result = await search_class(e.currentTarget.value);
       if (result) setResult(result)
     }
   };
-  useEffect(()=> {
-    dispatch(retrieve_logged_action())
-    if (!logged) history.push("/")
-    dispatch(get_enrolled_action())
-  }, [])
+  
   const onChangeHandler = (e:React.ChangeEvent<HTMLInputElement>) => {
     buildNew({
         ...new_class,
@@ -40,6 +51,7 @@ const enrolled = useSelector((state:rootInitialState)=> state.classes.your_class
     })
     console.log(new_class)
   }
+  
   return (
     <>
       <input

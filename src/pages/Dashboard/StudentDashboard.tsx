@@ -9,17 +9,20 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { useHistory } from "react-router"
 
-import { LoggedState } from "../../interfaces/interfaces"
+import { LoggedState, rootInitialState } from "../../interfaces/interfaces"
 import { retrieve_logged_action } from "../../actions/login_actions"
 
-import GradeSummary from "../../components/GradeSummary/GradeSummary"
+//import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda"
 import Cal from "../../components/Calendar/Calendar"
-import Todo from "../../components/Homework/Homework"
+//import Todo from "../../components/Homework/Homework"
 import RecentNotes from "../../components/RecentNotes/RecentNotes"
 import {Menu} from "../../components/Menu/Menu"
 import { get_scheduled_action } from "../../actions/events_actions"
 import Homework from "../../components/Homework/Homework"
+import { ComingSoon } from "../../components/ComingSoon/ComingSoon"
+import { get_your_files_action } from "../../actions/file_actions"
+import { Link } from "react-router-dom"
 
 const StudentDashboard:React.FC = () => {
     //HOOKS
@@ -27,6 +30,7 @@ const StudentDashboard:React.FC = () => {
     const history = useHistory()
     const logged_user = useSelector((state:LoggedState) => state.user.logged_user)
     const is_auth = useSelector((state:LoggedState)=> state.user.is_authorized)
+    const files = useSelector((state:rootInitialState)=> state.file.your_files)
 
     //USE EFFECT
     useEffect(()=> {
@@ -36,6 +40,7 @@ const StudentDashboard:React.FC = () => {
         if (logged_user.name === undefined)
             dispatch(retrieve_logged_action())
         dispatch(get_scheduled_action())
+        dispatch(get_your_files_action())
     }, [])
 
     return (
@@ -56,7 +61,8 @@ const StudentDashboard:React.FC = () => {
                         <span className="graph__header">
                             <img src={Graph} alt="graph" className="icon"/> Grades
                         </span>
-                        <GradeSummary/>
+                        {/* <GradeSummary/> */}
+                        <ComingSoon/>
                     </div>
                     <div className="dashboard__todos">
                         <span className="todo__header">
@@ -70,7 +76,8 @@ const StudentDashboard:React.FC = () => {
                       <img src={Notebook} alt="recent" className="icon" style={{marginRight: "10px"}}/>  Recent notes
                     </div>
                     <div className="recent__content">
-                    <RecentNotes/> <RecentNotes/> <RecentNotes/> 
+                        {files?.filter((f)=> f.type === "markdown").slice(0,3).map((f, index)=><Link to="/notes" key={index}><RecentNotes content={f}  /></Link>)}
+                     
                     </div>
                 </div>
             </div>

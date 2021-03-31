@@ -27,19 +27,15 @@ const Login: React.FC<any> = () => {
 		email: "",
 		password: "",
 	})
+
+	//USE SELECTOR
 	const props = useSelector((state: rootInitialState) => state.user)
 	const loading = useSelector((state:LoggedState)=> state.user.loading)
 
 	//USE EFFECTS:
 	useEffect(() => {
 		if (props.is_authorized) {
-			switch(props.logged_user?.role) {
-				case "student": 
-					return history.push("/studentdash")
-				case "teacher": 
-					return history.push("/teacherdash")
-				default: history.push("/admin")
-			}
+			history.push("/redirect")
 		}
 	}, [props.is_authorized])
 

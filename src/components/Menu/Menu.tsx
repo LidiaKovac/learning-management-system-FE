@@ -4,6 +4,7 @@ import Books from "../../assets/booka.png"
 import Settings from "../../assets/settings.png"
 import Logout from "../../assets/door.png"
 import Homework from "../../assets/homework.png"
+import Home from "../../assets/home.png"
 
 import {Link, useHistory} from "react-router-dom"
 import "./Menu.scss"
@@ -12,17 +13,26 @@ import { useDispatch } from "react-redux"
 import { LOGOUT } from "../../actions/action_types"
 
 export const Menu:React.FC = () => {
+	//HOOKS 
 	const history = useHistory()
 	const dispatch = useDispatch()
+
+	
 	return (
 		<>
+		<Link to="/redirect">
+            <div className="dashboard__menu-item">
+				<img src={Home} alt="home" />
+				Home
+			</div>
+            </Link>
 			<Link to="/notes">
             <div className="dashboard__menu-item">
 				<img src={Notes} alt="notes" />
 				Notes
 			</div>
             </Link>
-			<div className="dashboard__menu-item">
+			<div className="dashboard__menu-item" style={{cursor: "not-allowed"}}>
 				<img src={Graph} alt="stats" />
 				Stats
 			</div>
@@ -32,7 +42,7 @@ export const Menu:React.FC = () => {
 				Classes
 			</div>
 			</Link>
-			<div className="dashboard__menu-item">
+			<div className="dashboard__menu-item" style={{cursor: "not-allowed"}}>
 				<img src={Settings} alt="settings" />
 				Settings
 			</div>

@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react"
 import { useHistory } from "react-router-dom"
 import MDEditor from "@uiw/react-md-editor"
 import moment from "moment"
-import Spinner from "../../../components/Loader/Loader"
+//import Spinner from "../../../components/Loader/Loader"
 
 import { rootInitialState } from "../../../interfaces/interfaces"
 import { useDispatch, useSelector } from "react-redux"
@@ -13,8 +13,8 @@ import {
 	upload_markdown_action,
 } from "../../../actions/file_actions"
 import Guide from "../Guide/Guide"
-import { LOADING_FALSE, LOADING_TRUE } from "../../../actions/action_types"
-import { upload_file } from "../../../api calls/file_api"
+import { LOADING_FALSE } from "../../../actions/action_types"
+//import { upload_file } from "../../../api calls/file_api"
 import { retrieve_logged_action } from "../../../actions/login_actions"
 
 const Notes: React.FC = () => {
@@ -32,7 +32,7 @@ const Notes: React.FC = () => {
 	const state = useSelector((state: rootInitialState) => state)
 	const logged = useSelector((state: rootInitialState) => state.user.logged_user)
 	const loading = useSelector((state:rootInitialState) => state.user.loading)
-	const files = useSelector((state:rootInitialState) => state.file.your_files)
+	//const files = useSelector((state:rootInitialState) => state.file.your_files)
 	const error = useSelector((state: rootInitialState) => state.user.error)
 
 	//USE EFFECT
@@ -69,19 +69,19 @@ const Notes: React.FC = () => {
 			}
 		}
 	}
-
-	const upload_file_handler = async (files: FileList): Promise<void> => {
-		let fd = new FormData()
-		fd.append("material", files[0])
-		fd.append("type", "image")
-		fd.append("name", name)
-		dispatch({ type: LOADING_TRUE })
-		const new_file = await upload_file("image", fd)
-		if (new_file) {
-			dispatch({ type: LOADING_FALSE })
-		}
-		dispatch(get_your_files_action())
-	}
+	
+	// const upload_file_handler = async (files: FileList): Promise<void> => {
+	// 	let fd = new FormData()
+	// 	fd.append("material", files[0])
+	// 	fd.append("type", "image")
+	// 	fd.append("name", name)
+	// 	dispatch({ type: LOADING_TRUE })
+	// 	const new_file = await upload_file("image", fd)
+	// 	if (new_file) {
+	// 		dispatch({ type: LOADING_FALSE })
+	// 	}
+	// 	dispatch(get_your_files_action())
+	// }
 	const initialize_note = async () => {
 		if (!created) {
 			if (name?.length! > 3) {

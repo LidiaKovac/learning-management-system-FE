@@ -7,8 +7,12 @@ import "./Cal.scss"
 
 const Cal:React.FC = () => {
   //STATE
-  const [value, onChange] = useState<Date|Date[]|null>(null);
+  const [value, onChange] = useState<Date|Date[]|null>(new Date());
+
+  //HOOKS
   const dispatch = useDispatch()
+
+  //USE EFFECT
   useEffect(()=> {
     dispatch({type: SELECT_DATE, payload: value})
   }, [value])

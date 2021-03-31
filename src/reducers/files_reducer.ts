@@ -3,7 +3,8 @@ import {
 	CHANGE_TYPE,
     UPLOAD_FAILED,
     UPLOAD_SUCCESSFUL,
-    GET_YOUR_FILES
+    GET_YOUR_FILES,
+    SET_SELECTED_NOTE
 } from "../actions/action_types"
 import { FileInitialState} from "../interfaces/FileTypes"
 
@@ -14,7 +15,8 @@ const file_initial_state:FileInitialState = {
     your_files: [],
     status: "",
     error: {message: ""},
-    file_id: null
+    file_id: null,
+    selected: {}
 }
 
 export const file_reducer = (state = file_initial_state, action:Action) => {
@@ -42,7 +44,12 @@ export const file_reducer = (state = file_initial_state, action:Action) => {
                 status: "Success",
                 your_files: action.payload
             }
-		
+		case SET_SELECTED_NOTE: 
+            return {
+                ...state,
+                status: "Success",
+                selected: action.payload
+            }
 		default: return state
 	}
 	
