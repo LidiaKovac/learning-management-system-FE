@@ -52,7 +52,7 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "serve -s ./build",
     "postinstall": "tsc",
     "build": "react-scripts build",
     "test": "react-scripts test",
