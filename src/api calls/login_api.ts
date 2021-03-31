@@ -2,24 +2,18 @@
 import {LoginData} from "../interfaces/LoginTypes"
 import {LoggedUser} from "../interfaces/interfaces"
 import {get_token_from_cookies} from "../utils"
-import axios from "axios"
-import { config } from "node:process"
 const {REACT_APP_BACKEND_URL} = process.env
 
-// export const login = async(data:LoginData):Promise<any> => {
-//     const response = await fetch(`${REACT_APP_BACKEND_URL}login/`, {
-//         "method": "POST",
-//         headers: {
-//             "Content-Type": "application/json",
-//         },
-//         credentials: "include",
-//         body: JSON.stringify(data)
-//     })
-//         return await response.json()
-// }
 export const login = async(data:LoginData):Promise<any> => {
-    const response = await axios.post(`${REACT_APP_BACKEND_URL}login/`, data, {withCredentials: true} )
-    return response
+    const response = await fetch(`${REACT_APP_BACKEND_URL}login/`, {
+        "method": "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        credentials: "include",
+        body: JSON.stringify(data)
+    })
+        return await response.json()
 }
 export const get_current_user = async():Promise<LoggedUser> => {
     console.log("this is a cookie", document.cookie)
