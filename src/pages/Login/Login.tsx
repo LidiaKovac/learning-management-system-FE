@@ -27,6 +27,8 @@ const Login: React.FC<any> = () => {
 		email: "",
 		password: "",
 	})
+
+	//USE SELECTOR
 	const props = useSelector((state: rootInitialState) => state.user)
 	const loading = useSelector((state:LoggedState)=> state.user.loading)
 

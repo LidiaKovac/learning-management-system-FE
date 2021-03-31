@@ -12,20 +12,33 @@ import {
 import { rootInitialState } from "../../interfaces/interfaces";
 import { FileObject } from "../../interfaces/FileTypes";
 import { HiPlusCircle, HiUpload } from "react-icons/hi";
+import MDEditor from "@uiw/react-md-editor";
 
 const LNotes: React.FC = () => {
+  //HOOKS
   const dispatch = useDispatch();
   const history = useHistory();
+
+  //SELECTORS
   const files = useSelector((state: rootInitialState) => state.file.your_files);
   const error = useSelector((state: rootInitialState) => state.user.error);
+  const selected_file = useSelector(
+    (state: rootInitialState) => state.file.selected
+  );
+
+  //USE STATE
   const [selected, setSelected] = useState<FileObject>();
+
+  //USE EFFECT
   useEffect(() => {
     dispatch(get_your_files_action());
+    if (selected_file !== {}) setSelected(selected_file);
   }, []);
   useEffect(() => {
     console.log("there is an error", error);
     if (error === "jwt expired") history.push("/");
   }, [error]);
+
   return (
     <div className="landing__wrap">
       <div className="dashboard__menu">
@@ -37,12 +50,12 @@ const LNotes: React.FC = () => {
             col 2 low ->  create / upload buttons */}
         <div className="landing__notes">
           <span className="header-wrap">
-            <img src={Notes} className="header-icon" />
+            <img src={Notes} className="header-icon" alt='notes' />
             <span className="header">Your notes: </span>
-            <Link to='/notes/type'>
+            <Link to="/notes/type">
               <HiPlusCircle />
             </Link>
-            <Link to='/notes/new'>
+            <Link to="/notes/new">
               <HiUpload />
             </Link>
           </span>
@@ -51,7 +64,7 @@ const LNotes: React.FC = () => {
               <div onClick={() => setSelected(f)}>
                 <img
                   src={f.type === "image" ? Camera : Notes}
-                  className="header-icon--small"
+                  className="header-icon--small" alt='picture_note'
                 />
                 {f.name || "Untitled note"}
               </div>
@@ -61,17 +74,15 @@ const LNotes: React.FC = () => {
         <div className="landing__edit">
           {selected?.type === "markdown" ? (
             <>
-              <textarea
-                className="landing__edit-note"
-                id="edit-note"
-                value={selected?.description}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-                  setSelected({
-                    ...selected,
-                    description: e.currentTarget.value,
-                  })
+              <MDEditor
+                value={selected?.description ?? "Type here"}
+                onChange={(content: string | undefined) =>
+                  setSelected({ ...selected, description: content })
                 }
-              ></textarea>
+                //onFocus={() => setValue("")}
+                className="landing__editor"
+              />
+
               <button
                 onClick={() =>
                   dispatch(auto_save_note(selected, selected.file_id!))
@@ -80,30 +91,32 @@ const LNotes: React.FC = () => {
                 Save
               </button>
             </>
-          ) : selected?.type === 'image' &&(
-            <>
-              <span className="landing__input">
-                <input
-                  type="name"
-                  value={selected?.name}
-                  placeholder="Name of the file"
-                  onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                    setSelected({
-                      ...selected,
-                      name: e.currentTarget.value,
-                    })
-                  }
-                />
-                <button
-                  onClick={() =>
-                    dispatch(auto_save_note(selected!, selected!.file_id!))
-                  }
-                >
-                  Save
-                </button>
-              </span>
-              <img src={selected?.description} className="landing__thumb" />
-            </>
+          ) : (
+            selected?.type === "image" && (
+              <>
+                <span className="landing__input">
+                  <input
+                    type="name"
+                    value={selected?.name}
+                    placeholder="Name of the file"
+                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                      setSelected({
+                        ...selected,
+                        name: e.currentTarget.value,
+                      })
+                    }
+                  />
+                  <button
+                    onClick={() =>
+                      dispatch(auto_save_note(selected!, selected!.file_id!))
+                    }
+                  >
+                    Save
+                  </button>
+                </span>
+                <img src={selected?.description} className="landing__thumb" alt='thumbnail' />
+              </>
+            )
           )}
         </div>
         {/* <Link to="/notes/new">Upload notes</Link>

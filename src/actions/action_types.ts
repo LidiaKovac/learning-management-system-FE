@@ -19,12 +19,12 @@ export const UPLOAD_SUCCESSFUL = "UPLOAD_SUCCESSFUL"
 export const UPLOAD_FAILED = "UPLOAD_FAILED"
 export const ERROR = "ERROR"
 export const GET_YOUR_FILES = "GET_YOUR_FILES"
+export const SET_SELECTED_NOTE = "SET_SELECTED_NOTE"
 
 export const ADD_EVENT = "ADD_EVENT"
 export const REMOVE_EVENT = "REMOVE_EVENT"
 export const SELECT_DATE = "SELECT_DATE"
 export const GET_BY_DATE = "GET_BY_DATE"
 export const GET_HW = "GET_HW"
-
 
 export const GET_ENROLLED = "GET_ENROLLED"

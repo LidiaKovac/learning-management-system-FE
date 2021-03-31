@@ -1,9 +1,9 @@
 import { Dispatch } from "react"
 import { create_note, edit_note, get_your_files } from "../api calls/file_api"
-import { get_tinyurl } from "../api calls/url_api"
+//import { get_tinyurl } from "../api calls/url_api"
 import { FileObject } from "../interfaces/FileTypes"
 import { Action } from "../interfaces/interfaces"
-import { CHANGE_TYPE, LOADING_TRUE, ERROR, UPLOAD_SUCCESSFUL, TOKEN_EXP, GET_YOUR_FILES, LOADING_FALSE } from "./action_types"
+import { CHANGE_TYPE, LOADING_TRUE, ERROR, UPLOAD_SUCCESSFUL, TOKEN_EXP, GET_YOUR_FILES } from "./action_types"
 
 export const change_type_action = (type:String) => async(dispatch: Dispatch<Action>):Promise<void> => {
     if (typeof type === "string") {

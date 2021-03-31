@@ -5,8 +5,13 @@ import { LoggedState } from "../../interfaces/interfaces"
 import Loader from "react-loader-spinner"
 
 const Redirect = () => {
+    //HOOKS 
     const history = useHistory()
+
+    //USE SELECTOR
     const role = useSelector((state:LoggedState) => state?.user?.logged_user?.role)
+
+    //USE EFFECT
     useEffect(()=> {
         console.log(role)
         if (role === "student") {
@@ -14,8 +19,9 @@ const Redirect = () => {
         } else if (role === "teacher") {
             history.push("/teacherdash")
         } else if(role === "admin") {history.push("/settings")} 
-        else role ?? history.push("/")
+        else history.push("/")
     }, [])
+    
     return (
         <div style={{width: "100vw", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
             <Loader 

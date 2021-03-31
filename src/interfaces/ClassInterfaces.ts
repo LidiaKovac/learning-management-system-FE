@@ -14,10 +14,10 @@ export interface ResClass {
 }
 
 export class SelectClass{
-    constructor(label:string, value:string | number) {
+    constructor(label:string, value:number) {
         this.label = label;
         this.value = value;
     }
-    value: string | number
-    label: string
+    value: number | undefined
+    label: string | undefined
 }

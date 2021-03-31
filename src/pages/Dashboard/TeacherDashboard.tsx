@@ -13,17 +13,18 @@ import { useHistory } from "react-router"
 import { LoggedState } from "../../interfaces/interfaces"
 import { retrieve_logged_action } from "../../actions/login_actions"
 
-import GradeSummary from "../../components/GradeSummary/GradeSummary"
+//import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda"
 import Cal from "../../components/Calendar/Calendar"
 import Todo from "../../components/Homework/Homework"
-import RecentNotes from "../../components/RecentNotes/RecentNotes"
+//import RecentNotes from "../../components/RecentNotes/RecentNotes"
 import { TeacherMenu } from "../../components/Menu/Menu"
 import EventBuilder from "../../components/EventBuilder/EventBuilder"
+import { ComingSoon } from "../../components/ComingSoon/ComingSoon"
 
 const TeacherDashboard:React.FC = () => {
     //STATE
-    const [createMode, setCreateMode] = useState<Boolean>(true)
+    const [createMode, setCreateMode] = useState<Boolean>(false)
     //HOOKS
     const dispatch = useDispatch()
     const history = useHistory()
@@ -57,7 +58,8 @@ const TeacherDashboard:React.FC = () => {
                         <span className="graph__header">
                             <img src={Graph} alt="graph" className="icon"/> Grades
                         </span>
-                        <GradeSummary/>
+                        {/* <GradeSummary/> */}
+                        <ComingSoon/>
                     </div>
                     <div className="dashboard__todos">
                         <span className="todo__header">
@@ -71,12 +73,13 @@ const TeacherDashboard:React.FC = () => {
                       <img src={Notebook} alt="recent" className="icon" style={{marginRight: "10px"}}/>  Recent notes
                     </div>
                     <div className="recent__content">
-                    <RecentNotes/> <RecentNotes/> <RecentNotes/> 
+                    <ComingSoon/>
+                    {/* <RecentNotes/> <RecentNotes/> <RecentNotes/>  */}
                     </div>
                 </div>
             </div>
             <div className="dashboard__agenda">
-            <div className="" onClick={()=> setCreateMode(!createMode)}>Add an event / See events</div>
+            <div className="add-see" onClick={()=> setCreateMode(!createMode)}>Add an event / See events</div>
                {!createMode ? <> 
                 <Cal/>
                 <Agenda/>
