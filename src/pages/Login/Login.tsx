@@ -33,13 +33,7 @@ const Login: React.FC<any> = () => {
 	//USE EFFECTS:
 	useEffect(() => {
 		if (props.is_authorized) {
-			switch(props.logged_user?.role) {
-				case "student": 
-					return history.push("/studentdash")
-				case "teacher": 
-					return history.push("/teacherdash")
-				default: history.push("/admin")
-			}
+			history.push("/redirect")
 		}
 	}, [props.is_authorized])
 
