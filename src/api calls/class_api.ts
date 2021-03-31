@@ -12,8 +12,29 @@ export const search_class = async(query:String):Promise<any> => {
         body: JSON.stringify({query: query})
     })
         const json = await response.json()
+
+        for (let i = 0; i< json.length; i++) {
+            const author_found = await get_author(json[i].author)
+            json[i].author_data = author_found?.name + " " + author_found?.last_name
+            console.log(json)
+        }
+        delete json.author
         if (json.length > 0) return json
         else return []
+}
+
+export const get_author = async(id:number | undefined):Promise<any> => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}user/${id}`, {
+        "method": "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+        },
+        credentials: "include"
+    })
+        const json = await response.json()
+        if (json) return {name: json.name, last_name: json.last_name }
+        else return null
 }
 
 export const enroll = async(id:number):Promise<any> => {
@@ -25,6 +46,7 @@ export const enroll = async(id:number):Promise<any> => {
         },
         credentials: "include"
     })
+        
         return await response.json()
 }
 
@@ -66,6 +88,12 @@ export const get_enrolled = async() => {
         credentials: "include",
     })
         const json = await response.json()
+        for (let i = 0; i< json.length; i++) {
+            const author_found = await get_author(json[i].author)
+            json[i].author_data = author_found?.name + " " + author_found?.last_name
+            console.log(json)
+        }
+        delete json.author
         if (typeof json !== "number" && json.length > 0) return json 
         else return []
 }

@@ -1,0 +1,79 @@
+@import "../../styling/Colors";
+@import "../../styling//Fonts";
+
+.classes__wrap {
+  width: 100vw;
+  min-height: 100vh;
+  height: auto;
+
+  //max-height: 200vh;
+
+  //overflow-x: hidden;
+
+  background-color: $bg;
+  font-family: $font-main;
+  color: $text-main;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  .classes__content {
+    input {
+      align-self: center;
+      margin-bottom: 30px;
+    }
+    width: 85%;
+    min-height: 80vh;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 40px;
+
+    background-color: white;
+    margin-right: 50px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    .classes__single {
+      border-radius: 20px;
+      margin: 10px;
+      width: 60%;
+      max-height: 200px;
+      min-height: 150px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      .class__header {
+        color: $text-main;
+        font-size: 18pt;
+        margin-bottom: 20px;
+      }
+      .class__content {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: 1.2;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        height: calc(
+          1em * 1.2 * 2
+        ); //1.2 IS THE STANDARD LINE HEIGHT, 1 IS THE AMOUNT OF LINES
+      }
+      .class__author {
+        color: $text-main;
+        font-size: 11pt;
+
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+.see-enrolled {
+  font-weight: bold;
+  font-size: 18pt;
+  text-align: center;
+}

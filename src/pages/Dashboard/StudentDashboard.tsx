@@ -76,8 +76,11 @@ const StudentDashboard:React.FC = () => {
                       <img src={Notebook} alt="recent" className="icon" style={{marginRight: "10px"}}/>  Recent notes
                     </div>
                     <div className="recent__content">
-                        {files?.filter((f)=> f.type === "markdown").slice(0,3).map((f, index)=><Link to="/notes" key={index}><RecentNotes content={f}  /></Link>)}
-                     
+                        {files?.filter((f)=> f.type === "markdown").slice(0,3).map((f, index)=>
+                            
+                                <RecentNotes content={f} key={index} />
+                            
+                        )}
                     </div>
                 </div>
             </div>

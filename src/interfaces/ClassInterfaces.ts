@@ -2,6 +2,12 @@ export interface IClass {
     class_id?: number
     name?: string | undefined
     description?: string | undefined
+    author?: number | undefined
+    author_data?: string | undefined
+}
+
+export interface SingleProps {
+    c: IClass
 }
 
 export interface ResClass {
