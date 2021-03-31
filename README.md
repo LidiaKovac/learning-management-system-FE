@@ -116,8 +116,15 @@
 - Made a general code clean up, deleted unused stuff
 - Deployed frontend on heroku
 
+### Day 14/15 - Cookie nightmare 
+- Spent most of day 14 trying to make cookies wrong in prod 
+- Fixed a bug on events
+- Updates dashboards with dynamic components 
+- Created a Coming Soon component to fill empty spaces 
+- Added home button to menu for easier navigation 
 
-BY TUESDAY: 
+
+BY NEXT WEEK: 
  feedback for homework, which includes: 
   - ~change event model to include homework~
   - homeoworks have different structure 
