@@ -28,3 +28,4 @@ export const GET_BY_DATE = "GET_BY_DATE"
 export const GET_HW = "GET_HW"
 
 export const GET_ENROLLED = "GET_ENROLLED"
+export const GET_CLASS = "GET_CLASS"

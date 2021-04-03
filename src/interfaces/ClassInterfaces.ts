@@ -8,6 +8,7 @@ export interface IClass {
 
 export interface SingleProps {
     c: IClass
+    onClick?: Function
 }
 
 export interface ResClass {

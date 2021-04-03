@@ -1,10 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { enroll_action, get_enrolled_action } from "../../actions/class_actions";
-import { enroll } from "../../api calls/class_api";
+import { enroll_action } from "../../actions/class_actions";
 import { SingleProps } from "../../interfaces/ClassInterfaces";
 import { rootInitialState } from "../../interfaces/interfaces";
-import Spinner from "../Loader/Loader";
 import "./Single.scss";
 
 export const Single: React.FC<SingleProps> = ({ c }) => {

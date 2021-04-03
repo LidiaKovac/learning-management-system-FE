@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { retrieve_logged_action } from "../../actions/login_actions";
 import {
-  create_new_course,
-  enroll,
-  get_author,
   search_class,
 } from "../../api calls/class_api";
-import { create_hw } from "../../api calls/homework_api";
 import { rootInitialState } from "../../interfaces/interfaces";
 import { IClass } from "../../interfaces/ClassInterfaces";
 import { get_enrolled_action } from "../../actions/class_actions";
@@ -30,11 +26,6 @@ const Classes = () => {
 
   //USE STATE
   const [query, setQuery] = useState<String>("");
-  const [show, setShow] = useState(false);
-  const [selected, setSelected] = useState<IClass>();
-  const [homework, setHomework] = useState({
-    content: "",
-  });
   const [new_class, buildNew] = useState<IClass>();
   const [result, setResult] = useState<Array<any>>();
 
@@ -45,7 +36,6 @@ const Classes = () => {
     if (!logged) history.push("/");
     dispatch(get_enrolled_action());
   }, []);
-  
 
   //FUNCTIONS
   const submit_query = async (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -53,14 +43,6 @@ const Classes = () => {
       const result = await search_class(e.currentTarget.value);
       if (result) setResult(result);
     }
-  };
-
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    buildNew({
-      ...new_class,
-      [e.currentTarget.id]: e.currentTarget.value,
-    });
-    console.log(new_class);
   };
 
   return (
@@ -80,10 +62,22 @@ const Classes = () => {
               submit_query(e)
             }
           />
-          {result ? (<> 
-          {result?.map((class_s) => {
-            return <Single c={class_s} key={class_s.class_id}/>
-          })} </>) : <div className=''>{enrolled.map((en)=> <Single c={en} key={en.class_id}/> )}</div>}
+          {result ? (
+            <>
+              {result?.map((class_s) => {
+                return <Single c={class_s} key={class_s.class_id} />;
+              })}{" "}
+            </>
+          ) : (
+            <div className="">
+              {enrolled.map((en) => (
+                <div onClick={() => history.push(`/class/${en.class_id}`)}>
+                  {" "}
+                  <Single c={en} key={en.class_id} />{" "}
+                </div>
+              ))}{" "}
+            </div>
+          )}
         </div>
       </div>
 
