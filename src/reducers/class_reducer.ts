@@ -7,7 +7,7 @@ import {
 
 const class_initial_state = {
 	your_classes: [],
-	selected_state: {}
+	selected_class: {}
 }
 
 export const class_reducer = (state = class_initial_state, action:Action) => {

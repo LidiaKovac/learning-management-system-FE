@@ -64,5 +64,5 @@ export const get_your_files_action = () => async(dispatch:Dispatch<Action>):Prom
         // dispatch({type: LOADING_FALSE})
         dispatch({type: GET_YOUR_FILES, payload: response.content})
         
-    } else dispatch({type: ERROR, payload: response.message})
+    } else dispatch({type: ERROR, payload: "There are no files"})
 }

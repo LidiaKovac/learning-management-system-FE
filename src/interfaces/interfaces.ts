@@ -1,4 +1,4 @@
-import { IClass } from "./ClassInterfaces";
+import { IClass, Section } from "./ClassInterfaces";
 import { FileInitialState } from "./FileTypes";
 import { JoinData } from "./LoginTypes";
 
@@ -7,7 +7,7 @@ export interface Action {
   payload?: string | Object;
 }
 export interface SelectOption {
-  value: string;
+  value: string ;
   label: string;
 }
 
@@ -52,6 +52,12 @@ export interface eventInitialState {
 }
 export interface classInitialState {
   your_classes: Array<IClass>;
+  selected_class: {class: IClass, sections: Array<Section>, author_data?: {
+    name: string
+    last_name: string
+    email: string
+}}
+  
 }
 export interface LoggedState {
   user: {

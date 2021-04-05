@@ -6,7 +6,7 @@ import {
 } from "../../api calls/class_api";
 import { rootInitialState } from "../../interfaces/interfaces";
 import { IClass } from "../../interfaces/ClassInterfaces";
-import { get_enrolled_action } from "../../actions/class_actions";
+import { get_enrolled_action, get_owned_action } from "../../actions/class_actions";
 import { useHistory } from "react-router";
 import { Menu } from "../../components/Menu/Menu";
 import "./Classes.scss";
@@ -20,9 +20,10 @@ const Classes = () => {
   const logged = useSelector(
     (state: rootInitialState) => state.user.logged_user
   );
-  const enrolled = useSelector(
+  const classes = useSelector(
     (state: rootInitialState) => state.classes.your_classes
   );
+  const role = useSelector((state:rootInitialState)=> state.user.logged_user?.role)
 
   //USE STATE
   const [query, setQuery] = useState<String>("");
@@ -33,8 +34,9 @@ const Classes = () => {
 
   useEffect(() => {
     dispatch(retrieve_logged_action());
-    if (!logged) history.push("/");
-    dispatch(get_enrolled_action());
+    if (logged?.name === null || logged?.name === undefined) history.push("/");
+    if (logged?.role === "student") dispatch(get_enrolled_action());
+    else dispatch(get_owned_action())
   }, []);
 
   //FUNCTIONS
@@ -68,16 +70,14 @@ const Classes = () => {
                 return <Single c={class_s} key={class_s.class_id} />;
               })}{" "}
             </>
-          ) : (
-            <div className="">
-              {enrolled.map((en) => (
-                <div onClick={() => history.push(`/class/${en.class_id}`)}>
-                  {" "}
-                  <Single c={en} key={en.class_id} />{" "}
-                </div>
-              ))}{" "}
+          ) : (<div className="">
+          {classes?.map((en) => (
+            <div onClick={() => history.push(`/class/${en.class_id}`)}>
+              {" "}
+              <Single c={en} key={en.class_id} />{" "}
             </div>
-          )}
+          ))}
+        </div> )}
         </div>
       </div>
 

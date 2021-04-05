@@ -30,7 +30,7 @@ const App: React.FC = () => {
      <Route exact path="/notes"><LNotes/></Route>
 
      <Route exact path="/classes/search"><Classes/></Route>
-     <Route exact path="/class/:id"><SingleClassPage/></Route>
+     <Route exact path="/class/:id" component={SingleClassPage} />
     </BrowserRouter>
   );
 }

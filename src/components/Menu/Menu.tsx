@@ -71,10 +71,12 @@ export const TeacherMenu:React.FC = () => {
 				<img src={Graph} alt="stats" />
 				Stats
 			</div>
+			<Link to="/classes/search">
 			<div className="dashboard__menu-item">
 				<img src={Books} alt="books" />
 				Classes
 			</div>
+			</Link>
 			<div className="dashboard__menu-item">
 				<img src={Settings} alt="settings" />
 				Settings

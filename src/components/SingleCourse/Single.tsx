@@ -26,7 +26,7 @@ export const Single: React.FC<SingleProps> = ({ c }) => {
     <div className="classes__single bg">
       <div className="class__header">{c.name}</div>
       <div className="class__content">{c.description}</div>
-      <div className="class__author">Teacher: {c.author_data}</div>
+      <div className="class__author">Teacher: {c.author_data!.name} {c.author_data!.last_name}</div>
       {!is_enrolled && <button className="enroll" onClick={() => {
           dispatch(enroll_action(c.class_id!))
           }}>

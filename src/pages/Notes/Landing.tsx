@@ -60,7 +60,7 @@ const LNotes: React.FC = () => {
             </Link>
           </span>
           <div className="landing__list">
-            {files?.map((f) => (
+            {files ? files?.map((f) => (
               <div onClick={() => setSelected(f)}>
                 <img
                   src={f.type === "image" ? Camera : Notes}
@@ -68,7 +68,7 @@ const LNotes: React.FC = () => {
                 />
                 {f.name || "Untitled note"}
               </div>
-            ))}
+            )) : "There are no files here"}
           </div>
         </div>
         <div className="landing__edit">

@@ -1,9 +1,16 @@
+import { RouteComponentProps } from "react-router";
+import { FileObject } from "./FileTypes";
+
 export interface IClass {
     class_id?: number
     name?: string | undefined
     description?: string | undefined
     author?: number | undefined
-    author_data?: string | undefined
+    author_data?: {
+        name: string
+        last_name: string
+        email: string
+    }
 }
 
 export interface SingleProps {
@@ -27,4 +34,18 @@ export class SelectClass{
     }
     value: number | undefined
     label: string | undefined
+}
+
+export interface SingleClassProps {
+    id: string
+}
+
+export interface Section {
+    name?: string
+    description?: string
+}
+
+export interface SectionReqBody {
+    section?: Section
+    files?: FileObject
 }

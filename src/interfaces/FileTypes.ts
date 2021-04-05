@@ -11,10 +11,11 @@ export interface ResponseMultipleFile {
 
 export interface FileObject {
   name?: string | undefined;
-  type?: "pdf" | "video" | "image" | "audio" | "markdown" | "" | undefined;
+  type?: "pdf" | "video" | "image" | "audio" | "markdown" | "" | undefined | string;
   material?: File | string;
   description?: string;
   file_id?: number | null;
+  class_ref?: number
 }
 
 export interface FileInitialState extends FileObject {
