@@ -1,4 +1,5 @@
 import { SectionReqBody } from "../interfaces/ClassInterfaces";
+import { FileObject } from "../interfaces/FileTypes";
 import { get_token_from_cookies } from "../utils";
 const { REACT_APP_BACKEND_URL } = process.env;
 
@@ -140,7 +141,7 @@ export const get_single_class = async (id: number) => {
   });
   if (response.ok) {
     const json = await response.json();
-    console.log(json);
+    console.log("1",json);
     const author_found = await get_author(json.class.author);
     console.log(author_found);
     json.author_data = {
@@ -148,8 +149,10 @@ export const get_single_class = async (id: number) => {
       last_name: author_found.last_name,
       email: author_found.email,
     };
-    //console.log(json)
-
+    for (let i = 0; i<json.sections.length; i++) {
+      json.sections[i].files = json.files.filter((f:FileObject)=> f.section_ref === json.sections[i].section_id )
+    }
+    console.log("HERE", json)
     return json;
   }
 };

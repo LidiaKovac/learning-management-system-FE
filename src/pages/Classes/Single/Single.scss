@@ -83,6 +83,16 @@
     .section__content {
         margin-bottom: 20px;
     }
+    .section__files {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        img {
+            width: 200px;
+            height: auto;
+            object-fit: cover;
+        }
+    }
 }
 
 .hide {

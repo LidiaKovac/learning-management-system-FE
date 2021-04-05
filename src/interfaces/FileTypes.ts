@@ -15,7 +15,7 @@ export interface FileObject {
   material?: File | string;
   description?: string;
   file_id?: number | null;
-  class_ref?: number
+  section_ref?: number
 }
 
 export interface FileInitialState extends FileObject {

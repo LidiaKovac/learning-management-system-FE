@@ -22,6 +22,7 @@ const SingleClassPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const params = useParams<SingleClassProps>();
+  const [files, setFiles] = useState<FormData>()
   const selected = useSelector(
     (state: rootInitialState) => state.classes.selected_class?.class
   );
@@ -96,8 +97,9 @@ const SingleClassPage = () => {
   };
   const create_new_section = async () => {
     dispatch({ type: LOADING_TRUE });
-    console.log(section);
     const new_section = await create_section(section, parseInt(params.id));
+    files?.append("section_ref", new_section.id)
+    const new_file = await upload_file(section?.files?.type!, files!)
     if (new_section.message === "Created") setCreate(false);
     dispatch(select_class_action(params.id));
   };
@@ -108,10 +110,11 @@ const SingleClassPage = () => {
       fd.append("type", section?.files?.type!)
       fd.append("name", section?.files?.name!)
       dispatch({ type: LOADING_TRUE })
-      const new_file = await upload_file(section?.files?.type!, fd)
-      if (new_file) {
-        dispatch({ type: LOADING_FALSE })
-      }
+      setFiles(fd)
+      // const new_file = await upload_file(section?.files?.type!, fd)
+      // if (new_file) {
+      //   dispatch({ type: LOADING_FALSE })
+      // }
   }
   
   return (
@@ -197,6 +200,7 @@ const SingleClassPage = () => {
             <li key={index}>
               <div className="section__name">{s.name}</div>
               <div className="section__content">{s.description}</div>
+              <span className='section__files'>{s.files?.map((f)=> f.type === 'image' ? <img src={f.description}/> : f.type === 'pdf' ? <a target='_blank' href={`${f.description}`} download >Download PDF</a> : <iframe src={f.description}></iframe>)}</span>
             </li>
           ))}
         </ol>
