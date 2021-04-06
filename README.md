@@ -125,6 +125,11 @@
 - Added class page with searchbar 
 - Fixed firebase problem
 
+### Day 16 - Post-Easter renovation
+- Finished Class page and added file upload for sections. 
+- Created To-do endpoint for teachers 
+- Started on homeworks
+
 BY NEXT WEEK: 
  feedback for homework, which includes: 
   - ~change event model to include homework~
