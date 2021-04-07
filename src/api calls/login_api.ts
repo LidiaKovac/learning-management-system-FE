@@ -10,7 +10,7 @@ export const login = async(data:LoginData):Promise<any> => {
         headers: {
             "Content-Type": "application/json",
         },
-        credentials: "include",
+        //credentials: "include",
         body: JSON.stringify(data)
     })
         return await response.json()
@@ -22,7 +22,7 @@ export const get_current_user = async():Promise<LoggedUser> => {
         headers: {
             Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
         },
-        credentials: "include"
+        //credentials: "include"
     })
     
     const json = await user.json()
