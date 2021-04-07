@@ -8,7 +8,7 @@ import { rootInitialState } from "../../interfaces/interfaces";
 import { IClass } from "../../interfaces/ClassInterfaces";
 import { get_enrolled_action, get_owned_action } from "../../actions/class_actions";
 import { useHistory } from "react-router";
-import { Menu } from "../../components/Menu/Menu";
+import { Menu, TeacherMenu } from "../../components/Menu/Menu";
 import "./Classes.scss";
 import { Single } from "../../components/SingleCourse/Single";
 const Classes = () => {
@@ -51,7 +51,7 @@ const Classes = () => {
     <>
       <div className="classes__wrap">
         <div className="dashboard__menu">
-          <Menu />
+          {logged?.role === "student" ? <Menu /> : <TeacherMenu/>}
         </div>
         <div className="classes__content">
           <input

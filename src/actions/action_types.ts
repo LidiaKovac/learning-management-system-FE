@@ -29,3 +29,6 @@ export const GET_HW = "GET_HW"
 
 export const GET_ENROLLED = "GET_ENROLLED"
 export const GET_CLASS = "GET_CLASS"
+
+export const ADD_TODO = "ADD_TODO"
+export const GET_TODO = "GET_TODO"

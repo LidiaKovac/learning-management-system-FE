@@ -11,7 +11,7 @@ import {
   SelectOption,
 } from "../../interfaces/interfaces";
 import Spinner from "../Loader/Loader";
-
+import "./EventBuilder.scss"
 const EventBuilder = () => {
   //HOOKS
   const history = useHistory();
@@ -25,6 +25,7 @@ const EventBuilder = () => {
     description: "",
     startDate: "",
     endDate: "",
+    graded: false,
     ClassClassId: undefined,
   });
 
@@ -108,6 +109,14 @@ const EventBuilder = () => {
           onChangeHandler(e)
         }
       />
+      <span className='graded-input'>
+
+      <input type ='checkbox' id='check' onChange={()=> setEvent({
+        ...event,
+        graded: !event.graded
+      })}/> 
+      <label htmlFor='check'>Graded?</label>
+      </span>
       <AsyncSelect
         options={option_class}
         id="ClassClassId"
@@ -146,6 +155,7 @@ const EventBuilder = () => {
             description: "",
             startDate: "",
             endDate: "",
+            graded: false,
             ClassClassId: event.ClassClassId,
           });
         }}

@@ -9,7 +9,7 @@ import { select_class_action } from "../../../actions/class_actions";
 import { retrieve_logged_action } from "../../../actions/login_actions";
 import { create_section } from "../../../api calls/class_api";
 import { upload_file } from "../../../api calls/file_api";
-import { Menu } from "../../../components/Menu/Menu";
+import { Menu, TeacherMenu } from "../../../components/Menu/Menu";
 import {
   SingleClassProps,
   SectionReqBody,
@@ -37,6 +37,7 @@ const SingleClassPage = () => {
   );
   useEffect(() => {
     dispatch(retrieve_logged_action());
+    console.log(logged?.role)
     if (!logged?.name) history.push("/");
     dispatch(select_class_action(params.id));
     is_owner();
@@ -120,7 +121,7 @@ const SingleClassPage = () => {
   return (
     <div className="classes__wrap">
       <div className="dashboard__menu">
-        <Menu />
+        {logged?.role === "student" ? <Menu /> : <TeacherMenu/>}
       </div>
       <div className="classes__content">
         <div className="classes__header-container">

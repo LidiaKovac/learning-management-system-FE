@@ -1,0 +1,54 @@
+@import "../../styling/Colors";
+
+
+.hw-page__main {
+    color: $text-main;
+    width: 85%;
+        min-height: 90vh;
+        height: 90%;
+
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        padding-left: 30px;
+
+        background-color: white;
+        margin-right: 50px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        flex-wrap: wrap;
+        h2.header {
+            color: $text-main;
+            font-size: 25pt;
+            font-weight: bold;
+            margin-left: 0!important;
+            
+        }
+    .hw-page__content {
+        
+        h3 {
+            color: $text-main;
+            
+        }
+    }
+        li.hw-page__single {
+            list-style: decimal;
+            padding-bottom: 30px;
+            div {
+                display: flex;
+                flex-direction: column;
+                
+                span {
+                    margin-bottom: 10px;
+                    margin-left: 20px;
+                }
+                span.title {
+                    margin-left: 0!important;
+                }
+            }
+            
+        }
+        
+    }

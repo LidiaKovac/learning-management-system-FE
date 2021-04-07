@@ -6,7 +6,19 @@
     text-align: left;
    .homework__single {
        cursor: pointer;
+       display: flex;
+       flex-direction: row;
+       input {
+           margin: 10px!important
+       }
+       label {
+           margin: 10px!important;
+           width: fit-content
+       }
    }
+}
+input[type="checkbox"] {
+    margin: 0!important
 }
 input[type="checkbox"]:checked + label {
             text-decoration: line-through;

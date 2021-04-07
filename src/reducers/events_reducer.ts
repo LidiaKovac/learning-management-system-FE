@@ -19,7 +19,7 @@ export const event_reducer = (state = event_initial_state, action:Action) => {
 		case ADD_EVENT: 
 			return {
 				...state,
-				your_events: action.payload
+				your_events: [...state.your_events, action.payload]
 			}
 		case REMOVE_EVENT:
 			return {

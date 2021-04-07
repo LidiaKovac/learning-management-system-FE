@@ -1,6 +1,7 @@
 import { IClass, Section } from "./ClassInterfaces";
 import { FileInitialState } from "./FileTypes";
 import { JoinData } from "./LoginTypes";
+import { Todo } from "./TodoInterfaces";
 
 export interface Action {
   type: string;
@@ -16,6 +17,9 @@ export interface rootInitialState {
   file: FileInitialState;
   events: eventInitialState;
   classes: classInitialState;
+  tasks: {
+    tasks: Array<Todo>
+  }
 }
 export interface User {
   user_id: number;
@@ -78,6 +82,8 @@ export interface IEvent {
   type: string | undefined;
   description: string | undefined;
   startDate: string | undefined;
+  graded: boolean
   endDate: string | undefined;
-  ClassClassId: number | undefined;
+  ClassClassId?: number | undefined;
+  class?: IClass;
 }

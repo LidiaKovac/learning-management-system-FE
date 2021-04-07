@@ -18,7 +18,7 @@ export const search_class = async (query: String): Promise<any> => {
   for (let i = 0; i < json.length; i++) {
     const author_found = await get_author(json[i].author);
     json[i].author_data = author_found?.name + " " + author_found?.last_name;
-    console.log(json);
+    
   }
   delete json.author;
   if (json.length > 0) return json;
@@ -141,9 +141,9 @@ export const get_single_class = async (id: number) => {
   });
   if (response.ok) {
     const json = await response.json();
-    console.log("1",json);
+
     const author_found = await get_author(json.class.author);
-    console.log(author_found);
+    ;
     json.author_data = {
       name: author_found.name,
       last_name: author_found.last_name,
@@ -152,7 +152,6 @@ export const get_single_class = async (id: number) => {
     for (let i = 0; i<json.sections.length; i++) {
       json.sections[i].files = json.files.filter((f:FileObject)=> f.section_ref === json.sections[i].section_id )
     }
-    console.log("HERE", json)
     return json;
   }
 };
