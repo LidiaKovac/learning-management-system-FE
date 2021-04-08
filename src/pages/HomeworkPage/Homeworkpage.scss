@@ -11,6 +11,7 @@
         margin-bottom: 30px;
 
         padding-left: 30px;
+        padding-right: 30px;
 
         background-color: white;
         margin-right: 50px;
@@ -27,7 +28,38 @@
             
         }
     .hw-page__content {
-        
+        display: flex;
+        flex-direction: row;
+        .hw-page__list {
+            width: 30%;
+            button {
+                width: 100%;
+            }
+        }
+        .hw-page__editor {
+            width: 65%;
+            padding-left: 50px;
+            height: 60vh!important;
+            .display-hidden {
+                display: none;
+            }
+            textarea {
+                height: 60vh;
+            }
+            div.w-md-editor {
+                height: 60vh!important;
+            }
+            .w-md-editor-content {
+                height: calc(60vh - 29px)!important;
+            }
+            // div:not(.w-md-editor-toolbar) {
+            //     height: calc(60vh - 50px)!important;
+                
+            // }
+            // .w-md-editor-aree {
+                
+            // }
+        }
         h3 {
             color: $text-main;
             

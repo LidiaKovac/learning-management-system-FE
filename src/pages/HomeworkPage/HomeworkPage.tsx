@@ -4,6 +4,7 @@ import { useHistory } from "react-router";
 import { get_enrolled_action } from "../../actions/class_actions";
 import { get_homework_action } from "../../actions/events_actions";
 import AsyncSelect from "react-select";
+import MDEditor from "@uiw/react-md-editor"
 import { retrieve_logged_action } from "../../actions/login_actions";
 import { TeacherMenu, Menu } from "../../components/Menu/Menu";
 import { IEvent, rootInitialState, SelectOption } from "../../interfaces/interfaces";
@@ -29,6 +30,8 @@ const HWPage = () => {
 
   const [options, setOptions] = useState<Array<SelectClass>>([]);
   const [selected, setClass] = useState<SelectClass | null>();
+  const [editor, showEditor] = useState<boolean>(false)
+  const [value, setValue] = useState<string | undefined>()
   const [hw, setHw] = useState<IEvent[]>()
 
   //USE EFFECT
@@ -81,6 +84,7 @@ const HWPage = () => {
           onChange={(val: SelectClass | null) => setClass(val)}
         />
         <div className="hw-page__content">
+          <div className='hw-page__list'>
           <ol>
           {hw?.length! > 0 ? hw?.map((h) => (
               <li className="hw-page__single" key={h.class?.class_id}>
@@ -100,11 +104,21 @@ const HWPage = () => {
                   <span>
                     <strong>Due: </strong> {h.endDate?.split("T")[0]}, h. {h.endDate?.split("T")[1]}
                   </span>
-                  <button> Submit </button>
+                  <button onClick={()=> showEditor(!editor)}> {!editor ? "Write" : "Close editor (lose progress)"} </button>
                 </div>
               </li>
             )) : "No homework yet!"}
             </ol>
+            </div>
+            <div className='hw-page__editor'>
+            <MDEditor
+					value={value ?? "Type here"}
+					onChange={(content: string | undefined) => setValue(content)}
+					onFocus={() => setValue("")}
+					className={editor ? "type__editor" : "display-hidden"}
+				/>
+        {editor && <button>Submit</button>}
+            </div>
         </div>
       </div>
     </div>
