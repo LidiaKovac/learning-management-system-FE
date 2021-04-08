@@ -10,7 +10,7 @@ export const login = async(data:LoginData):Promise<any> => {
         headers: {
             "Content-Type": "application/json",
         },
-        //credentials: "include",
+        credentials: "include",
         body: JSON.stringify(data)
     })
         return await response.json()
