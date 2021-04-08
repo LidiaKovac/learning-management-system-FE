@@ -1,8 +1,18 @@
 @import "../../styling/Colors";
 @import "../../styling/Fonts";
 
+
+a.recent__link {
+  width: 100%;
+  min-width: 200px;
+  height: 80%;
+  min-height: 170px;
+  margin: 13px;
+  margin-top: 0;
+}
 .recent__wrap {
-  width: 30%;
+  width: 100%;
+  min-width: 200px;
   height: 80%;
   min-height: 170px;
   margin: 13px;
@@ -26,7 +36,7 @@
     padding: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
-line-height: 1.2;
+    line-height: 1.2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 10;

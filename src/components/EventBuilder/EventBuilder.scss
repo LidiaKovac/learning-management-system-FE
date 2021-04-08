@@ -1,0 +1,27 @@
+@import "../../styling/Colors";
+
+span.graded-input {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  input[type=checkbox]#check {
+      width: 15px!important;
+      margin: 0!important;
+      margin-right: 20px!important;
+  }
+  label {
+    margin: 0!important;
+  }
+//   input[type=checkbox]#check {
+//     width: 15px !important;
+//     &+label {
+//         color: $text-main;
+//     }
+    
+//   }
+  input[type=checkbox]#check:checked + label {
+    text-decoration: none!important;
+    margin: 0!important;
+}
+  
+}

@@ -2,6 +2,15 @@
 
 @import "../../styling/Fonts";
 
+
+@media screen and (max-width: 1328px) {
+  .landing__main {
+    flex-direction: column!important;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 .landing__wrap {
   width: 100vw;
   min-height: 100vh;

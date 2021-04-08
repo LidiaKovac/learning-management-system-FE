@@ -1,0 +1,167 @@
+@import "../../../styling/Colors";
+
+
+.classes__header-container {
+    width: -webkit-fill-available;
+    height: 250px;
+    margin: -40px;
+    padding-left: 50px;
+
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    background-image: url("../../../assets/class-bg.png");
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    margin-bottom: 50px;
+
+    .class__header {
+        font-size: 25pt;
+        height: auto!important;
+    }
+    .classes__section-header {
+        
+        margin: 20px
+    }
+    
+}
+
+
+
+.classes__add-section {
+    width: fit-content;
+    height: 20px;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    svg {
+        width: 15px;
+        height: 15px;
+    }
+    &:hover {
+        background-color: $blue-deep;
+        border-radius: 20px;
+    }
+    
+}
+
+.classes_create {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    
+    .section__actions {
+        width: 100%;
+        .section__button {
+            margin-right: 10px;
+        }
+    }
+}
+.sections__list {
+    width: 100%;
+    height: auto;
+    li {
+        border-top: $blue-deep 1px solid;
+        &:hover { 
+            svg.edit-delete {
+                display: block;
+            }
+        }
+    }
+    .section__name, li::marker {
+        font-size: 20pt;
+        margin-bottom: 30px;
+        margin-top: 20px;
+    }
+    .section__content {
+        margin-bottom: 20px;
+    }
+    .section__files {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        img {
+            width: 200px;
+            height: auto;
+            object-fit: cover;
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+input.section__input {
+    width: 300px!important;
+    margin: 0!important;
+    margin-bottom: 10px!important;
+    align-self: flex-start!important;
+}
+
+input[type='file'] {
+    display: none;
+}
+label {
+    margin: 20px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    span {
+        margin-top: 3px;
+    }
+    svg {
+        width: 20px;
+        height: 20px;
+        margin-left: 10px;
+        margin-bottom: 1px;
+    }
+}
+.section__options {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.section--select {
+    margin: 15px;
+    width: 80%;
+    height: 40px;
+    font-size: 10pt;
+
+    .section--select__control {
+        height: 40px;
+        background-color: $input;
+        border: none;
+        border-radius: 20px;
+        color: $text-main;
+
+        .section--select__value-container {
+            height: 40px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+
+        }
+
+        .section--select__indicators {
+            span {
+                background-color: $text-main;
+            }
+
+            div {
+                color: $text-main !important
+            }
+
+
+        }
+    }
+}

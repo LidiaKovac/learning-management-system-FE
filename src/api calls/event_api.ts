@@ -27,9 +27,24 @@ export const get_scheduled = async():Promise<ResponseEvent | Array<null>> => {
         credentials: "include"
     })
     const json = await response.json()
-    console.log(json.content)
+    console.log(json)
     if (json.status === 204) return []
-    else return json.content
+    else return json
+}
+
+export const get_created = async():Promise<ResponseEvent | Array<null>> => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}event/created/me`, {
+        "method": "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+        },
+        credentials: "include"
+    })
+    const json = await response.json()
+    console.log(json)
+    if (json.status === 204) return []
+    else return json
 }
 
 export const get_by_date = async(date:Date):Promise<ResponseEvent | Array<null>> => {
@@ -48,6 +63,20 @@ export const get_by_date = async(date:Date):Promise<ResponseEvent | Array<null>>
 
 export const get_homework = async() => {
     const response = await fetch(`${REACT_APP_BACKEND_URL}event/homework/me`, {
+        "method": "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+        },
+        credentials: "include"
+    })
+    const json = await response.json()
+    if (json.status === 204) return []
+    else return json.content
+}
+
+export const get_homework_created = async() => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}homework/created/me`, {
         "method": "GET",
         headers: {
             "Content-Type": "application/json",

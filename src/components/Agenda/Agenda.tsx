@@ -39,7 +39,7 @@ const Agenda: React.FC = () => {
     <div className="agenda__wrap">
       <span>Your events: </span>
       {events_by_date && events_by_date.length > 0
-        ? events_by_date?.slice(start, offset).filter((ev)=> ev.type !== "homework").map((ev, index) => (
+        ? events_by_date?.filter((ev)=> ev.type !== "homework").slice(start, offset).map((ev, index) => (
             <div className="agenda__single bg" key={index}>
               <div className="agenda__title">{ev.name}</div>
               <div className="agenda__description">{ev.description}</div>

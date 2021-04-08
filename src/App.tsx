@@ -12,6 +12,8 @@ import UploadNotes from './pages/Notes/Upload/Upload_New';
 import LNotes from "./pages/Notes/Landing"
 import Notes from './pages/Notes/Type/Notes';
 import Classes from './pages/Classes/Classes';
+import SingleClassPage from './pages/Classes/Single/SingleClass';
+import HomeworkPage from './pages/HomeworkPage/HomeworkPage';
 
 const App: React.FC = () => {
   return (
@@ -29,6 +31,8 @@ const App: React.FC = () => {
      <Route exact path="/notes"><LNotes/></Route>
 
      <Route exact path="/classes/search"><Classes/></Route>
+     <Route exact path="/class/:id" component={SingleClassPage} />
+     <Route exact path="/homework"> <HomeworkPage/> </Route>
     </BrowserRouter>
   );
 }
