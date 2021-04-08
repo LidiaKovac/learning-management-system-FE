@@ -8,7 +8,7 @@ export const login = async(data:LoginData):Promise<any> => {
     const response = await fetch(`${REACT_APP_BACKEND_URL}login/`, {
         "method": "POST",
         headers: {
-            //"Content-Type": "application/json",
+            "Content-Type": "application/json",
         },
         //credentials: "include",
         body: JSON.stringify(data)
