@@ -24,6 +24,7 @@ export const login_action = (credentials: LoginData) => async (
 	if (credentials) {
 		const login_attempt = await login(credentials)
 		if (login_attempt.message === "Logged in") {
+			localStorage.setItem("token", login_attempt.token)
 			const current_user = await get_current_user()
 			dispatch({
 				type: LOGIN_SUCCESSFUL,

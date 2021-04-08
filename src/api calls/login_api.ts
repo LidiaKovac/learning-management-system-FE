@@ -9,6 +9,7 @@ export const login = async(data:LoginData):Promise<any> => {
         "method": "POST",
         headers: {
             "Content-Type": "application/json",
+            
         },
         credentials: "include",
         body: JSON.stringify(data)
@@ -20,7 +21,7 @@ export const get_current_user = async():Promise<LoggedUser> => {
     const user = await fetch(`${REACT_APP_BACKEND_URL}login/me`, {
         method: "GET",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         //credentials: "include"
     })
