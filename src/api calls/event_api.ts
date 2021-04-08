@@ -9,7 +9,7 @@ export const create_event = async(data:IEvent | object):Promise<IEvent> => {
         "method": "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         credentials: "include",
         body: JSON.stringify(data)
@@ -22,7 +22,7 @@ export const get_scheduled = async():Promise<ResponseEvent | Array<null>> => {
         "method": "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         credentials: "include"
     })
@@ -37,7 +37,7 @@ export const get_created = async():Promise<ResponseEvent | Array<null>> => {
         "method": "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         credentials: "include"
     })
@@ -52,7 +52,7 @@ export const get_by_date = async(date:Date):Promise<ResponseEvent | Array<null>>
         "method": "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         credentials: "include"
     })
@@ -66,7 +66,7 @@ export const get_homework = async() => {
         "method": "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         credentials: "include"
     })
@@ -80,7 +80,7 @@ export const get_homework_created = async() => {
         "method": "GET",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         credentials: "include"
     })

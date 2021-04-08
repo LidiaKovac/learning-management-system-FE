@@ -7,7 +7,7 @@ export const upload_file = async(type:String, body:FormData):Promise<ResponseFil
         method: "POST",
         credentials: "include",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         body: body
     })
@@ -19,7 +19,7 @@ export const create_note = async(note:FileObject):Promise<ResponseNote> => {
         method: "POST",
         credentials: "include",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify(note)
@@ -34,7 +34,7 @@ export const edit_note = async(id:number, new_note:FileObject):Promise<ResponseN
         method: "PUT",
         credentials: "include",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify(new_note)
@@ -47,7 +47,7 @@ export const get_your_files = async():Promise<ResponseMultipleFile> => {
         method: "GET",
         credentials: "include",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         }
     })

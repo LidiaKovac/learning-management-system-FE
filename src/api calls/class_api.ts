@@ -8,7 +8,7 @@ export const search_class = async (query: String): Promise<any> => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     credentials: "include",
     body: JSON.stringify({ query: query }),
@@ -30,7 +30,7 @@ export const get_author = async (id: number | undefined): Promise<any> => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     credentials: "include",
   });
@@ -45,7 +45,7 @@ export const enroll = async (id: number): Promise<any> => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     credentials: "include",
   });
@@ -60,7 +60,7 @@ export const create_new_course = async (
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     credentials: "include",
     body: JSON.stringify(class_n),
@@ -74,7 +74,7 @@ export const create_section = async(section:SectionReqBody | undefined, class_id
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
         },
         credentials: "include",
         body: JSON.stringify(section),
@@ -87,7 +87,7 @@ export const get_created_classes = async () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     credentials: "include",
   });
@@ -112,7 +112,7 @@ export const get_enrolled = async () => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     credentials: "include",
   });
@@ -135,7 +135,7 @@ export const get_single_class = async (id: number) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
     },
     credentials: "include",
   });

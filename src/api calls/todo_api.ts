@@ -7,7 +7,7 @@ export const create_todo = async(todo:Todo) => {
         method: "POST",
         credentials: "include",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify(todo)
@@ -20,7 +20,7 @@ export const get_todos = async() => {
         method: "GET",
         credentials: "include",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         }
     })
@@ -32,7 +32,7 @@ export const check_todo = async(id:number) => {
         method: "PUT",
         credentials: "include",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`,
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
             "Content-Type": "application/json"
         },
         body: JSON.stringify({

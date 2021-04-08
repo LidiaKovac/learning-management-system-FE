@@ -37,7 +37,7 @@ export const logout = async() => {
     await fetch(`${REACT_APP_BACKEND_URL}login/logout`, {
         method: "GET",
         headers: {
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         }
     })
 }

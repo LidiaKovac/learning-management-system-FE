@@ -8,7 +8,7 @@ export const create_hw = async(event_id:number, body:any):Promise<IEvent> => {
         "method": "POST",
         headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${get_token_from_cookies(document.cookie)}`
+            Authorization: `Bearer ${localStorage.getItem("token")}`
         },
         credentials: "include",
         body: JSON.stringify(body)
