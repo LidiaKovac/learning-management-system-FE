@@ -117,7 +117,7 @@ const Notes: React.FC = () => {
 							dispatch(
 								auto_save_note(
 									{ material: value, name: name, type: "markdown" },
-									selected.file_id!
+									state.file.file_id!
 								)
 							)
 						}
