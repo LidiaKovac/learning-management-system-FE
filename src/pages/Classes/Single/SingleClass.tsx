@@ -100,7 +100,9 @@ const SingleClassPage = () => {
     dispatch({ type: LOADING_TRUE });
     const new_section = await create_section(section, parseInt(params.id));
     files?.append("section_ref", new_section.id)
-    const new_file = await upload_file(section?.files?.type!, files!)
+    if (files) {
+      const new_file = await upload_file(section?.files?.type!, files!)
+    }
     if (new_section.message === "Created") setCreate(false);
     dispatch(select_class_action(params.id));
   };
