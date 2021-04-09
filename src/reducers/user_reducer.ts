@@ -83,9 +83,8 @@ export const user_reducer = (state = initial_state, action:Action) => {
 		case JOIN_SUCCESSFUL: 
 			return {
 				...state,
-				is_authorized: true,
+				is_authorized: false,
 				loading: false,
-				logged_user: action.payload,
 				error: ""
 			}
 		case JOIN_FAILED: 
