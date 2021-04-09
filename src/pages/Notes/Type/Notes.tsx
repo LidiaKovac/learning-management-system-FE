@@ -30,6 +30,7 @@ const Notes: React.FC = () => {
 	const dispatch = useDispatch()
 	const history = useHistory()
 	const state = useSelector((state: rootInitialState) => state)
+	const selected = useSelector((state:rootInitialState)=> state.file.selected)
 	const logged = useSelector((state: rootInitialState) => state.user.logged_user)
 	const loading = useSelector((state:rootInitialState) => state.user.loading)
 	//const files = useSelector((state:rootInitialState) => state.file.your_files)
@@ -116,7 +117,7 @@ const Notes: React.FC = () => {
 							dispatch(
 								auto_save_note(
 									{ material: value, name: name, type: "markdown" },
-									state.file.file_id!
+									selected.file_id!
 								)
 							)
 						}
