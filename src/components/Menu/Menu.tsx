@@ -47,10 +47,10 @@ export const Menu: React.FC = () => {
           Classes
         </div>
       </Link>
-      <div className="dashboard__menu-item" style={{ cursor: "not-allowed" }}>
+      {/* <div className="dashboard__menu-item" style={{ cursor: "not-allowed" }}>
         <img src={Settings} alt="settings" />
         Settings
-      </div>
+      </div> */}
       <div
         className="dashboard__menu-item"
         onClick={() => {
@@ -93,10 +93,10 @@ export const TeacherMenu: React.FC = () => {
           Classes
         </div>
       </Link>
-      <div className="dashboard__menu-item">
+      {/* <div className="dashboard__menu-item">
         <img src={Settings} alt="settings" />
         Settings
-      </div>
+      </div> */}
       <div
         className="dashboard__menu-item"
         onClick={() => {

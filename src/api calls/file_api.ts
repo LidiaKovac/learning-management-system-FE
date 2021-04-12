@@ -29,7 +29,7 @@ export const create_note = async(note:FileObject):Promise<ResponseNote> => {
 }
 
 export const edit_note = async(id:number, new_note:FileObject):Promise<ResponseNote> => {
-    console.log(id)
+    
     const response = await fetch(`${REACT_APP_BACKEND_URL}files/${id}`, {
         method: "PUT",
         credentials: "include",
@@ -45,6 +45,18 @@ export const edit_note = async(id:number, new_note:FileObject):Promise<ResponseN
 export const get_your_files = async():Promise<ResponseMultipleFile> => {
     const response = await fetch(`${REACT_APP_BACKEND_URL}files/me`, {
         method: "GET",
+        credentials: "include",
+        headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+            "Content-Type": "application/json"
+        }
+    })
+    return await response.json()
+}
+
+export const delete_file = async(id:number):Promise<null> => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}files/${id}`, {
+        method: "DELETE",
         credentials: "include",
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`,

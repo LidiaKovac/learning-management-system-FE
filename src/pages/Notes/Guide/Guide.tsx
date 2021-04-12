@@ -3,7 +3,7 @@ import MDEditor from "@uiw/react-md-editor"
 const Guide = () => {
     return (<>
         <h2>
-							<Link to="/notes/new">Looking to upload a file?</Link>
+							<Link to="/notes/new" style={{textDecoration: "underline"}}>Looking to upload a file?</Link>
 						</h2>
 						<h2>How to use this editor:</h2>
 						<p>

@@ -37,11 +37,11 @@ const SingleClassPage = () => {
   );
   useEffect(() => {
     dispatch(retrieve_logged_action());
-    console.log(logged?.role)
+    
     if (!logged?.name) history.push("/");
     dispatch(select_class_action(params.id));
     is_owner();
-    console.log(section)
+    
   }, []);
   useEffect(() => {
     is_owner();
@@ -70,7 +70,7 @@ const SingleClassPage = () => {
   const [create, setCreate] = useState<Boolean>(false);
   const [section, createSection] = useState<SectionReqBody>();
   const on_change_handler__type = (val: SelectOption | null) => {
-		console.log(val)
+		
 		createSection({
       ...section,
       files: {

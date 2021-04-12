@@ -40,7 +40,7 @@ const Login: React.FC<any> = () => {
 	}, [props.is_authorized])
 
 	useEffect(() => {
-		console.log(document.cookie)
+		
 		if (document.cookie.length > 0 && !props.logged_out) {
 			dispatch(retrieve_logged_action())
 			if (props.is_authorized) {

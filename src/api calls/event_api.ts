@@ -27,7 +27,7 @@ export const get_scheduled = async():Promise<ResponseEvent | Array<null>> => {
         credentials: "include"
     })
     const json = await response.json()
-    console.log(json)
+    
     if (json.status === 204) return []
     else return json
 }
@@ -42,7 +42,7 @@ export const get_created = async():Promise<ResponseEvent | Array<null>> => {
         credentials: "include"
     })
     const json = await response.json()
-    console.log(json)
+    
     if (json.status === 204) return []
     else return json
 }

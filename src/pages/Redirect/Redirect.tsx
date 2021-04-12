@@ -13,7 +13,6 @@ const Redirect = () => {
 
     //USE EFFECT
     useEffect(()=> {
-        console.log(role)
         if (role === "student") {
             history.push("/studentdash")
         } else if (role === "teacher") {

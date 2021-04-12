@@ -39,8 +39,6 @@ const Notes: React.FC = () => {
 	//USE EFFECT
 	//useEffect(() => {
 	//		setInterval(() => {
-	//			console.log("10 secs")
-	//			console.log(state.file.file_id)
 	//			localStorage.setItem("draft", value!)
 	//			localStorage.setItem("title", name)
 	//			if (error === "jwt expired") {

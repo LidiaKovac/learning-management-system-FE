@@ -43,7 +43,7 @@ export const select_class_action = (class_id:string) => async(dispatch:Dispatch<
 		type: LOADING_TRUE
 	})
 	const selected = await get_single_class(parseInt(class_id))
-	console.log(selected)
+	
 	dispatch({type: GET_CLASS, payload: selected})
 	dispatch({type: LOADING_FALSE})
 }

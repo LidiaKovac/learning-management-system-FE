@@ -17,7 +17,7 @@ export const login = async(data:LoginData):Promise<any> => {
         return await response.json()
 }
 export const get_current_user = async():Promise<LoggedUser> => {
-    console.log("this is a cookie", document.cookie)
+    
     const user = await fetch(`${REACT_APP_BACKEND_URL}login/me`, {
         method: "GET",
         headers: {

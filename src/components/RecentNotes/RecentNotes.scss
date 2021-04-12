@@ -1,7 +1,6 @@
 @import "../../styling/Colors";
 @import "../../styling/Fonts";
 
-
 a.recent__link {
   width: 100%;
   min-width: 200px;
@@ -22,24 +21,29 @@ a.recent__link {
   border-radius: 20px;
   align-self: flex-start;
   .recent__head {
-      background-color: $blue-deep;
-      font-size: 18pt!important;
-      font-weight: bold;
-      text-align: center;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
+    background-color: $blue-deep;
+    font-size: 18pt !important;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .recent__desc {
-
     padding: 10px;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 1.2;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 10;
-    height: calc(1em * 1.13 * 10); //1.2 IS THE STANDARD LINE HEIGHT, 1 IS THE AMOUNT OF LINES
+    -webkit-line-clamp: 8;
+    height: calc(
+      1em * 1.1 * 8
+    ); //1.2 IS THE STANDARD LINE HEIGHT, 1 IS THE AMOUNT OF LINES
   }
 }

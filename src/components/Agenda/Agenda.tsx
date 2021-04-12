@@ -31,7 +31,7 @@ const Agenda: React.FC = () => {
   }, []);
   useEffect(() => {
     dispatch(get_by_date_action(selected_date));
-    console.log(events_by_date);
+    
   }, [selected_date]);
 
   

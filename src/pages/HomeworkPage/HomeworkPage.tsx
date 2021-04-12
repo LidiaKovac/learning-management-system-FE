@@ -57,12 +57,12 @@ const HWPage = () => {
   //FN
 
   const retrieveOptions = async () => {
-    console.log(enrolled);
+    
     let options = [];
     for (let i = 0; i < enrolled.length; i++) {
       const opt = new SelectClass(enrolled[i].name!, enrolled[i].class_id!);
       options.push(opt);
-      console.log(options);
+      
     }
     setOptions(options);
   };
