@@ -49,14 +49,11 @@ const UploadNotes: React.FC = () => {
 
 	//USE EFFECT
 	useEffect(() => {
-		if (document.cookie.length > 0) {
+
 			dispatch(retrieve_logged_action())
 			if (logged_user?.name === null) {
 				history.push("/")
 			}
-		} else {
-			history.push("/")
-		}
 	}, [])
 	const on_change_handler = (value:string) => {
 		setName(value)
