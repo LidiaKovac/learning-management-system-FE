@@ -25,6 +25,7 @@ const Notes: React.FC = () => {
 	const [saved, setSaved] = useState<Date | null>(null)
 	const [name, setName] = useState<string>("")
 	const [created, setCreated] = useState<boolean>(false)
+	const [editId, setEditId] = useState<number>()
 
 	//HOOKS
 	const dispatch = useDispatch()
@@ -35,6 +36,7 @@ const Notes: React.FC = () => {
 	const loading = useSelector((state:rootInitialState) => state.user.loading)
 	//const files = useSelector((state:rootInitialState) => state.file.your_files)
 	const error = useSelector((state: rootInitialState) => state.user.error)
+	const file_created = useSelector((state:rootInitialState)=> state.file.file_id)
 
 	//USE EFFECT
 	//useEffect(() => {
@@ -90,9 +92,11 @@ const Notes: React.FC = () => {
 						material: value,
 						name: name,
 					})
-				)
-				setSaved(new Date())
-				setCreated(true)
+					)
+					setSaved(new Date())
+					setCreated(true)
+					setEditId(file_created!)
+					console.log(editId)
 			}
 		}
 	}
@@ -112,12 +116,13 @@ const Notes: React.FC = () => {
 					/>
 					<button
 						onClick={() =>
-							dispatch(
+							{console.log(file_created)
+								dispatch(
 								auto_save_note(
-									{ material: value, name: name, type: "markdown" },
-									state.file.file_id!
+									{ description: value, name: name, type: "markdown" },
+									file_created!
 								)
-							)
+							)}
 						}
 					>
 						SAVE
@@ -126,7 +131,7 @@ const Notes: React.FC = () => {
 				<MDEditor
 					value={value ?? "Type here"}
 					onChange={(content: string | undefined) => setValue(content)}
-					onFocus={() => setValue("")}
+					//onFocus={() => setValue("")}
 					className="type__editor"
 				/>
 				<small>

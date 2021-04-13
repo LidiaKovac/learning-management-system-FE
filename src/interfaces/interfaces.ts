@@ -1,4 +1,5 @@
 import { IClass, Section } from "./ClassInterfaces";
+import { Homework } from "./EventTypes";
 import { FileInitialState } from "./FileTypes";
 import { JoinData } from "./LoginTypes";
 import { Todo } from "./TodoInterfaces";
@@ -8,7 +9,7 @@ export interface Action {
   payload?: string | Object;
 }
 export interface SelectOption {
-  value: string ;
+  value: string;
   label: string;
 }
 
@@ -18,8 +19,8 @@ export interface rootInitialState {
   events: eventInitialState;
   classes: classInitialState;
   tasks: {
-    tasks: Array<Todo>
-  }
+    tasks: Array<Todo>;
+  };
 }
 export interface User {
   user_id: number;
@@ -53,15 +54,19 @@ export interface eventInitialState {
   your_events: Array<IEvent>;
   event_by_date: Array<IEvent> | null;
   homework: Array<IEvent>;
+  submitted: Array<Homework>;
 }
 export interface classInitialState {
   your_classes: Array<IClass>;
-  selected_class: {class: IClass, sections: Array<Section>, author_data?: {
-    name: string
-    last_name: string
-    email: string
-}}
-  
+  selected_class: {
+    class: IClass;
+    sections: Array<Section>;
+    author_data?: {
+      name: string;
+      last_name: string;
+      email: string;
+    };
+  };
 }
 export interface LoggedState {
   user: {
@@ -78,11 +83,12 @@ export interface TokenError {
 }
 
 export interface IEvent {
+  event_id?: number;
   name: string | undefined;
   type: string | undefined;
   description: string | undefined;
   startDate: string | undefined;
-  graded: boolean
+  graded: boolean;
   endDate: string | undefined;
   ClassClassId?: number | undefined;
   class?: IClass;

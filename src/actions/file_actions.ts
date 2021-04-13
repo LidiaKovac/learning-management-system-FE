@@ -45,8 +45,10 @@ export const auto_save_note = (note: FileObject, id: number) => async (
 ): Promise<void> => {
   dispatch({ type: LOADING_TRUE });
   const response = await edit_note(id, note);
+  console.log(response)
   if (response.status === 201) {
     dispatch({ type: UPLOAD_SUCCESSFUL, payload: response.file_id });
+    console.log("passed")
     const files = await get_your_files();
     dispatch({ type: GET_YOUR_FILES, payload: files.content });
   } else dispatch({ type: ERROR, payload: response });

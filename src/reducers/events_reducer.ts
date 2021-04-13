@@ -3,6 +3,7 @@ import {
 	ADD_EVENT,
 	GET_BY_DATE,
 	GET_HW,
+	GET_SUB,
     REMOVE_EVENT,
     SELECT_DATE,
 } from "../actions/action_types"
@@ -11,7 +12,8 @@ const event_initial_state = {
 	selected_date: new Date(),
     your_events: [],
 	event_by_date: [],
-	homework: []
+	homework: [],
+	submitted: []
 }
 
 export const event_reducer = (state = event_initial_state, action:Action) => {
@@ -40,6 +42,12 @@ export const event_reducer = (state = event_initial_state, action:Action) => {
 			return {
 				...state, 
 				homework: action.payload
+			}
+		case GET_SUB: 
+			return {
+				...state,
+				loading: false,
+				submitted: action.payload
 			}
 		default: return state
 	}

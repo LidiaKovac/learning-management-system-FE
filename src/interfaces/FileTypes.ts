@@ -1,3 +1,5 @@
+import { Homework } from "./EventTypes";
+
 export interface ResponseFile {
   status: number;
   path: string;
@@ -14,9 +16,12 @@ export interface FileObject {
   type?: "pdf" | "video" | "image" | "audio" | "markdown" | "" | undefined | string;
   material?: File | string;
   description?: string;
+  content?: string;
   file_id?: number | null;
   section_ref?: number
 }
+
+export class FileObjectClass implements FileObject{}
 
 export interface FileInitialState extends FileObject {
   status: "Success" | "Pending" | "Failed" | "";
@@ -36,5 +41,7 @@ export interface ResponseNote {
 
 
 export interface RecentProps {
-    content: FileObject
+    content?: FileObject
+    homework?: Homework
 }
+

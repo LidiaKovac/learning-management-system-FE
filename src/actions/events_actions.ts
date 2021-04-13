@@ -6,6 +6,7 @@ import {
   GET_BY_DATE,
   GET_HW,
   ERROR,
+  GET_SUB,
 } from "./action_types";
 import { Action, IEvent } from "../interfaces/interfaces";
 import {
@@ -15,6 +16,7 @@ import {
   get_homework,
   get_homework_created,
   get_scheduled,
+  get_submitted_hw,
 } from "../api calls/event_api";
 import { get_single_class } from "../api calls/class_api";
 
@@ -114,3 +116,13 @@ export const get_created_homework_action = () => async (
   dispatch({ type: GET_HW, payload: homework });
   dispatch({ type: LOADING_FALSE });
 };
+
+export const get_submitted_hw_action = () => async(dispatch: Dispatch<Action>): Promise<void> => {
+  dispatch({
+    type: LOADING_TRUE
+  })
+  const sub = await get_submitted_hw()
+  if (sub.length > 0) {
+    dispatch({type: GET_SUB, payload: sub})
+  }
+}

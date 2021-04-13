@@ -78,7 +78,7 @@
             height: calc(70vh - 29px)!important
         }
         .w-md-editor-text {
-            height: inherit;
+            height: auto;
         }
     }
       .landing__thumb {
@@ -149,5 +149,16 @@
   margin-left: 12px;
   div {
     margin-top: 20px;
+  }
+}
+
+
+.thumbnail--landing {
+  border: none;
+  background-color: transparent!important;
+  &[title="video"], &[title="pdf"] {
+
+    width: 100% ;
+    height: 100%;
   }
 }

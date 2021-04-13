@@ -12,6 +12,7 @@ import "../Dashboard/Dashboard.scss";
 import "./Homeworkpage.scss";
 import { get_enrolled } from "../../api calls/class_api";
 import { IClass, SelectClass } from "../../interfaces/ClassInterfaces";
+import { create_hw } from "../../api calls/homework_api";
 
 const HWPage = () => {
   //HOOKS
@@ -33,6 +34,7 @@ const HWPage = () => {
   const [editor, showEditor] = useState<boolean>(false)
   const [value, setValue] = useState<string | undefined>()
   const [hw, setHw] = useState<IEvent[]>()
+  const [selected_hw, setSelectedHW] = useState<number | undefined>(undefined)
 
   //USE EFFECT
 
@@ -104,7 +106,9 @@ const HWPage = () => {
                   <span>
                     <strong>Due: </strong> {h.endDate?.split("T")[0]}, h. {h.endDate?.split("T")[1]}
                   </span>
-                  <button onClick={()=> showEditor(!editor)}> {!editor ? "Write" : "Close editor (lose progress)"} </button>
+                  <button onClick={()=>{
+                    setSelectedHW(h.event_id)
+                    showEditor(!editor)}}> {!editor ? "Write" : "Close editor (lose progress)"} </button>
                 </div>
               </li>
             )) : "No homework yet!"}
@@ -114,10 +118,10 @@ const HWPage = () => {
             <MDEditor
 					value={value ?? "Type here"}
 					onChange={(content: string | undefined) => setValue(content)}
-					onFocus={() => setValue("")}
+					//onFocus={() => setValue("")}
 					className={editor ? "type__editor" : "display-hidden"}
 				/>
-        {editor && <button>Submit</button>}
+        {editor && <button onClick={()=>create_hw(selected_hw!, value!)} style={{width: "250px"}}>Submit <b style={{color: "red"}}>CAN'T BE UNDONE</b></button>}
             </div>
         </div>
       </div>

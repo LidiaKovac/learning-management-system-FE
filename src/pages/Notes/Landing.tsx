@@ -2,6 +2,8 @@ import { Link, useHistory } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import Notes from "../../assets/notes.png";
 import Camera from "../../assets/camera.png";
+import Audio from "../../assets/music.png"
+import Video from "../../assets/video.png"
 import "./Landing.scss";
 import { useDispatch, useSelector } from "react-redux";
 import React, { useEffect, useState } from "react";
@@ -66,7 +68,7 @@ const LNotes: React.FC = () => {
               ? files?.map((f) => (
                   <div onClick={() => setSelected(f)}>
                     <img
-                      src={f.type === "image" ? Camera : Notes}
+                      src={f.type === "image" ? Camera : (f.type === "markdown" || f.type === "pdf")  ? Notes : f.type === "audio" ? Audio : Video }
                       className="header-icon--small"
                       alt="picture_note"
                     />
@@ -121,8 +123,7 @@ const LNotes: React.FC = () => {
                 </button>
               </div>
             </>
-          ) : (
-            selected?.type === "image" && (
+          ) : selected?.type === "image" ?
               <>
                 <span className="landing__input">
                   <input
@@ -170,9 +171,7 @@ const LNotes: React.FC = () => {
                   className="landing__thumb"
                   alt="thumbnail"
                 />
-              </>
-            )
-          )}
+              </> : (selected?.type === "video" || selected?.type ==="audio" || selected?.type === "pdf") && <iframe src={selected.description} className="thumbnail--landing" title={selected.type}></iframe>}
         </div>
         {/* <Link to="/notes/new">Upload notes</Link>
         <Link to="/notes/type">Type notes</Link> */}

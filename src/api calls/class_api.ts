@@ -107,6 +107,8 @@ export const get_created_classes = async () => {
   }
 };
 
+
+
 export const get_enrolled = async () => {
   const response = await fetch(`${REACT_APP_BACKEND_URL}class/me/enrolled`, {
     method: "GET",
