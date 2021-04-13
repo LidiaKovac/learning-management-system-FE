@@ -49,7 +49,10 @@ const Notes: React.FC = () => {
 	//		}, 10000)
 	//	}, [])
 	useEffect(()=> {
-		retrieve_login()
+		dispatch(retrieve_logged_action())
+		if (!logged?.name) {
+			history.push("/")
+		}
 		dispatch(get_your_files_action())
 		if (loading) {
 			dispatch({type: LOADING_FALSE})
@@ -61,15 +64,6 @@ const Notes: React.FC = () => {
 		}
 	}, [error])
 
-	//FUNCTIONS
-	const retrieve_login = async() => {
-		if (!logged) {
-			const login = await dispatch(retrieve_logged_action())
-			if (!login) {
-				history.push("/")
-			}
-		}
-	}
 	
 	// const upload_file_handler = async (files: FileList): Promise<void> => {
 	// 	let fd = new FormData()
