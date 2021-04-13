@@ -100,7 +100,7 @@ const UploadNotes: React.FC = () => {
 						/>
 						{!uploaded ? (
 							<label htmlFor="file_upload" className="notes__icon">
-								{!loading && !uploaded ? <AiOutlineCloudUpload /> : <Spinner />}
+								{!loading && !uploaded ? <AiOutlineCloudUpload id="new"/> : <Spinner />}
 							</label>
 						) : (
 							<AiOutlineFileDone className="notes__icon" />
