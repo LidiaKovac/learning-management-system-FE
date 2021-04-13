@@ -58,11 +58,11 @@ const Notes: React.FC = () => {
 			dispatch({type: LOADING_FALSE})
 		}
 	}, [])
-	useEffect(()=> {
-		if (error === "jwt expired") {
-			history.push("/")
-		}
-	}, [error])
+	// useEffect(()=> {
+	// 	if (error === "jwt expired") {
+	// 		history.push("/")
+	// 	}
+	// }, [error])
 
 	
 	// const upload_file_handler = async (files: FileList): Promise<void> => {
