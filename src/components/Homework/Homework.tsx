@@ -49,6 +49,7 @@ const Homework: React.FC = () => {
   //USE EFFECT
   useEffect(() => {
     dispatch(retrieve_logged_action());
+    
     if (role === "student") dispatch(get_homework_action());
     else dispatch(get_todo_action())
   }, []);

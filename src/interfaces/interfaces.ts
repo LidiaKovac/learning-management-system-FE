@@ -37,7 +37,7 @@ export interface LoggedUser {
   name: string | null;
   last_name: string | null;
   email: string | null;
-  role: string | null;
+  role: string | null
   status: string | null;
 }
 export interface initialState {
@@ -91,5 +91,13 @@ export interface IEvent {
   graded: boolean;
   endDate: string | undefined;
   ClassClassId?: number | undefined;
+  author_data?: {
+    name: string
+    last_name: string
+    user_id: number
+  }
+  content?: string;
+  hw_id?: number;
+  grade?: number;
   class?: IClass;
 }

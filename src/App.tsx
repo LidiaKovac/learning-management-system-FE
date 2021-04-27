@@ -14,6 +14,7 @@ import Notes from './pages/Notes/Type/Notes';
 import Classes from './pages/Classes/Classes';
 import SingleClassPage from './pages/Classes/Single/SingleClass';
 import HomeworkPage from './pages/HomeworkPage/HomeworkPage';
+import Grade from './pages/Grade/Grade';
 
 const App: React.FC = () => {
   return (
@@ -33,6 +34,9 @@ const App: React.FC = () => {
      <Route exact path="/classes/search"><Classes/></Route>
      <Route exact path="/class/:id" component={SingleClassPage} />
      <Route exact path="/homework"> <HomeworkPage/> </Route>
+     <Route exact path='/grade'>
+       <Grade/>
+     </Route>
     </BrowserRouter>
   );
 }

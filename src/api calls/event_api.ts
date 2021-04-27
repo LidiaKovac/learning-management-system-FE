@@ -35,9 +35,9 @@ export const get_scheduled = async():Promise<ResponseEvent | Array<null>> => {
 export const get_submitted_hw = async():Promise<Array<any>> => {
     //FINDS HOMEWORK SUBMITTED FOR YOUR CLASSES ONLY 
     const events = await get_created() as Array<IEvent>
-    console.log(events)
+    
     const hw = events?.filter((ev)=> ev.type === "homework")
-    console.log(hw)
+    
     let submitted = new Array()
     for (let i = 0; i<hw?.length!; i++) {
         const response = await fetch(`${REACT_APP_BACKEND_URL}homework/${hw![i].event_id}`, {
@@ -53,7 +53,7 @@ export const get_submitted_hw = async():Promise<Array<any>> => {
         
 
     }
-    console.log(submitted)
+    
     return submitted as Array<any>
   }
 
@@ -102,6 +102,20 @@ export const get_homework = async() => {
 
 export const get_homework_created = async() => {
     const response = await fetch(`${REACT_APP_BACKEND_URL}homework/created/me`, {
+        "method": "GET",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        },
+        credentials: "include"
+    })
+    const json = await response.json()
+    if (json.status === 204) return []
+    else return json.content
+}
+
+export const get_homework_teacher = async() => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}event/homework/teacher`, {
         "method": "GET",
         headers: {
             "Content-Type": "application/json",

@@ -77,10 +77,10 @@ export const TeacherMenu: React.FC = () => {
           Home
         </div>
       </Link>
-      <Link to="/homework">
+      <Link to="/grade">
         <div className="dashboard__menu-item">
           <img src={Homework} alt="notes" />
-          Homework
+          Grade
         </div>
       </Link>
       <div className="dashboard__menu-item">

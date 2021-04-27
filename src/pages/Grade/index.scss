@@ -1,0 +1,52 @@
+@import "../../styling/Colors";
+
+.grade__main {
+    color: $text-main;
+    width: 85%;
+        min-height: 90vh;
+        height: 90%;
+
+        margin-top: 30px;
+        margin-bottom: 30px;
+
+        padding-left: 30px;
+        padding-right: 30px;
+
+        background-color: white;
+        margin-right: 50px;
+        border-radius: 30px;
+        display: flex;
+        flex-direction: column;
+        //justify-content: center;
+        flex-wrap: wrap;
+        padding-top: 50px;
+        padding-left: 50px;
+        .grade__single {
+            background-color: $bg;
+            margin: 10px;
+            .grade__name {
+                width: fit-content;
+                padding: 10px;
+                background-color: $blue-deep;
+                color: white;
+                margin-bottom: 20px;
+            }
+            details {
+                margin-left: 10px;
+                summary {
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+                width: 70%;
+                line-height: 120%;
+                input {
+                    margin: 30px;
+                    margin-bottom: 30px;
+                    height: 30px;
+                    width: 60px;
+                    border: solid $blue-deep;
+                    border-radius: 10px;
+                }
+            }
+        }
+}

@@ -15,3 +15,16 @@ export const create_hw = async(event_id:number, body:string):Promise<IEvent> => 
     })
         return await response.json()
 }
+
+export const grade_hw = async(id:number, grade:number) => {
+    const response = await fetch(`${REACT_APP_BACKEND_URL}homework/grade/${id}`, {
+        "method": "PUT",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${localStorage.getItem("token")}`
+        },
+        credentials: "include",
+        body: JSON.stringify({grade: grade})
+    })
+        return await response.json()
+}
