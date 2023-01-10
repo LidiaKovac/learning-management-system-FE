@@ -9,11 +9,9 @@ import AsyncSelect from "react-select"
 import { AiOutlineCloudUpload, AiOutlineFileDone } from "react-icons/ai"
 import Spinner from "../../../components/Loader/Loader"
 
-import { LOADING_FALSE, LOADING_TRUE } from "../../../actions/action_types"
-import { retrieve_logged_action } from "../../../actions/login_actions"
-import {change_type_action} from "../../../actions/file_actions"
+
 import { upload_file } from "../../../api calls/file_api"
-import { LoggedState, rootInitialState, SelectOption } from "../../../interfaces/interfaces"
+import { setLoading } from "../../../reducers/loading"
 
 
 const UploadNotes: React.FC = () => {
@@ -48,19 +46,19 @@ const UploadNotes: React.FC = () => {
 	const [file_name, setName] = useState<string>()
 
 	//USE EFFECT
-	useEffect(() => {
+	// useEffect(() => {
 
-			dispatch(retrieve_logged_action())
-			if (logged_user?.name === null) {
-				history.push("/")
-			}
-	}, [])
+	// 		dispatch(retrieve_logged_action())
+	// 		if (logged_user?.name === null) {
+	// 			history.push("/")
+	// 		}
+	// }, [])
 	const on_change_handler = (value:string) => {
 		setName(value)
 	}
 	const on_change_handler__type = (val: SelectOption | null) => {
 		console.log(val)
-		dispatch(change_type_action(val!.value))
+		// dispatch(change_type_action(val!.value))
 	}
 
 	const upload_file_handler = async (files: FileList): Promise<void> => {
@@ -68,10 +66,11 @@ const UploadNotes: React.FC = () => {
 		fd.append("material", files[0])
 		fd.append("type", file_type!)
 		fd.append("name", file_name!)
-		dispatch({ type: LOADING_TRUE })
+		dispatch(setLoading(true))
 		const new_file = await upload_file(file_type!, fd)
 		if (new_file) {
-			dispatch({ type: LOADING_FALSE })
+			dispatch(setLoading(false))
+
 			setUploaded(new_file.path)
 		}
 		setTimeout(()=> {
@@ -112,7 +111,7 @@ const UploadNotes: React.FC = () => {
 							className="notes__input--select"
 							classNamePrefix="notes__input--select"
 							isSearchable={false}
-							defaultOptions
+							// defaultOptions
 							onChange={(val: SelectOption | null) =>
 								on_change_handler__type(val)
 							}

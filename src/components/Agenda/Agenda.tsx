@@ -1,11 +1,7 @@
+import moment from "moment";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
-import {
-  get_by_date_action,
-} from "../../actions/events_actions";
-
-import { rootInitialState } from "../../interfaces/interfaces";
+import { setSelectedDate } from "../../reducers/events";
 
 import "./Agenda.scss";
 
@@ -26,11 +22,11 @@ const Agenda: React.FC = () => {
   );
 
   //USE EFFECT
+  // useEffect(() => {
+  //   dispatch((selected_date));
+  // }, []);
   useEffect(() => {
-    dispatch(get_by_date_action(selected_date));
-  }, []);
-  useEffect(() => {
-    dispatch(get_by_date_action(selected_date));
+    dispatch(setSelectedDate(selected_date));
     
   }, [selected_date]);
 
@@ -45,11 +41,11 @@ const Agenda: React.FC = () => {
               <div className="agenda__description">{ev.description}</div>
               <div className="agenda__time">
                 
-                Start: {ev.startDate?.split("T")[0]}, at {ev.startDate?.split("T")[1]}
+                Start: {moment(ev.startDate).format("DD/MM")}, at {moment(ev.startDate).format("HH:mm")}
               </div>
               <div className="agenda__time">
                 
-                End: {ev.endDate?.split("T")[0]}, at {ev.endDate?.split("T")[1]}
+                End: {moment(ev.endDate).format("DD/MM")}, at {moment(ev.endDate).format("HH:mm")}
                 
               </div>
             </div>

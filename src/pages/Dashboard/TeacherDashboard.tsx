@@ -10,9 +10,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 
-import { LoggedState, rootInitialState } from "../../interfaces/interfaces";
-import { retrieve_logged_action } from "../../actions/login_actions";
-
 //import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda";
 import Cal from "../../components/Calendar/Calendar";
@@ -22,9 +19,7 @@ import { TeacherMenu } from "../../components/Menu/Menu";
 import EventBuilder from "../../components/EventBuilder/EventBuilder";
 import { ComingSoon } from "../../components/ComingSoon/ComingSoon";
 import { get_submitted_hw } from "../../api calls/event_api";
-import { get_submitted_hw_action } from "../../actions/events_actions";
 import RecentNotes from "../../components/RecentNotes/RecentNotes";
-import { Homework } from "../../interfaces/EventTypes";
 
 const TeacherDashboard: React.FC = () => {
   //STATE
@@ -39,15 +34,15 @@ const TeacherDashboard: React.FC = () => {
   const submitted_hw = useSelector((state:rootInitialState)=> state.events.submitted)
 
   //USEFFECTS
-  useEffect(() => {
-    if (!is_auth) {
-      history.push("/");
-    }
-    if (logged_user.name === undefined) {
-      dispatch(retrieve_logged_action());
-    }
-    dispatch(get_submitted_hw_action());
-  }, []);
+  // useEffect(() => {
+  //   if (!is_auth) {
+  //     history.push("/");
+  //   }
+  //   if (logged_user.name === undefined) {
+  //     dispatch(retrieve_logged_action());
+  //   }
+  //   dispatch(get_submitted_hw_action());
+  // }, []);
 
   return (
     <div className="dashboard__wrap">

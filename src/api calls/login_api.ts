@@ -1,6 +1,4 @@
 
-import {LoginData} from "../interfaces/LoginTypes"
-import {LoggedUser} from "../interfaces/interfaces"
 import {get_token_from_cookies} from "../utils"
 const {REACT_APP_BACKEND_URL} = process.env
 

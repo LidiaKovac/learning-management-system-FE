@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  get_created_homework_action,
-  get_homework_action,
-} from "../../actions/events_actions";
-import { retrieve_logged_action } from "../../actions/login_actions";
-import { add_todo_action, check_todo_action, get_todo_action } from "../../actions/todo_actions";
-import { create_todo, get_todos } from "../../api calls/todo_api";
-import { rootInitialState } from "../../interfaces/interfaces";
-import { Todo } from "../../interfaces/TodoInterfaces";
+
+import { addTask, checkTodo } from "../../reducers/tasks";
+
 import "./Homework.scss";
 
 const Homework: React.FC = () => {
@@ -33,7 +27,7 @@ const Homework: React.FC = () => {
 
   const onChangeTodos = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      dispatch(add_todo_action(new_todo!));
+      dispatch(addTask(new_todo!));
       e.currentTarget.value = ""
     } else
       setNew({
@@ -42,17 +36,17 @@ const Homework: React.FC = () => {
       });
   };
   
-  const done = (id:number) => {
-      dispatch(check_todo_action(id))
+  const done = (id:string) => {
+      dispatch(checkTodo(id))
   }
 
   //USE EFFECT
-  useEffect(() => {
-    dispatch(retrieve_logged_action());
+  // useEffect(() => {
+  //   dispatch(retrieve_logged_action());
     
-    if (role === "student") dispatch(get_homework_action());
-    else dispatch(get_todo_action())
-  }, []);
+  //   if (role === "student") dispatch(get_homework_action());
+  //   else dispatch(get_todo_action())
+  // }, []);
   return (
     <div className="homework__wrap">
       {role === "student" ? (

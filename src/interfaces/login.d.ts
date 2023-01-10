@@ -1,9 +1,9 @@
-export interface LoginData {
+interface LoginData {
     email: String
     password: String
 }
 
-export interface JoinData {
+interface JoinData {
     name: String
     last_name: String
     birthday: String
@@ -13,6 +13,6 @@ export interface JoinData {
     password: String
 }
 
-export interface JoinData_w_conf extends JoinData {
+interface JoinData_w_conf extends JoinData {
     password_conf: String
 }

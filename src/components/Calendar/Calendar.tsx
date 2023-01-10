@@ -2,19 +2,19 @@ import { useEffect, useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { useDispatch } from 'react-redux';
-import { SELECT_DATE } from '../../actions/action_types';
+import { setSelectedDate } from '../../reducers/events';
 import "./Cal.scss"
 
-const Cal:React.FC = () => {
+const Cal = () => {
   //STATE
-  const [value, onChange] = useState<Date|Date[]|null>(new Date());
+  const [value, onChange] = useState<Date | [Date | null, Date | null] | null | undefined>(new Date());
 
   //HOOKS
   const dispatch = useDispatch()
 
   //USE EFFECT
   useEffect(()=> {
-    dispatch({type: SELECT_DATE, payload: value})
+    dispatch(setSelectedDate(value as Date))
   }, [value])
 
   return (

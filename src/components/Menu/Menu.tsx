@@ -10,7 +10,6 @@ import { Link, useHistory } from "react-router-dom";
 import "./Menu.scss";
 import { logout } from "../../api calls/login_api";
 import { useDispatch } from "react-redux";
-import { LOGOUT } from "../../actions/action_types";
 
 export const Menu: React.FC = () => {
   //HOOKS
@@ -55,7 +54,7 @@ export const Menu: React.FC = () => {
         className="dashboard__menu-item"
         onClick={() => {
           logout();
-          dispatch({ type: LOGOUT });
+          // dispatch({ type: LOGOUT });
           history.push("/");
         }}
       >
@@ -101,7 +100,7 @@ export const TeacherMenu: React.FC = () => {
         className="dashboard__menu-item"
         onClick={() => {
           logout();
-          dispatch({ type: LOGOUT });
+          // dispatch({ type: LOGOUT });
           history.push("/");
         }}
       >

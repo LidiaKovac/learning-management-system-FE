@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { enroll_action } from "../../actions/class_actions";
-import { SingleProps } from "../../interfaces/ClassInterfaces";
-import { rootInitialState } from "../../interfaces/interfaces";
+import { enroll } from "../../reducers/classes";
+
 import "./Single.scss";
 
 export const Single: React.FC<SingleProps> = ({ c }) => {
@@ -28,7 +27,7 @@ export const Single: React.FC<SingleProps> = ({ c }) => {
       <div className="class__content">{c.description}</div>
       <div className="class__author">Teacher: {c.author_data!.name} {c.author_data!.last_name}</div>
       {!is_enrolled && <button className="enroll" onClick={() => {
-          dispatch(enroll_action(c.class_id!))
+          dispatch(enroll(c))
           }}>
         {!loading ? "Enroll" : "Wait"}
       </button>}

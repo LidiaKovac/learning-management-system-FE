@@ -4,11 +4,8 @@ import Waving from "../../assets/waving.png";
 import AsyncSelect from "react-select";
 import "./SignUp.scss";
 import { ImCross, ImCheckmark } from "react-icons/im";
-import { rootInitialState, SelectOption } from "../../interfaces/interfaces";
 import { useDispatch, useSelector } from "react-redux";
-import { join_action, login_action } from "../../actions/login_actions";
 import Spinner from "../../components/Loader/Loader";
-import { JoinData_w_conf } from "../../interfaces/LoginTypes";
 
 const SignUp = () => {
   //HOOKS
@@ -79,7 +76,7 @@ const SignUp = () => {
       user_data.birthday !== ""
     )
       if (pass_match) {
-        dispatch(join_action(user_data));
+        // dispatch(join_action(user_data));
         history.push("/")
       } else set_error("Passwords don't match!");
     else set_error("Please fill out all the sections.");
@@ -117,7 +114,7 @@ const SignUp = () => {
           className="signup-form__input--select"
           classNamePrefix="signup-form__input--select"
           isSearchable={false}
-          defaultOptions
+          // defaultOptions
           onChange={(val: SelectOption | null) =>
             onChangeHandler__pronouns(val)
           }

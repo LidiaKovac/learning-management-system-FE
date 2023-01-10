@@ -9,19 +9,14 @@ import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
 import { useHistory } from "react-router"
 
-import { LoggedState, rootInitialState } from "../../interfaces/interfaces"
-import { retrieve_logged_action } from "../../actions/login_actions"
-
 //import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda"
 import Cal from "../../components/Calendar/Calendar"
 //import Todo from "../../components/Homework/Homework"
 import RecentNotes from "../../components/RecentNotes/RecentNotes"
 import {Menu} from "../../components/Menu/Menu"
-import { get_scheduled_action } from "../../actions/events_actions"
 import Homework from "../../components/Homework/Homework"
 import { ComingSoon } from "../../components/ComingSoon/ComingSoon"
-import { get_your_files_action } from "../../actions/file_actions"
 import { Link } from "react-router-dom"
 
 const StudentDashboard:React.FC = () => {
@@ -33,15 +28,15 @@ const StudentDashboard:React.FC = () => {
     const files = useSelector((state:rootInitialState)=> state.file.your_files)
 
     //USE EFFECT
-    useEffect(()=> {
-        if(!is_auth) {
-            history.push("/")
-        }
-        if (logged_user.name === undefined)
-            dispatch(retrieve_logged_action())
-        dispatch(get_scheduled_action())
-        dispatch(get_your_files_action())
-    }, [])
+    // useEffect(()=> {
+    //     if(!is_auth) {
+    //         history.push("/")
+    //     }
+    //     if (logged_user.name === undefined)
+    //         dispatch(retrieve_logged_action())
+    //     dispatch(get_scheduled_action())
+    //     dispatch(get_your_files_action())
+    // }, [])
 
     return (
     <div className="dashboard__wrap">

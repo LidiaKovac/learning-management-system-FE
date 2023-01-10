@@ -1,15 +1,11 @@
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import AsyncSelect from "react-select";
-import { add_event_action } from "../../actions/events_actions";
+import AsyncSelect from 'react-select/async';
 import { get_created_classes } from "../../api calls/class_api";
-import { ResClass, SelectClass } from "../../interfaces/ClassInterfaces";
-import {
-  IEvent,
-  rootInitialState,
-  SelectOption,
-} from "../../interfaces/interfaces";
+import { addEvent } from "../../reducers/events";
+
 import Spinner from "../Loader/Loader";
 import "./EventBuilder.scss"
 const EventBuilder = () => {
@@ -23,8 +19,8 @@ const EventBuilder = () => {
     name: "",
     type: "",
     description: "",
-    startDate: "",
-    endDate: "",
+    startDate: new Date(),
+    endDate: new Date(),
     graded: false,
     ClassClassId: undefined,
   });
@@ -48,7 +44,7 @@ const EventBuilder = () => {
   //FUNCTIONS 
   const retrieveOptions = async () => {
     const opt = await get_created_classes();
-    if (opt === { message: "jwt expired" }) {
+    if (opt.message === "jwt expired") {
       history.push("/");
     } else {
       if (opt !== 204) {
@@ -130,7 +126,7 @@ const EventBuilder = () => {
         <input
           type="datetime-local"
           id="startDate"
-          value={event.startDate}
+          value={moment(event.startDate).format("DD/MM/YYYYTHH:mm")}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChangeHandler(e)
           }
@@ -138,7 +134,7 @@ const EventBuilder = () => {
         <input
           type="datetime-local"
           id="endDate"
-          value={event.endDate}
+          value={moment(event.endDate).format("DD/MM/YYYYTHH:mm")}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             onChangeHandler(e)
           }
@@ -148,13 +144,13 @@ const EventBuilder = () => {
       <button
         className="submit"
         onClick={() => {
-          dispatch(add_event_action(event!));
+          dispatch(addEvent(event!));
           setEvent({
             name: "",
             type: event.type,
             description: "",
-            startDate: "",
-            endDate: "",
+            startDate: new Date(),
+            endDate: new Date(),
             graded: false,
             ClassClassId: event.ClassClassId,
           });

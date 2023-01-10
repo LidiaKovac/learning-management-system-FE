@@ -1,5 +1,3 @@
-import { SectionReqBody } from "../interfaces/ClassInterfaces";
-import { FileObject } from "../interfaces/FileTypes";
 import { get_token_from_cookies } from "../utils";
 const { REACT_APP_BACKEND_URL } = process.env;
 

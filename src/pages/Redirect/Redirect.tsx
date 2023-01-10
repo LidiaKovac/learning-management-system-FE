@@ -1,8 +1,6 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
 import { useHistory } from "react-router"
-import { LoggedState } from "../../interfaces/interfaces"
-import Loader from "react-loader-spinner"
 
 const Redirect = () => {
     //HOOKS 
@@ -23,10 +21,7 @@ const Redirect = () => {
     
     return (
         <div style={{width: "100vw", height: "100vh", display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center"}}>
-            <Loader 
-            type="ThreeDots"
-            color="#00B4FF" 
-            />
+           Redirecting
         </div>
     )
 }

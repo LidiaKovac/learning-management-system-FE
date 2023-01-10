@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { retrieve_logged_action } from "../../actions/login_actions";
 import {
   search_class,
 } from "../../api calls/class_api";
-import { rootInitialState } from "../../interfaces/interfaces";
-import { IClass } from "../../interfaces/ClassInterfaces";
-import { get_enrolled_action, get_owned_action } from "../../actions/class_actions";
+
 import { useHistory } from "react-router";
 import { Menu, TeacherMenu } from "../../components/Menu/Menu";
 import "./Classes.scss";
@@ -32,12 +29,12 @@ const Classes = () => {
 
   //USE EFFECT
 
-  useEffect(() => {
-    dispatch(retrieve_logged_action());
-    if (logged?.name === null || logged?.name === undefined) history.push("/");
-    if (logged?.role === "student") dispatch(get_enrolled_action());
-    else dispatch(get_owned_action())
-  }, []);
+  // useEffect(() => {
+  //   dispatch(retrieve_logged_action());
+  //   if (logged?.name === null || logged?.name === undefined) history.push("/");
+  //   if (logged?.role === "student") dispatch(get_enrolled_action());
+  //   else dispatch(get_owned_action())
+  // }, []);
 
   //FUNCTIONS
   const submit_query = async (e: React.KeyboardEvent<HTMLInputElement>) => {

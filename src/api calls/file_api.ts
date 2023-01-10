@@ -1,5 +1,4 @@
 import {get_token_from_cookies} from "../utils/index"
-import {ResponseFile, FileObject, ResponseNote, ResponseMultipleFile } from "../interfaces/FileTypes"
 const {REACT_APP_BACKEND_URL} = process.env
 
 export const upload_file = async(type:String, body:FormData):Promise<ResponseFile> => {

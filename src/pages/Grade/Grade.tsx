@@ -1,14 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  get_created_action,
-  get_created_homework_action,
-  get_homework_teacher_action,
-  grade_action,
-} from "../../actions/events_actions";
-import { retrieve_logged_action } from "../../actions/login_actions";
+
 import { Menu, TeacherMenu } from "../../components/Menu/Menu";
-import { rootInitialState } from "../../interfaces/interfaces";
 import "./index.scss";
 
 const Grade = () => {
@@ -18,10 +11,10 @@ const Grade = () => {
   const homework = useSelector(
     (state: rootInitialState) => state.events.homework
   );
-  useEffect(() => {
-    dispatch(retrieve_logged_action());
-    dispatch(get_homework_teacher_action());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(retrieve_logged_action());
+  //   dispatch(get_homework_teacher_action());
+  // }, []);
   return (
     <div className="dashboard__wrap">
       <div className="dashboard__menu">
@@ -42,7 +35,7 @@ const Grade = () => {
               <br/>
               <span>
               <input disabled={h.grade ? true : false} type='number' placeholder={h.grade?.toString() || 'Grade'} min={0} max={10} onChange={(e:React.ChangeEvent<HTMLInputElement>)=> setGrade(parseInt(e.currentTarget.value)) }/>
-              <button disabled={h.grade ? true : false} onClick={()=> dispatch(grade_action(h.hw_id!, grade!))}>{h.grade ? "Already graded":"Submit"}</button>
+              <button disabled={h.grade ? true : false} /* onClick={()=> dispatch(grade_action(h.hw_id!, grade!))}*/ >{h.grade ? "Already graded":"Submit"}</button>
               </span>
             </details>
 

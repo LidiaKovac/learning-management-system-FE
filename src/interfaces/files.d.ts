@@ -1,17 +1,16 @@
-import { Homework } from "./EventTypes";
 
-export interface ResponseFile {
+interface ResponseFile {
   status: number;
   path: string;
 }
 
-export interface ResponseMultipleFile {
+interface ResponseMultipleFile {
   status: number;
   content: Array<FileObject>;
   message?: string;
 }
 
-export interface FileObject {
+interface FileObject {
   name?: string | undefined;
   type?: "pdf" | "video" | "image" | "audio" | "markdown" | "" | undefined | string;
   material?: File | string;
@@ -21,9 +20,9 @@ export interface FileObject {
   section_ref?: number
 }
 
-export class FileObjectClass implements FileObject{}
+class FileObjectClass implements FileObject{}
 
-export interface FileInitialState extends FileObject {
+interface FileInitialState extends FileObject {
   status: "Success" | "Pending" | "Failed" | "";
   error: {
     message: string;
@@ -32,7 +31,7 @@ export interface FileInitialState extends FileObject {
   selected: FileObject
 }
 
-export interface ResponseNote {
+interface ResponseNote {
   status: number;
   content: string;
   file_id?: number;
@@ -40,7 +39,7 @@ export interface ResponseNote {
 }
 
 
-export interface RecentProps {
+interface RecentProps {
     content?: FileObject
     homework?: Homework
 }

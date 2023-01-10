@@ -1,9 +1,8 @@
-import { IEvent } from "../interfaces/interfaces"
 import { get_token_from_cookies } from "../utils"
 const {REACT_APP_BACKEND_URL} = process.env
 
 
-export const create_hw = async(event_id:number, body:string):Promise<IEvent> => {
+export const create_hw = async(event_id:string, body:string):Promise<IEvent> => {
     const response = await fetch(`${REACT_APP_BACKEND_URL}homework/${event_id}`, {
         "method": "POST",
         headers: {

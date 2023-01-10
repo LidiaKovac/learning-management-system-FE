@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router";
-import { get_enrolled_action } from "../../actions/class_actions";
-import { get_homework_action } from "../../actions/events_actions";
+
 import AsyncSelect from "react-select";
 import MDEditor from "@uiw/react-md-editor"
-import { retrieve_logged_action } from "../../actions/login_actions";
 import { TeacherMenu, Menu } from "../../components/Menu/Menu";
-import { IEvent, rootInitialState, SelectOption } from "../../interfaces/interfaces";
 import "../Dashboard/Dashboard.scss";
 import "./Homeworkpage.scss";
 import { get_enrolled } from "../../api calls/class_api";
-import { IClass, SelectClass } from "../../interfaces/ClassInterfaces";
 import { create_hw } from "../../api calls/homework_api";
+import moment from "moment";
 
 const HWPage = () => {
   //HOOKS
@@ -34,22 +31,22 @@ const HWPage = () => {
   const [editor, showEditor] = useState<boolean>(false)
   const [value, setValue] = useState<string | undefined>()
   const [hw, setHw] = useState<IEvent[]>()
-  const [selected_hw, setSelectedHW] = useState<number | undefined>(undefined)
+  const [selected_hw, setSelectedHW] = useState<string | undefined>(undefined)
 
   //USE EFFECT
 
-  useEffect(() => {
-    dispatch(retrieve_logged_action());
-    if (!logged.logged_user?.name) history.push("/")
-    dispatch(get_homework_action());
-    if (homework instanceof Array) {
-      dispatch(get_enrolled_action());
-      retrieveOptions();
+  // useEffect(() => {
+  //   dispatch(retrieve_logged_action());
+  //   if (!logged.logged_user?.name) history.push("/")
+  //   dispatch(get_homework_action());
+  //   if (homework instanceof Array) {
+  //     dispatch(get_enrolled_action());
+  //     retrieveOptions();
       
-    } else history.push("/");
-    if (logged.error === "Session has expired, please login again.")
-      history.push("/");
-  }, []);
+  //   } else history.push("/");
+  //   if (logged.error === "Session has expired, please login again.")
+  //     history.push("/");
+  // }, []);
 
   useEffect(()=> {
     const hw_F = homework.filter((h)=> h.class!.class_id === selected?.value)
@@ -80,7 +77,7 @@ const HWPage = () => {
           options={options ?? []}
           id="ClassClassId"
           isSearchable={false}
-          defaultOptions
+          // defaultOptions
           className="agenda__select"
           classNamePrefix="agenda__select"
           onChange={(val: SelectClass | null) => setClass(val)}
@@ -104,7 +101,7 @@ const HWPage = () => {
                     {h.graded ? "YES" : "NO"}
                   </span>
                   <span>
-                    <strong>Due: </strong> {h.endDate?.split("T")[0]}, h. {h.endDate?.split("T")[1]}
+                    <strong>Due: </strong> {moment(h.endDate).format("HH:mm")}
                   </span>
                   <button onClick={()=>{
                     setSelectedHW(h.event_id)

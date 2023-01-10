@@ -4,18 +4,12 @@ import { HiPlusCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
 import { RouteComponentProps, useHistory, useParams } from "react-router-dom";
 import AsyncSelect from "react-select"
-import { LOADING_FALSE, LOADING_TRUE } from "../../../actions/action_types";
-import { select_class_action } from "../../../actions/class_actions";
-import { retrieve_logged_action } from "../../../actions/login_actions";
 import { create_section } from "../../../api calls/class_api";
 import { upload_file } from "../../../api calls/file_api";
 import { Menu, TeacherMenu } from "../../../components/Menu/Menu";
-import {
-  SingleClassProps,
-  SectionReqBody,
-  Section,
-} from "../../../interfaces/ClassInterfaces";
-import { rootInitialState, SelectOption } from "../../../interfaces/interfaces";
+import { selectClass } from "../../../reducers/classes";
+import { setLoading } from "../../../reducers/loading";
+
 import "./Single.scss";
 
 const SingleClassPage = () => {
@@ -35,14 +29,14 @@ const SingleClassPage = () => {
   const logged = useSelector(
     (state: rootInitialState) => state.user.logged_user
   );
-  useEffect(() => {
-    dispatch(retrieve_logged_action());
+  // useEffect(() => {
+  //   dispatch(retrieve_logged_action());
     
-    if (!logged?.name) history.push("/");
-    dispatch(select_class_action(params.id));
-    is_owner();
+  //   if (!logged?.name) history.push("/");
+  //   dispatch(select_class_action(params.id));
+  //   is_owner();
     
-  }, []);
+  // }, []);
   useEffect(() => {
     is_owner();
   }, [selected]);
@@ -97,14 +91,14 @@ const SingleClassPage = () => {
     });
   };
   const create_new_section = async () => {
-    dispatch({ type: LOADING_TRUE });
+    dispatch(setLoading(true));
     const new_section = await create_section(section, parseInt(params.id));
     files?.append("section_ref", new_section.id)
     if (files) {
       const new_file = await upload_file(section?.files?.type!, files!)
     }
     if (new_section.message === "Created") setCreate(false);
-    dispatch(select_class_action(params.id));
+    dispatch(selectClass(params.id));
   };
 
   const onChangeFile = async (files: FileList | undefined): Promise<void> => {
@@ -112,7 +106,7 @@ const SingleClassPage = () => {
       fd.append("material", files![0])
       fd.append("type", section?.files?.type!)
       fd.append("name", section?.files?.name!)
-      dispatch({ type: LOADING_TRUE })
+      dispatch(setLoading(true))
       setFiles(fd)
       // const new_file = await upload_file(section?.files?.type!, fd)
       // if (new_file) {
@@ -176,7 +170,7 @@ const SingleClassPage = () => {
 							className="section--select"
 							classNamePrefix="section--select"
 							isSearchable={false}
-							defaultOptions
+							// defaultOptions
 							onChange={(val: SelectOption |  null) =>
 								on_change_handler__type(val)
 							}

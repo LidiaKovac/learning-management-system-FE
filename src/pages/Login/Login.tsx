@@ -5,7 +5,6 @@ import { Link } from "react-router-dom"
 import { useHistory } from "react-router"
 
 import { useDispatch, useSelector } from "react-redux"
-import { login_action, retrieve_logged_action } from "../../actions/login_actions"
 
 //ASSETS and STYLING
 import "./Login.scss"
@@ -13,11 +12,8 @@ import Waving from "../../assets/waving.png"
 import Spinner from "../../components/Loader/Loader"
 
 //INTERFACES & TYPES
-import { LoginData } from "../../interfaces/LoginTypes"
-import { LoggedState, rootInitialState } from "../../interfaces/interfaces"
-import { LOADING_FALSE } from "../../actions/action_types"
 
-const Login: React.FC<any> = () => {
+const Login = () => {
 	//HOOKS
 	const dispatch = useDispatch()
 	const history = useHistory()
@@ -30,7 +26,7 @@ const Login: React.FC<any> = () => {
 
 	//USE SELECTOR
 	const props = useSelector((state: rootInitialState) => state.user)
-	const loading = useSelector((state:LoggedState)=> state.user.loading)
+	const loading = useSelector((state: LoggedState) => state.user.loading)
 
 	//USE EFFECTS:
 	useEffect(() => {
@@ -39,23 +35,23 @@ const Login: React.FC<any> = () => {
 		}
 	}, [props.is_authorized])
 
-	useEffect(() => {
-		
-		if (document.cookie.length > 0 && !props.logged_out) {
-			dispatch(retrieve_logged_action())
-			if (props.is_authorized) {
-				//history.goBack()
-			} else {
-				dispatch({type: LOADING_FALSE})
-		}
-		}
-		if (loading) dispatch({type: LOADING_FALSE})
-	}, [])
+	// useEffect(() => {
+
+	// 	if (document.cookie.length > 0 && !props.logged_out) {
+	// 		dispatch(retrieve_logged_action())
+	// 		if (props.is_authorized) {
+	// 			//history.goBack()
+	// 		} else {
+	// 			dispatch({ type: LOADING_FALSE })
+	// 		}
+	// 	}
+	// 	if (loading) dispatch({ type: LOADING_FALSE })
+	// }, [])
 
 	//FUNCTIONS
-	const submit_login = async (data: LoginData) => {
-		dispatch(login_action(data))
-	}
+	// const submit_login = async (data: LoginData) => {
+	// 	dispatch(login_action(data))
+	// }
 	const on_change_handler = async (
 		e: React.KeyboardEvent<HTMLInputElement>
 	) => {
@@ -68,7 +64,7 @@ const Login: React.FC<any> = () => {
 		<div className="login-wrap">
 			<div className="login-form__wrap">
 				<div className="login-form__header">
-					<img src={Waving} alt="waving"/>
+					<img src={Waving} alt="waving" />
 					Welcome back
 				</div>
 				<div className="login-form__content">
@@ -92,7 +88,7 @@ const Login: React.FC<any> = () => {
 				</div>
 				<button
 					className="login-form__submit"
-					onClick={() => submit_login(login_data)}
+					// onClick={() => submit_login(login_data)}
 				>
 					{props.loading ? <Spinner /> : "LOGIN"}
 				</button>

@@ -5,17 +5,10 @@ import MDEditor from "@uiw/react-md-editor"
 import moment from "moment"
 //import Spinner from "../../../components/Loader/Loader"
 
-import { rootInitialState } from "../../../interfaces/interfaces"
 import { useDispatch, useSelector } from "react-redux"
-import {
-	auto_save_note,
-	get_your_files_action,
-	upload_markdown_action,
-} from "../../../actions/file_actions"
+
 import Guide from "../Guide/Guide"
-import { LOADING_FALSE } from "../../../actions/action_types"
 //import { upload_file } from "../../../api calls/file_api"
-import { retrieve_logged_action } from "../../../actions/login_actions"
 
 const Notes: React.FC = () => {
 	//STATE
@@ -48,16 +41,16 @@ const Notes: React.FC = () => {
 	//			}
 	//		}, 10000)
 	//	}, [])
-	useEffect(()=> {
-		dispatch(retrieve_logged_action())
-		if (!logged?.name) {
-			history.push("/")
-		}
-		dispatch(get_your_files_action())
-		if (loading) {
-			dispatch({type: LOADING_FALSE})
-		}
-	}, [])
+	// useEffect(()=> {
+	// 	dispatch(retrieve_logged_action())
+	// 	if (!logged?.name) {
+	// 		history.push("/")
+	// 	}
+	// 	dispatch(get_your_files_action())
+	// 	if (loading) {
+	// 		dispatch({type: LOADING_FALSE})
+	// 	}
+	// }, [])
 	// useEffect(()=> {
 	// 	if (error === "jwt expired") {
 	// 		history.push("/")
@@ -80,13 +73,13 @@ const Notes: React.FC = () => {
 	const initialize_note = async () => {
 		if (!created) {
 			if (name?.length! > 3) {
-				dispatch(
-					upload_markdown_action({
-						type: "markdown",
-						material: value,
-						name: name,
-					})
-					)
+				// dispatch(
+				// 	upload_markdown_action({
+				// 		type: "markdown",
+				// 		material: value,
+				// 		name: name,
+				// 	})
+				// 	)
 					setSaved(new Date())
 					setCreated(true)
 					setEditId(file_created!)
@@ -109,15 +102,15 @@ const Notes: React.FC = () => {
 						onBlur={() => initialize_note()}
 					/>
 					<button
-						onClick={() =>
-							{console.log(file_created)
-								dispatch(
-								auto_save_note(
-									{ description: value, name: name, type: "markdown" },
-									file_created!
-								)
-							)}
-						}
+						// onClick={() =>
+						// 	{console.log(file_created)
+						// 		dispatch(
+						// 		auto_save_note(
+						// 			{ description: value, name: name, type: "markdown" },
+						// 			file_created!
+						// 		)
+						// 	)}
+						// }
 					>
 						SAVE
 					</button>

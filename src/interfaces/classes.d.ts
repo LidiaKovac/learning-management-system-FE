@@ -1,22 +1,20 @@
-import { RouteComponentProps } from "react-router";
-import { FileObject } from "./FileTypes";
-import { User } from "./interfaces";
 
-export interface IClass {
+
+interface IClass {
     class_id?: number
     name?: string | undefined
     description?: string | undefined
     author?: number | undefined
     author_data?: User
-    
+
 }
 
-export interface SingleProps {
+interface SingleProps {
     c: IClass
     onClick?: Function
 }
 
-export interface ResClass {
+interface ResClass {
     author: number
     class_id: number
     description: string
@@ -25,26 +23,37 @@ export interface ResClass {
     updatedAt: Date
 }
 
-export class SelectClass{
-    constructor(label:string, value:number) {
+class SelectClass {
+    constructor(label: string, value: number) {
         this.label = label;
         this.value = value;
     }
     value: number | undefined
     label: string | undefined
 }
-
-export interface SingleClassProps {
+interface classInitialState {
+    your_classes: Array<IClass>;
+    selected_class: {
+        class: IClass;
+        sections: Array<Section>;
+        author_data?: {
+            name: string;
+            last_name: string;
+            email: string;
+        };
+    };
+}
+interface SingleClassProps {
     id: string
 }
 
-export interface Section {
+interface Section {
     name?: string
     description?: string
     files?: Array<FileObject>
 }
 
-export interface SectionReqBody {
+interface SectionReqBody {
     section?: Section
     files?: FileObject
 }

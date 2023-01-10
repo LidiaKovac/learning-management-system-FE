@@ -1,5 +1,4 @@
 import {get_token_from_cookies} from "../utils/index"
-import { Todo } from "../interfaces/TodoInterfaces"
 const {REACT_APP_BACKEND_URL} = process.env
 
 export const create_todo = async(todo:Todo) => {
