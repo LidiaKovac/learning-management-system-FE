@@ -32,10 +32,5 @@ export const get_current_user = async():Promise<LoggedUser> => {
 }
 
 export const logout = async() => {
-    await fetch(`${REACT_APP_BACKEND_URL}login/logout`, {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${localStorage.getItem("token")}`
-        }
-    })
+    localStorage.removeItem("token")
 }

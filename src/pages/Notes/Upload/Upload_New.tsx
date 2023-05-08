@@ -3,7 +3,7 @@ import SampleImage from "../../../assets/samples/sample.jpg"
 
 import { useDispatch, useSelector } from "react-redux"
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 import AsyncSelect from "react-select"
 
 import { AiOutlineCloudUpload, AiOutlineFileDone } from "react-icons/ai"
@@ -34,7 +34,7 @@ const UploadNotes: React.FC = () => {
 		},
 	]
 	//HOOKS
-	const history = useHistory()
+	const history = useNavigate()
 	const dispatch = useDispatch()
 	const logged_user = useSelector((state: LoggedState) => state.user.logged_user)
 	const loading = useSelector((state: LoggedState) => state.user.loading)
@@ -50,7 +50,7 @@ const UploadNotes: React.FC = () => {
 
 	// 		dispatch(retrieve_logged_action())
 	// 		if (logged_user?.name === null) {
-	// 			history.push("/")
+	// 			history("/")
 	// 		}
 	// }, [])
 	const on_change_handler = (value:string) => {
@@ -75,9 +75,9 @@ const UploadNotes: React.FC = () => {
 		}
 		setTimeout(()=> {
 			if(role === "teacher") //this has to change to different paths
-				history.push("/teacherdash")
+				history("/teacherdash")
 			else if (role === "student") 
-				history.push("/studentdash")
+				history("/studentdash")
 		}, 3000)
 	}
 	return (

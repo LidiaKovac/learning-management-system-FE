@@ -1,10 +1,10 @@
 import { useEffect } from "react"
 import { useSelector } from "react-redux"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 
 const Redirect = () => {
     //HOOKS 
-    const history = useHistory()
+    const history = useNavigate()
 
     //USE SELECTOR
     const role = useSelector((state:LoggedState) => state?.user?.logged_user?.role)
@@ -12,11 +12,10 @@ const Redirect = () => {
     //USE EFFECT
     useEffect(()=> {
         if (role === "student") {
-            history.push("/studentdash")
-        } else if (role === "teacher") {
-            history.push("/teacherdash")
-        } else if(role === "admin") {history.push("/settings")} 
-        else history.push("/")
+            history("/studentdash")
+        } else {
+            history("/teacherdash")
+        } 
     }, [])
     
     return (

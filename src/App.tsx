@@ -1,7 +1,7 @@
 
 import './App.css';
 import { FC } from 'react';
-import { BrowserRouter, Route } from "react-router-dom"
+import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
@@ -19,24 +19,26 @@ import Grade from './pages/Grade/Grade';
 const App = () => {
   return (
     <BrowserRouter>
-      <Route exact path="/redirect"><Redirect /></Route>
+      <Routes>
+      <Route path="/redirect" element={<Redirect/>}/>
 
-      <Route exact path="/"><Login /></Route>
-      <Route exact path="/join"><SignUp /></Route>
+      <Route path="/" element={<Login />}/>
+      <Route path="/join" element={<SignUp />}/>
 
-      <Route exact path="/studentdash"><StudentDashboard /></Route>
-      <Route exact path="/teacherdash"><TeacherDashboard /></Route>
+      <Route path="/studentdash" element={<StudentDashboard />}/>
+      <Route path="/teacherdash" element={<TeacherDashboard />}/>
 
-      <Route exact path="/notes/new"><UploadNotes /></Route>
-      <Route exact path="/notes/type"><Notes /></Route>
-      <Route exact path="/notes"><LNotes /></Route>
+      <Route path="/notes/new" element={<UploadNotes />}/>
+      <Route path="/notes/type" element={<Notes />}/>
+      <Route path="/notes" element={<LNotes />}/>
 
-      <Route exact path="/classes/search"><Classes /></Route>
-      <Route exact path="/class/:id" component={SingleClassPage} />
-      <Route exact path="/homework"> <HomeworkPage /> </Route>
-      <Route exact path='/grade'>
-        <Grade />
-      </Route>
+      <Route path="/classes/search" element={<Classes />}/>
+      <Route path="/class/:id" element={<SingleClassPage/>} />
+      <Route path="/homework" element={<HomeworkPage/>}/>
+      <Route path='/grade' element={<Grade />}/>
+        
+
+      </Routes>
     </BrowserRouter>
   );
 }

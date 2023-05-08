@@ -1,6 +1,6 @@
 import "./Notes.scss"
 import React, { useEffect, useState } from "react"
-import { useHistory } from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 import MDEditor from "@uiw/react-md-editor"
 import moment from "moment"
 //import Spinner from "../../../components/Loader/Loader"
@@ -22,7 +22,7 @@ const Notes: React.FC = () => {
 
 	//HOOKS
 	const dispatch = useDispatch()
-	const history = useHistory()
+	const history = useNavigate()
 	const state = useSelector((state: rootInitialState) => state)
 	const selected = useSelector((state:rootInitialState)=> state.file.selected)
 	const logged = useSelector((state: rootInitialState) => state.user.logged_user)
@@ -37,14 +37,14 @@ const Notes: React.FC = () => {
 	//			localStorage.setItem("draft", value!)
 	//			localStorage.setItem("title", name)
 	//			if (error === "jwt expired") {
-	//				history.push("/")
+	//				history("/")
 	//			}
 	//		}, 10000)
 	//	}, [])
 	// useEffect(()=> {
 	// 	dispatch(retrieve_logged_action())
 	// 	if (!logged?.name) {
-	// 		history.push("/")
+	// 		history("/")
 	// 	}
 	// 	dispatch(get_your_files_action())
 	// 	if (loading) {
@@ -53,7 +53,7 @@ const Notes: React.FC = () => {
 	// }, [])
 	// useEffect(()=> {
 	// 	if (error === "jwt expired") {
-	// 		history.push("/")
+	// 		history("/")
 	// 	}
 	// }, [error])
 

@@ -7,7 +7,7 @@ import Graph from "../../assets/graph.png"
 
 import { useDispatch, useSelector } from "react-redux"
 import { useEffect } from "react"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 
 //import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda"
@@ -22,7 +22,7 @@ import { Link } from "react-router-dom"
 const StudentDashboard:React.FC = () => {
     //HOOKS
     const dispatch = useDispatch()
-    const history = useHistory()
+    const history = useNavigate()
     const logged_user = useSelector((state:LoggedState) => state.user.logged_user)
     const is_auth = useSelector((state:LoggedState)=> state.user.is_authorized)
     const files = useSelector((state:rootInitialState)=> state.file.your_files)
@@ -30,7 +30,7 @@ const StudentDashboard:React.FC = () => {
     //USE EFFECT
     // useEffect(()=> {
     //     if(!is_auth) {
-    //         history.push("/")
+    //         history("/")
     //     }
     //     if (logged_user.name === undefined)
     //         dispatch(retrieve_logged_action())

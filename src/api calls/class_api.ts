@@ -66,7 +66,7 @@ export const create_new_course = async (
   return await response.json();
 };
 
-export const create_section = async(section:SectionReqBody | undefined, class_id:number) => {
+export const create_section = async(section:SectionReqBody | undefined, class_id:string) => {
     // /add-section/:class_id
     const response = await fetch(`${REACT_APP_BACKEND_URL}class/add-section/${class_id}`, {
         method: "POST",

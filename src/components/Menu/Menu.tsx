@@ -6,14 +6,14 @@ import Logout from "../../assets/door.png";
 import Homework from "../../assets/homework.png";
 import Home from "../../assets/home.png";
 
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./Menu.scss";
 import { logout } from "../../api calls/login_api";
 import { useDispatch } from "react-redux";
 
 export const Menu: React.FC = () => {
   //HOOKS
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
 
   return (
@@ -55,7 +55,7 @@ export const Menu: React.FC = () => {
         onClick={() => {
           logout();
           // dispatch({ type: LOGOUT });
-          history.push("/");
+          history("/");
         }}
       >
         <img src={Logout} alt="door" />
@@ -66,7 +66,7 @@ export const Menu: React.FC = () => {
 };
 
 export const TeacherMenu: React.FC = () => {
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
   return (
     <>
@@ -101,7 +101,7 @@ export const TeacherMenu: React.FC = () => {
         onClick={() => {
           logout();
           // dispatch({ type: LOGOUT });
-          history.push("/");
+          history("/");
         }}
       >
         <img src={Logout} alt="door" />

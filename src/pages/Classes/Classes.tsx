@@ -4,14 +4,14 @@ import {
   search_class,
 } from "../../api calls/class_api";
 
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import { Menu, TeacherMenu } from "../../components/Menu/Menu";
 import "./Classes.scss";
 import { Single } from "../../components/SingleCourse/Single";
 const Classes = () => {
   //HOOKS
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   //USE SELECTOR
   const logged = useSelector(
@@ -31,7 +31,7 @@ const Classes = () => {
 
   // useEffect(() => {
   //   dispatch(retrieve_logged_action());
-  //   if (logged?.name === null || logged?.name === undefined) history.push("/");
+  //   if (logged?.name === null || logged?.name === undefined) history("/");
   //   if (logged?.role === "student") dispatch(get_enrolled_action());
   //   else dispatch(get_owned_action())
   // }, []);
@@ -69,7 +69,7 @@ const Classes = () => {
             </>
           ) : (<div className="">
           {classes?.map((en) => (
-            <div onClick={() => history.push(`/class/${en.class_id}`)}>
+            <div onClick={() => history(`/class/${en.class_id}`)}>
               {" "}
               <Single c={en} key={en.class_id} />{" "}
             </div>

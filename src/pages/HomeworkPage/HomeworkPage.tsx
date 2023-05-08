@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import AsyncSelect from "react-select";
 import MDEditor from "@uiw/react-md-editor"
@@ -14,7 +14,7 @@ import moment from "moment";
 const HWPage = () => {
   //HOOKS
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
   //SELECTORS
   const logged = useSelector((state: rootInitialState) => state.user);
   const homework = useSelector(
@@ -37,15 +37,15 @@ const HWPage = () => {
 
   // useEffect(() => {
   //   dispatch(retrieve_logged_action());
-  //   if (!logged.logged_user?.name) history.push("/")
+  //   if (!logged.logged_user?.name) history("/")
   //   dispatch(get_homework_action());
   //   if (homework instanceof Array) {
   //     dispatch(get_enrolled_action());
   //     retrieveOptions();
       
-  //   } else history.push("/");
+  //   } else history("/");
   //   if (logged.error === "Session has expired, please login again.")
-  //     history.push("/");
+  //     history("/");
   // }, []);
 
   useEffect(()=> {

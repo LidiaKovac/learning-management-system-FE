@@ -6,6 +6,7 @@ import fileReducer from "../reducers/files"
 import eventReducer from "../reducers/events"
 import classReducer from "../reducers/classes"
 import taskReducer from "../reducers/tasks"
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux';
 
 
 export const store = configureStore({
@@ -28,3 +29,7 @@ export type AppThunk<ReturnType = void> = ThunkAction<
   unknown,
   Action<string>
 >;
+type DispatchFunc = () => AppDispatch
+
+export const useAppDispatch: DispatchFunc = useDispatch
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector

@@ -1,8 +1,8 @@
 //REACT and REDUX
 
-import React, { useEffect, useState } from "react"
+import React, { useEffect, useState, FormEvent } from "react"
 import { Link } from "react-router-dom"
-import { useHistory } from "react-router"
+import { useNavigate } from "react-router"
 
 import { useDispatch, useSelector } from "react-redux"
 
@@ -10,13 +10,16 @@ import { useDispatch, useSelector } from "react-redux"
 import "./Login.scss"
 import Waving from "../../assets/waving.png"
 import Spinner from "../../components/Loader/Loader"
+import { login } from "../../reducers/user"
+import { setLoading } from "../../reducers/loading"
+import { useAppDispatch } from "../../store"
 
 //INTERFACES & TYPES
 
 const Login = () => {
 	//HOOKS
-	const dispatch = useDispatch()
-	const history = useHistory()
+	const dispatch = useAppDispatch()
+	const history = useNavigate()
 
 	//STATE
 	const [login_data, setLogin] = useState<LoginData>({
@@ -30,10 +33,10 @@ const Login = () => {
 
 	//USE EFFECTS:
 	useEffect(() => {
-		if (props.is_authorized) {
-			history.push("/redirect")
+		if (localStorage.getItem("token")) {
+			history("/redirect")
 		}
-	}, [props.is_authorized])
+	}, [localStorage.getItem("token")])
 
 	// useEffect(() => {
 
@@ -49,16 +52,16 @@ const Login = () => {
 	// }, [])
 
 	//FUNCTIONS
-	// const submit_login = async (data: LoginData) => {
-	// 	dispatch(login_action(data))
-	// }
-	const on_change_handler = async (
-		e: React.KeyboardEvent<HTMLInputElement>
-	) => {
-		setLogin({
-			...login_data,
-			[e.currentTarget.id]: e.currentTarget.value,
-		})
+	const submitLogin = async (event:FormEvent) => {
+		event.preventDefault()
+		dispatch(setLoading(true))
+		await dispatch(login(new FormData(event.target as HTMLFormElement)))
+		if(props.logged_user?.role === "student") {
+			history("/studentdash")
+		} else {
+			history("/teacherdash")
+		}
+	
 	}
 	return (
 		<div className="login-wrap">
@@ -67,31 +70,28 @@ const Login = () => {
 					<img src={Waving} alt="waving" />
 					Welcome back
 				</div>
-				<div className="login-form__content">
+				<form className="login-form__content" onSubmit={submitLogin}>
 					{props.error !== "" ? <div className="">{props.error}</div> : ""}
 					<input
 						type="text"
 						placeholder="Email"
-						id="email"
-						onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) =>
-							on_change_handler(e)
-						}
+						name="email"
+						
 					/>
 					<input
 						type="password"
 						placeholder="Password"
-						id="password"
-						onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) =>
-							on_change_handler(e)
-						}
+						name="password"
+
 					/>
-				</div>
-				<button
-					className="login-form__submit"
+					<button
+						className="login-form__submit"
+
 					// onClick={() => submit_login(login_data)}
-				>
-					{props.loading ? <Spinner /> : "LOGIN"}
-				</button>
+					>
+						{props.loading ? <Spinner /> : "LOGIN"}
+					</button>
+				</form>
 				<div className="login-form__footer">
 					<div>
 						<div className="login-form__hl"></div>

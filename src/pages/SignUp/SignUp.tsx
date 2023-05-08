@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import React, { useEffect, useState, FormEvent } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Waving from "../../assets/waving.png";
 import AsyncSelect from "react-select";
 import "./SignUp.scss";
 import { ImCross, ImCheckmark } from "react-icons/im";
 import { useDispatch, useSelector } from "react-redux";
 import Spinner from "../../components/Loader/Loader";
+import { useAppDispatch } from "../../store";
+import { singup } from "../../reducers/user";
 
 const SignUp = () => {
   //HOOKS
-  const dispatch = useDispatch();
-  const history = useHistory();
+  const dispatch = useAppDispatch();
+  const history = useNavigate();
   const props = useSelector((state: rootInitialState) => state.user);
 
   //STATE
@@ -66,65 +68,69 @@ const SignUp = () => {
       set_pass_match(true);
     } else set_pass_match(false);
   };
-  const submit_forms = () => {
-    if (
-      user_data.name !== "" &&
-      user_data.last_name !== "" &&
-      user_data.pronouns !== "" &&
-      user_data.email !== "" &&
-      user_data.role !== "" &&
-      user_data.birthday !== ""
-    )
-      if (pass_match) {
-        // dispatch(join_action(user_data));
-        history.push("/")
-      } else set_error("Passwords don't match!");
-    else set_error("Please fill out all the sections.");
+  const submitForm = (ev:FormEvent) => {
+    ev.preventDefault()
+    let fd = new FormData(ev.target as HTMLFormElement)
+    dispatch(singup(fd))
+    // if (
+    //   user_data.name !== "" &&
+    //   user_data.last_name !== "" &&
+    //   user_data.pronouns !== "" &&
+    //   user_data.email !== "" &&
+    //   user_data.role !== "" &&
+    //   user_data.birthday !== ""
+    // )
+    //   if (pass_match) {
+    //     // dispatch(join_action(user_data));
+    //     history("/")
+    //   } else set_error("Passwords don't match!");
+    // else set_error("Please fill out all the sections.");
+
   };
   //USE EFFECTS
   useEffect(() => {
     if (props.is_authorized) {
-      history.push("/redirect");
+      history("/redirect");
     }
   }, [props]);
 
   return (
     <div className="signup-wrap">
-      <div className="signup-form__wrap">
+      <form className="signup-form__wrap" onSubmit={submitForm}>
         <div className="signup-form__header">
           <img src={Waving} alt="waving" /> Welcome!
         </div>
         <div className="signup-form__input--row">
           <input
             type="text"
-            id="name"
+            name="name"
             placeholder="Name"
-            onKeyUp={onKeyUpHandler}
+            // onKeyUp={onKeyUpHandler}
           />
           <input
             type="text"
-            id="last_name"
+            name="lastName"
             placeholder="Last name"
-            onKeyUp={onKeyUpHandler}
+            // onKeyUp={onKeyUpHandler}
           />
         </div>
         <AsyncSelect
           options={options}
-          id="pronouns"
+          name="pronouns"
           className="signup-form__input--select"
           classNamePrefix="signup-form__input--select"
           isSearchable={false}
           // defaultOptions
-          onChange={(val: SelectOption | null) =>
-            onChangeHandler__pronouns(val)
-          }
+          // onChange={(val: SelectOption | null) =>
+          //   onChangeHandler__pronouns(val)
+          // }
         />
-        <input type="date" id="birthday" onChange={onChangeHandler} />
+        <input type="date" name="birthday" onChange={onChangeHandler} />
         <input
           type="text"
-          id="email"
+          name="email"
           placeholder="Email"
-          onKeyUp={onKeyUpHandler}
+          // onKeyUp={onKeyUpHandler}
         />
         <span className="signup-form__input--error">
           {props.error === "email already in use!"
@@ -133,9 +139,9 @@ const SignUp = () => {
         </span>
         <input
           type="password"
-          id="password"
+          name="password"
           placeholder="Password"
-          onKeyUp={onKeyUpHandler}
+          // onKeyUp={onKeyUpHandler}
           onBlur={check_pass}
         />
         <div
@@ -150,9 +156,9 @@ const SignUp = () => {
           {" "}
           <input
             type="password"
-            id="password_conf"
+            name="password_conf"
             placeholder="Confirm your password"
-            onKeyUp={onKeyUpHandler}
+            // onKeyUp={onKeyUpHandler}
             onBlur={check_pass}
           />{" "}
           {pass_match ? (
@@ -176,7 +182,7 @@ const SignUp = () => {
             alignItems: "center",
           }}
         >
-          <input type="checkbox" id="role" onChange={onChangeHandler} />{" "}
+          <input type="checkbox" name="role" /* onChange={onChangeHandler}*/ />{" "}
           <label style={{ fontSize: "11pt" }} htmlFor="role">
             Student?
           </label>
@@ -189,7 +195,7 @@ const SignUp = () => {
             ? "Please fill out all the sections."
             : ""}
         </span>
-        <button className="signup-form__submit" onClick={submit_forms}>
+        <button className="signup-form__submit" >
           {props.loading ? <Spinner /> : "JOIN"}{" "}
         </button>
         <div className="login-form__footer">
@@ -202,7 +208,7 @@ const SignUp = () => {
             Already have an account?
           </Link>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

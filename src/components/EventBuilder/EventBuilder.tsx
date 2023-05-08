@@ -1,7 +1,7 @@
 import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 import AsyncSelect from 'react-select/async';
 import { get_created_classes } from "../../api calls/class_api";
 import { addEvent } from "../../reducers/events";
@@ -10,7 +10,7 @@ import Spinner from "../Loader/Loader";
 import "./EventBuilder.scss"
 const EventBuilder = () => {
   //HOOKS
-  const history = useHistory();
+  const history = useNavigate();
   const dispatch = useDispatch();
 
   //USE STATE
@@ -45,7 +45,7 @@ const EventBuilder = () => {
   const retrieveOptions = async () => {
     const opt = await get_created_classes();
     if (opt.message === "jwt expired") {
-      history.push("/");
+      history("/");
     } else {
       if (opt !== 204) {
         opt?.forEach((o: ResClass) => {

@@ -1,4 +1,4 @@
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Menu } from "../../components/Menu/Menu";
 import Notes from "../../assets/notes.png";
 import Camera from "../../assets/camera.png";
@@ -15,7 +15,7 @@ import MDEditor from "@uiw/react-md-editor";
 const LNotes: React.FC = () => {
   //HOOKS
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
 
   //SELECTORS
   const files = useSelector((state: rootInitialState) => state.file.your_files);
@@ -34,7 +34,7 @@ const LNotes: React.FC = () => {
   }, []);
   useEffect(() => {
     
-    if (error === "jwt expired") history.push("/");
+    if (error === "jwt expired") history("/");
   }, [error]);
 
   return (

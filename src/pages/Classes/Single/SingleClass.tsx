@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlineCloudUpload } from "react-icons/ai";
 import { HiPlusCircle } from "react-icons/hi";
 import { useDispatch, useSelector } from "react-redux";
-import { RouteComponentProps, useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import AsyncSelect from "react-select"
 import { create_section } from "../../../api calls/class_api";
 import { upload_file } from "../../../api calls/file_api";
@@ -14,8 +14,8 @@ import "./Single.scss";
 
 const SingleClassPage = () => {
   const dispatch = useDispatch();
-  const history = useHistory();
-  const params = useParams<SingleClassProps>();
+  const history = useNavigate();
+  const params = useParams();
   const [files, setFiles] = useState<FormData>()
   const selected = useSelector(
     (state: rootInitialState) => state.classes.selected_class?.class
@@ -32,7 +32,7 @@ const SingleClassPage = () => {
   // useEffect(() => {
   //   dispatch(retrieve_logged_action());
     
-  //   if (!logged?.name) history.push("/");
+  //   if (!logged?.name) history("/");
   //   dispatch(select_class_action(params.id));
   //   is_owner();
     
@@ -92,7 +92,7 @@ const SingleClassPage = () => {
   };
   const create_new_section = async () => {
     dispatch(setLoading(true));
-    const new_section = await create_section(section, parseInt(params.id));
+    const new_section = await create_section(section, params.id!);
     files?.append("section_ref", new_section.id)
     if (files) {
       const new_file = await upload_file(section?.files?.type!, files!)

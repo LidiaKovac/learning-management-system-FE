@@ -8,7 +8,7 @@ import Notebook from "../../assets/notebook.png";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 //import GradeSummary from "../../components/GradeSummary/GradeSummary"
 import Agenda from "../../components/Agenda/Agenda";
@@ -26,7 +26,7 @@ const TeacherDashboard: React.FC = () => {
   const [createMode, setCreateMode] = useState<Boolean>(false);
   //HOOKS
   const dispatch = useDispatch();
-  const history = useHistory();
+  const history = useNavigate();
   const logged_user = useSelector(
     (state: LoggedState) => state.user.logged_user
   );
@@ -36,7 +36,7 @@ const TeacherDashboard: React.FC = () => {
   //USEFFECTS
   // useEffect(() => {
   //   if (!is_auth) {
-  //     history.push("/");
+  //     history("/");
   //   }
   //   if (logged_user.name === undefined) {
   //     dispatch(retrieve_logged_action());
