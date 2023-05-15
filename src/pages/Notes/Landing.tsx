@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Menu } from "../../components/Menu/Menu";
+import { Menu } from "../../components/Sidebar/Menu";
 import Notes from "../../assets/notes.png";
 import Camera from "../../assets/camera.png";
 import Audio from "../../assets/music.png"

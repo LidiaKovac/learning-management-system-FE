@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 import AsyncSelect from "react-select";
 import MDEditor from "@uiw/react-md-editor"
-import { TeacherMenu, Menu } from "../../components/Menu/Menu";
+import { TeacherMenu, Menu } from "../../components/Sidebar/Menu";
 import "../Dashboard/Dashboard.scss";
 import "./Homeworkpage.scss";
 import { get_enrolled } from "../../api calls/class_api";

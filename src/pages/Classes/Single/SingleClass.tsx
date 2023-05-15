@@ -6,7 +6,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import AsyncSelect from "react-select"
 import { create_section } from "../../../api calls/class_api";
 import { upload_file } from "../../../api calls/file_api";
-import { Menu, TeacherMenu } from "../../../components/Menu/Menu";
+import { Menu, TeacherMenu } from "../../../components/Sidebar/Menu";
 import { selectClass } from "../../../reducers/classes";
 import { setLoading } from "../../../reducers/loading";
 

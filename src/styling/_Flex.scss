@@ -1,0 +1,16 @@
+@mixin col($num) {
+    width: 100% / (12 / $num)
+}
+
+@mixin flex-config($dir, $long, $short, $gap, $children: "uneven", $basis: 200px) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $long;
+    align-items: $short;
+    gap: $gap;
+    @if ($children == "even") {
+      > * {
+        flex: 1 1 $basis;
+      }
+    }
+  }

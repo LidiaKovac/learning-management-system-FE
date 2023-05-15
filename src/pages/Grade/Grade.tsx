@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Menu, TeacherMenu } from "../../components/Menu/Menu";
+import { Menu, TeacherMenu } from "../../components/Sidebar/Menu";
 import "./index.scss";
 
 const Grade = () => {

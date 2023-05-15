@@ -1,0 +1,83 @@
+@import "../../styling/Colors";
+@import "../../styling/Flex";
+@import "../../styling/Button";
+
+.sidebar__wrap {
+  @include col(2);
+  min-width: 250px;
+  background-color: white;
+  height: calc(100vh - 60px);
+  border-radius: 7px;
+  padding: 40px;
+  .sidebar__logo {
+    @include flex-config(row, center, center, 10px);
+    margin-bottom: 40px;
+    // min-height: 80px;
+    .sidebar__pill {
+      width: 80%;
+      text-align: center;
+      // background-color: $blue-deep;
+      @include blue-deep;
+      font-weight: bold;
+      border-radius: 20px;
+      padding: 2px;
+    }
+    svg {
+      width: 20%;
+    }
+  }
+  .sidebar__single-el {
+    cursor: pointer;
+
+    @include flex-config(column, flex-start, center, 10px);
+    .sidebar__single-el-title {
+      @include flex-config(row, space-between, center, 10px);
+      width: 100%;
+      button {
+        // width: 100%;
+      }
+      > div {
+        width: 80%;
+        @include flex-config(row, flex-start, center, 10px);
+        
+      }
+      svg {
+        // width: 100%;
+        // height: 100%;
+        color: $blue-deep;
+      }
+      
+    }
+    
+    
+
+    font-size: 15px;
+    padding-block: 10px;
+  }
+  .sidebar__single-el-body {
+        list-style-type: none;
+        padding-left: 25px;
+        margin: 0px;
+    align-self: flex-start;
+    a {
+        text-decoration: none;
+        color: rgb(0,0,0,0.7)
+      }
+  }
+  .sidebar__divider {
+    position: relative;
+    border-bottom: 1px solid $blue-deep;
+    margin-block: 25px;
+    span {
+      @extend button;
+      background-color: white;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      padding: 0px 10px;
+      color: $blue-medium;
+      font-size: 13px;
+    }
+  }
+}

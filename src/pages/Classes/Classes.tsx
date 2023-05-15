@@ -5,7 +5,7 @@ import {
 } from "../../api calls/class_api";
 
 import { useNavigate } from "react-router";
-import { Menu, TeacherMenu } from "../../components/Menu/Menu";
+import { Menu, TeacherMenu } from "../../components/Sidebar/Menu";
 import "./Classes.scss";
 import { Single } from "../../components/SingleCourse/Single";
 const Classes = () => {

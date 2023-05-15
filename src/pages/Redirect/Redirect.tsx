@@ -12,9 +12,9 @@ const Redirect = () => {
     //USE EFFECT
     useEffect(()=> {
         if (role === "student") {
-            history("/studentdash")
+            history("/dashboard?role=student")
         } else {
-            history("/teacherdash")
+            history("/dashboard?role=teacher")
         } 
     }, [])
     

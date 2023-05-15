@@ -1,6 +1,11 @@
-$bg: #EAF9FF;
+$bg: #EBF6FC;
 $text-main: #1C0F54;
-$blue-medium: #C7EFFF;
-$blue-deep: #00B4FF;
+$blue-medium: rgb(0, 165, 255, 0.7);
+$blue-deep: #00A5FF;
 $input: #E0F6FF;
 $submit: #ADE8FF;
+
+@mixin blue-deep {
+    background-color: $blue-deep;
+    color: white
+}

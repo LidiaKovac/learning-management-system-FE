@@ -1,0 +1,13 @@
+@import "./styling/Colors";
+button {
+    cursor: pointer;
+}
+* {
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $bg;
+    padding: 30px;
+    min-height: 100vh;
+}
