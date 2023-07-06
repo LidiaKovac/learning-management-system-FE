@@ -2,7 +2,7 @@
 
 ### tl;dr: 
  - [Notion page](https://www.notion.so/lidiakovac/SOLO-CAPSTONE-60bd6b2e4a254a6a8e5025db83966905)
- - [Live demo](https://learn-ez.netlify.app/) [![Netlify Status](https://api.netlify.com/api/v1/badges/245c1277-27e6-43ac-8a08-440c032cacb7/deploy-status)](https://app.netlify.com/sites/learn-ez/deploys) => ACTIVATED ON REQUEST! ⚠️
+ - [Live demo](https://learn-ez.netlify.app/) 
  - Building with Typescript and Sequelize 
  - [Backend repo](https://github.com/LidiaKovac/learning-management-system-BE)
 
