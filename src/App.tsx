@@ -6,13 +6,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom"
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 import Redirect from "./pages/Redirect/Redirect"
-import UploadNotes from './pages/Notes/Upload/Upload_New';
-import LNotes from "./pages/Notes/Landing"
-import Notes from './pages/Notes/Type/Notes';
-import Classes from './pages/Classes/Classes';
-import SingleClassPage from './pages/Classes/Single/SingleClass';
-import HomeworkPage from './pages/HomeworkPage/HomeworkPage';
-import Grade from './pages/Grade/Grade';
 import { Dashboard } from './pages/Dashboard/Dashboard';
 
 const App = () => {

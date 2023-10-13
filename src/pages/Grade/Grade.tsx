@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import { Menu, TeacherMenu } from "../../components/Sidebar/Menu";
+// import { Menu, TeacherMenu } from "../../components/Sidebar/Menu";
 import "./index.scss";
 
 const Grade = () => {
@@ -18,7 +18,7 @@ const Grade = () => {
   return (
     <div className="dashboard__wrap">
       <div className="dashboard__menu">
-        {logged?.logged_user?.role === "student" ? <Menu /> : <TeacherMenu />}
+        {/* {logged?.logged_user?.role === "student" ? <Menu /> : <TeacherMenu />} */}
       </div>
       <div className="grade__main">
         {homework?.map((h) => (

@@ -4,7 +4,7 @@ import { useNavigate } from "react-router";
 
 import AsyncSelect from "react-select";
 import MDEditor from "@uiw/react-md-editor"
-import { TeacherMenu, Menu } from "../../components/Sidebar/Menu";
+// import { TeacherMenu, Menu } from "../../components/Sidebar/Menu";
 import "../Dashboard/Dashboard.scss";
 import "./Homeworkpage.scss";
 import { get_enrolled } from "../../api calls/class_api";
@@ -68,7 +68,7 @@ const HWPage = () => {
   return (
     <div className="dashboard__wrap">
       <div className="dashboard__menu">
-        {logged?.logged_user?.role === "student" ? <Menu /> : <TeacherMenu />}
+        {/* {logged?.logged_user?.role === "student" ? <Menu /> : <TeacherMenu />} */}
       </div>
       <div className="hw-page__main">
         <h2 className="header">Homeworks</h2>

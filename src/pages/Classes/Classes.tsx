@@ -5,7 +5,7 @@ import {
 } from "../../api calls/class_api";
 
 import { useNavigate } from "react-router";
-import { Menu, TeacherMenu } from "../../components/Sidebar/Menu";
+// import { Menu, TeacherMenu } from "../../components/Sidebar/Menu";
 import "./Classes.scss";
 import { Single } from "../../components/SingleCourse/Single";
 const Classes = () => {
@@ -48,7 +48,7 @@ const Classes = () => {
     <>
       <div className="classes__wrap">
         <div className="dashboard__menu">
-          {logged?.role === "student" ? <Menu /> : <TeacherMenu/>}
+          {/* {logged?.role === "student" ? <Menu /> : <TeacherMenu/>} */}
         </div>
         <div className="classes__content">
           <input

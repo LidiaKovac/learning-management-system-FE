@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
-import { Menu } from "../../components/Sidebar/Menu";
+// import { Menu } from "../../components/Sidebar/Menu";
 import Notes from "../../assets/notes.png";
 import Camera from "../../assets/camera.png";
 import Audio from "../../assets/music.png"
@@ -40,7 +40,7 @@ const LNotes: React.FC = () => {
   return (
     <div className="landing__wrap">
       <div className="dashboard__menu">
-        <Menu />
+        {/* <Menu /> */}
       </div>
       <div className="landing__main">
         {/* col 1 -> notes list 
