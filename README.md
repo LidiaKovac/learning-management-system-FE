@@ -1,3 +1,5 @@
+⚠️ This project is now defunct. I have not been maintaining it and I've moved on to more recent projects. The [Notion page](https://www.notion.so/lidiakovac/SOLO-CAPSTONE-60bd6b2e4a254a6a8e5025db83966905) is still up if you want to know what it used to look like in 2021, when it was fully functional. Please reach out to me if you need any other information! 
+
 # 👋 Hello! I am Lidia, and I am building a Learning management system (LMS)
 
 ### tl;dr: 
@@ -6,8 +8,6 @@
  - Building with Typescript and Sequelize 
  - [Backend repo](https://github.com/LidiaKovac/learning-management-system-BE)
 
-
-### 🖥️ Check out this project's [Notion](https://www.notion.so/lidiakovac/SOLO-CAPSTONE-60bd6b2e4a254a6a8e5025db83966905) for to-dos, mocks and releases! 
 
 
 # 🗓️ Daily LOG: 
